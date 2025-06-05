@@ -23,18 +23,22 @@
 
         <!-- 联系信息 -->
         <div class="col-lg-4 col-md-6 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="500">
-          <h5 class="mb-3">联系我们</h5>
+          <h5 class="mb-3">联系我们 / Contact Us</h5>
           <p class="d-flex align-items-center mb-2">
             <i class="bi bi-geo-alt-fill me-2"></i>
-            <span>韶关市淡江区十里亭镇良村公路35号良村综合商贸城E栋八楼801号</span>
+            <span>韶关市浈江区十里亭镇良村公路35号良村综合商贸城E栋八楼</span>
           </p>
           <p class="d-flex align-items-center mb-2">
             <i class="bi bi-telephone-fill me-2"></i>
-            <span>13192433775</span>
+            <span>0751-8819008</span>
+          </p>
+          <p class="d-flex align-items-center mb-2">
+            <i class="bi bi-phone-fill me-2"></i>
+            <span>叶灶生：13726565111</span>
           </p>
           <p class="d-flex align-items-center mb-2">
             <i class="bi bi-envelope-fill me-2"></i>
-            <span>chenxing@163.com</span>
+            <span>13726565111@139.com</span>
           </p>
         </div>
 

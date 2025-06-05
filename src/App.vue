@@ -4,6 +4,7 @@ import { onMounted } from 'vue'
 import { RouterView } from 'vue-router'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
+import 'animate.css'
 
 // 组件挂载时进行初始化
 onMounted(() => {
@@ -14,11 +15,24 @@ onMounted(() => {
 <template>
   <div class="app-container">
     <Header />
-    <main>
-      <RouterView />
-    </main>
+    <router-view v-slot="{ Component }">
+      <transition
+        enter-active-class="animate__animated animate__fadeIn"
+        leave-active-class="animate__animated animate__fadeOut"
+        :duration="500"
+        mode="out-in"
+      >
+        <component :is="Component" />
+      </transition>
+    </router-view>
     <Footer />
   </div>
 </template>
 
-<style></style>
+<style lang="scss">
+/* 全局样式可以在这里添加 */
+.animate__fadeIn,
+.animate__fadeOut {
+  animation-duration: 0.5s !important;
+}
+</style>

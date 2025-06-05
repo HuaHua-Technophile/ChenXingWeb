@@ -1,0 +1,178 @@
+[
+  {
+    "title": "系统集成",
+    "titleEn": "System Integration",
+    "description": "软硬件一体化集成，打造智能化解决方案",
+    "descriptionEn": "Unified hardware-software integration delivering intelligent solutions",
+    "icon": "bi-gear-wide-connected",
+    "detailContent": {
+      "overview": "辰星信息科技系统集成服务致力于将不同厂商、不同平台的产品有机整合，构建统一、高效的信息化系统，实现资源共享和业务协同。",
+      "architecture": "系统集成架构基于SOA面向服务的体系架构设计，采用全新的ESB总线，确保系统间无缝连接和数据交换。平台采用标准化接口协议，支持不同系统的集成和通信。",
+      "modules": ["硬件设备集成", "软件系统对接", "数据交换与共享", "统一身份认证", "综合监控管理"],
+      "values": [
+        "打破信息孤岛，实现数据互通共享",
+        "降低IT系统复杂度，简化运维管理",
+        "提高资源利用率，降低建设成本",
+        "增强系统安全性和可靠性"
+      ],
+      "imageUrl": "placeholder.jpg"
+    }
+  },
+  {
+    "title": "网络工程",
+    "titleEn": "Network Engineering",
+    "description": "专业网络布线施工，保障网络高效稳定",
+    "descriptionEn": "Professional network infrastructure construction ensuring efficiency and stability",
+    "icon": "bi-ethernet",
+    "detailContent": {
+      "overview": "辰星信息科技网络工程服务提供从网络规划设计到施工部署的全流程解决方案，为企业构建高性能、高安全、高可靠的网络基础设施。",
+      "architecture": "网络架构设计采用层次化网络模型，包括核心层、汇聚层和接入层三层结构，支持有线和无线网络融合，实现网络资源的统一管理和控制。",
+      "modules": ["网络规划设计", "综合布线工程", "网络设备部署", "无线网络覆盖", "网络安全防护"],
+      "values": [
+        "构建高速稳定的网络环境",
+        "支持业务扩展的灵活网络架构",
+        "提高网络安全性和抗风险能力",
+        "降低网络运维成本和管理难度"
+      ],
+      "imageUrl": "placeholder.jpg"
+    }
+  },
+  {
+    "title": "能源管控",
+    "titleEn": "Energy Management",
+    "description": "智能能源监测系统，实时掌控能源使用情况，节约成本",
+    "descriptionEn": "Intelligent energy monitoring system for real-time control and cost optimization",
+    "icon": "bi-lightning-charge",
+    "detailContent": {
+      "overview": "辰星信息科技能源管控解决方案通过物联网技术对能源使用进行实时监测、分析和管理，帮助企业实现能源精细化管理和节能降耗。",
+      "architecture": "能源管控系统采用'云+端'架构，通过智能传感器采集数据，经边缘计算设备预处理后上传至云平台，实现数据的集中分析和管理。系统支持多种能源类型的统一监管。",
+      "modules": [
+        "能耗数据采集",
+        "能耗分析与统计",
+        "能源优化与调度",
+        "异常预警与处理",
+        "节能效果评估"
+      ],
+      "values": [
+        "精准掌握能源使用情况，避免浪费",
+        "发现能耗异常，及时干预处理",
+        "优化能源使用策略，降低运营成本",
+        "支持绿色生产，践行企业社会责任"
+      ],
+      "imageUrl": "placeholder.jpg"
+    }
+  },
+  {
+    "title": "消防系统",
+    "titleEn": "Fire Protection Systems",
+    "description": "全方位消防系统集成，确保建筑安全",
+    "descriptionEn": "Comprehensive fire safety integration ensuring building security",
+    "icon": "bi-fire",
+    "detailContent": {
+      "overview": "辰星信息科技消防系统集成服务提供建筑消防安全的整体解决方案，集成火灾自动报警、消防联动控制、消防设备监控等功能，构建智能化消防安全保障体系。",
+      "architecture": "消防系统架构基于分布式控制模式，由中央控制系统、现场控制器和各类消防设备组成，实现统一管理与分级控制相结合的体系。系统具有高可靠性和冗余设计，确保关键时刻正常运行。",
+      "modules": [
+        "火灾自动报警系统",
+        "消防设备电源监控",
+        "消防水系统监控",
+        "防排烟系统控制",
+        "智能疏散引导"
+      ],
+      "values": [
+        "全面提升建筑消防安全水平",
+        "快速响应火灾险情，减少损失",
+        "实现消防设备状态可视化管理",
+        "降低消防安全管理难度和成本"
+      ],
+      "imageUrl": "placeholder.jpg"
+    }
+  },
+  {
+    "title": "智慧养老",
+    "titleEn": "Smart Elderly Care",
+    "description": "打造舒适安全的智能养老环境，提升生活质量",
+    "descriptionEn": "Creating comfortable and secure intelligent environments for enhanced quality of life",
+    "icon": "bi-heart-pulse",
+    "detailContent": {
+      "overview": "辰星信息科技智慧养老解决方案融合物联网、大数据、人工智能等技术，为老年人打造安全、便捷、舒适的智能化养老环境，提升老年人生活质量和养老机构服务效率。",
+      "architecture": "智慧养老平台采用'云-网-端'三层架构，通过各类智能传感器、穿戴设备采集老人健康和行为数据，结合AI分析技术，实现智能监护和科学照护。平台支持与医疗健康系统的数据共享和协同。",
+      "modules": [
+        "健康监测与评估",
+        "远程看护与预警",
+        "生活辅助管理",
+        "智能环境控制",
+        "社交娱乐服务"
+      ],
+      "values": [
+        "提供全方位健康监护，预防风险",
+        "增强老年人独立生活能力",
+        "减轻家庭和机构照护压力",
+        "提升养老服务质量和效率"
+      ],
+      "imageUrl": "placeholder.jpg"
+    }
+  },
+  {
+    "title": "智能门禁",
+    "titleEn": "Access Control Systems",
+    "description": "现代化门禁系统，提升安全管理效率",
+    "descriptionEn": "Modern access control solutions for enhanced security management",
+    "icon": "bi-door-open",
+    "detailContent": {
+      "overview": "辰星信息科技智能门禁系统整合生物识别、RFID、移动互联等技术，为企业和机构提供高效、安全的出入控制和人员管理解决方案。",
+      "architecture": "智能门禁系统采用分层架构设计，包括设备层、控制层、管理层和应用层，支持多种认证方式和控制策略，可与视频监控、报警系统等安防设备联动，构建完整的安全防护体系。",
+      "modules": ["身份认证与授权", "访客管理系统", "电子巡更管理", "考勤管理功能", "安防联动控制"],
+      "values": [
+        "提高出入口安全防护等级",
+        "简化人员通行管理流程",
+        "减少人工干预，提高管理效率",
+        "提供全面的安全数据分析"
+      ],
+      "imageUrl": "placeholder.jpg"
+    }
+  },
+  {
+    "title": "水利监测",
+    "titleEn": "Hydraulic Monitoring",
+    "description": "水坝水位实时监测系统，确保水利设施安全",
+    "descriptionEn": "Real-time dam water level monitoring systems for hydraulic facility safety",
+    "icon": "bi-water",
+    "detailContent": {
+      "overview": "辰星信息科技水利监测系统通过物联网技术对水文、水质、水工建筑物等进行全方位监测，实现水利工程的智能化、信息化管理，提高水利工程安全运行水平。",
+      "architecture": "水利监测系统基于物联网架构，由感知层、网络层、平台层和应用层组成。通过部署在水利工程的各类传感器采集数据，经通信网络传输到监测平台，进行智能分析和管理，为决策提供支持。",
+      "modules": [
+        "水文监测管理",
+        "水质监测预警",
+        "水库大坝安全监测",
+        "水利工程视频监控",
+        "防汛抗旱指挥调度"
+      ],
+      "values": [
+        "实时掌握水利工程运行状态",
+        "提前预警潜在安全风险",
+        "优化水资源调度和利用",
+        "提高水利工程管理科学化水平"
+      ],
+      "imageUrl": "placeholder.jpg"
+    }
+  },
+  {
+    "title": "智能楼宇",
+    "titleEn": "Intelligent Buildings",
+    "description": "集成楼宇自控、安防监控等系统，实现建筑智能化管理",
+    "descriptionEn": "Integration of building automation and security systems for intelligent facility management",
+    "icon": "bi-building",
+    "detailContent": {
+      "overview": "辰星信息科技智能楼宇解决方案整合楼宇自控、安防监控、能源管理等系统，打造舒适、安全、节能的智能建筑环境，实现建筑全生命周期的智能化管理。",
+      "architecture": "智能楼宇系统采用三层架构设计，包括现场设备层、系统集成层和综合管理层。通过物联网技术连接各类建筑设备和系统，构建统一的管理平台，实现对建筑的集中监控和智能控制。",
+      "modules": ["楼宇自动化控制", "智能照明系统", "安防监控系统", "智能停车管理", "能源管理系统"],
+      "values": [
+        "提高建筑使用舒适度和便捷性",
+        "降低能源消耗，减少运营成本",
+        "增强建筑安全性和可靠性",
+        "延长设备寿命，提高资产价值"
+      ],
+      "imageUrl": "placeholder.jpg"
+    }
+  }
+]

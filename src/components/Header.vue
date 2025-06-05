@@ -7,10 +7,11 @@ import ThemeToggle from './ThemeToggle.vue'
 // 定义导航链接，可以根据实际需求修改
 const navLinks = ref([
   { name: '首页', path: '/' },
-  { name: '服务', path: '/services' },
   { name: '关于我们', path: '/about' },
-  { name: '案例展示', path: '/cases' },
-  { name: '客户服务', path: '/customer-service' },
+  { name: '智能集成', path: '/intelligent-integration' },
+  { name: '技术支持', path: '/tech-support' },
+  { name: '软件开发', path: '/software-dev' },
+  { name: '工程案例', path: '/cases' },
   { name: '联系我们', path: '/contact' },
 ])
 
@@ -46,9 +47,9 @@ onUnmounted(() => {
 
 <template>
   <header
-    class="navbar navbar-expand-lg position-fixed w-100 top-0 z-index-5 transition-750"
+    class="navbar navbar-expand-lg position-fixed w-100 top-0 z-index-5 transition-750 bg-body bg-opacity-75"
     :class="[
-      { 'bg-transparent': !isScrolled && !isNavOpen, 'bg-blur shadow-sm': isScrolled || isNavOpen },
+      { 'bg-transparent': !isScrolled && !isNavOpen, 'blur-5 shadow': isScrolled || isNavOpen },
     ]"
   >
     <div class="container">
@@ -94,12 +95,12 @@ onUnmounted(() => {
 
       <!-- 导航链接 -->
       <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
           <li v-for="(link, index) in navLinks" :key="index" class="nav-item py-2 py-lg-0">
             <RouterLink
-              class="nav-link px-3 fw-medium transition"
+              class="nav-link px-3 fw-medium transition-750 position-relative"
               :to="link.path"
-              :class="{ 'text-primary': route.path === link.path }"
+              :class="{ 'active-link': route.path === link.path }"
             >
               {{ link.name }}
             </RouterLink>
@@ -120,16 +121,29 @@ onUnmounted(() => {
   transform: scale(1.1);
 }
 
-.transition {
-  transition: color 0.3s ease;
-}
-
 .nav-link:hover {
   color: var(--bs-primary);
 }
 
 .focus-none:focus {
   box-shadow: none;
+}
+
+// 激活的导航链接样式
+.active-link {
+  color: var(--bs-primary) !important;
+  font-weight: bold;
+  text-shadow: 0 0 1px var(--bs-primary);
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
+    height: 3px;
+    background-color: var(--bs-primary);
+    border-radius: 3px;
+  }
 }
 
 // 自定义汉堡菜单图标
@@ -171,11 +185,5 @@ onUnmounted(() => {
     width: 45px;
     height: 45px;
   }
-}
-
-.bg-blur {
-  background: rgba(var(--bs-body-bg-rgb), 0.8);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
 }
 </style>

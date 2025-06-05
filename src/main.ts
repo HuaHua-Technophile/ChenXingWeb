@@ -5,12 +5,13 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import 'animate.css'
 
 import App from './App.vue'
 import router from './router'
 
 AOS.init({
-  duration: 800, // 动画持续时间，单位是毫秒。
+  duration: 1000, // 动画持续时间，单位是毫秒。
   once: false, // 是否只执行一次动画。
   offset: 0, // 动画元素相对于视口的偏移量。
   delay: 300, // 动画延迟时间，单位是毫秒。
