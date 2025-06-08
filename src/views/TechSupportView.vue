@@ -59,7 +59,14 @@
     <!-- 内容 -->
     <section class="container py-4" id="services">
       <div class="row">
-        <div v-for="(service, index) in services" :key="index" class="col-md-6 mb-4">
+        <div
+          v-for="(service, index) in services"
+          :key="index"
+          class="col-md-6 mb-4"
+          data-aos="fade-up"
+          data-aos-duration="800"
+          :data-aos-delay="(index % 2) * 200 + 200"
+        >
           <div
             class="h-100 card overflow-hidden service-card rounded-4 hover-up transition-750 position-relative"
           >
