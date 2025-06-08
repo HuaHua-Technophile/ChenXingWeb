@@ -1,13 +1,40 @@
 <template>
   <main
-    class="pt-5 position-relative bgimg-center-cover bgimg-mask top-gradient-mask"
+    class="bgimg-center-cover bgimg-mask"
     style="background-image: url('/images/pexels-cookiecutter-17489160.webp')"
   >
-    <div class="container py-4 position-relative z-index-2">
-      <h1 class="text-center mb-4" data-aos="fade-down" data-aos-duration="1000">智能集成</h1>
+    <!-- 首屏 -->
+    <section class="vh-100 container pt-5 pt-md-0">
+      <div class="row align-items-center h-100">
+        <div class="col-md-6" data-aos="fade-right" data-aos-duration="1000">
+          <img :src="randomImage" class="img-fluid rounded" alt="智能集成" />
+        </div>
+        <div class="col-md-6 ps-lg-5" data-aos="fade-left" data-aos-duration="1000">
+          <p class="text-primary fw-bold">OUR ADVANTAGES</p>
+          <h2 class="h3 mb-3">通过智能集成为您的业务赋能</h2>
+          <p class="mb-4 text-body-secondary fs-lg-5">
+            我们将分散的系统、应用和数据连接起来，打破信息孤岛，实现数据和流程的无缝流转，帮助您优化业务流程、提高决策效率、创造新的商业价值。
+          </p>
+          <div class="row row-cols-1 row-cols-md-2 g-3">
+            <div class="col mt-2 mt-md-4" v-for="advantage in advantages" :key="advantage">
+              <div
+                class="bg-body bg-opacity-25 blur-5 ps-3 py-2 py-md-3 rounded shadow-sm border-start border-primary border-5 h-100 d-flex align-items-center hover-up transition-500 fs-7 fs-md-6"
+              >
+                {{ advantage }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- 联系信息 -->
+    <ContactInfoSection />
+
+    <!-- 服务区域 -->
+    <section class="container mt-5 pb-3">
       <!-- 服务Tab导航栏,aos动画会限制最大宽度，因此需要显式指定 -->
-      <section
+      <div
         class="row row-cols-4 row-cols-md-auto justify-content-between"
         id="servicesTabs"
         role="tablist"
@@ -29,10 +56,10 @@
             <span class="d-none d-md-inline mt-2">{{ service.title }}</span>
           </button>
         </div>
-      </section>
+      </div>
 
       <!-- 服务内容区域 -->
-      <section
+      <div
         class="tab-content p-md-4 p-3 border rounded bg-body bg-opacity-50 overflow-hidden"
         id="servicesTabContent"
         data-aos="zoom-in"
@@ -56,7 +83,9 @@
               <h2 class="mb-2">{{ services[activeTab].title }}</h2>
               <h4 class="text-primary mb-3">{{ services[activeTab].titleEn }}</h4>
               <p class="lead">{{ services[activeTab].description }}</p>
-              <p class="text-secondary fst-italic mb-0">{{ services[activeTab].descriptionEn }}</p>
+              <p class="text-secondary fst-italic mb-0">
+                {{ services[activeTab].descriptionEn }}
+              </p>
             </div>
 
             <!-- 服务详情内容区域 -->
@@ -177,8 +206,8 @@
             </div>
           </div>
         </transition>
-      </section>
-    </div>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -187,6 +216,25 @@ import { ref, watch, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 // 从JSON文件导入服务数据
 import services from '@/assets/services.json'
+
+const advantages = ['统一数据视图', '自动化业务流程', '提升运营效率', '快速响应市场']
+
+// 用于随机展示的首页矢量图列表
+const homeImages = [
+  'undraw_two-factor-authentication_8tds.svg',
+  'undraw_visionary-technology_6ouq.svg',
+  'undraw_nakamoto_uy67.svg',
+  'undraw_online-transactions_8chx.svg',
+  'undraw_programming_65t2.svg',
+  'undraw_progressive-app_9517.svg',
+  'undraw_static-website_x3tn.svg',
+  'undraw_ai-agent_pdkp.svg',
+  'undraw_bull-market_4a8e.svg',
+  'undraw_circuit_92r1.svg',
+  'undraw_design-components_529l.svg',
+  'undraw_devices_odm4.svg',
+]
+const randomImage = ref('')
 
 // 获取当前路由信息
 const route = useRoute()
@@ -200,6 +248,10 @@ const leaveClass = ref('animate__fadeOut animate__faster') // 默认退场动画
 
 // 组件挂载后，从URL查询参数中获取tab索引
 onMounted(() => {
+  // 为页首设置随机图片
+  const randomIndex = Math.floor(Math.random() * homeImages.length)
+  randomImage.value = `/images/home/${homeImages[randomIndex]}`
+
   // 如果URL中有tab参数，则使用该参数设置激活的标签页
   if (route.query.tab !== undefined) {
     const tabIndex = Number(route.query.tab)
@@ -258,25 +310,6 @@ watch(activeTab, (newValue, oldValue) => {
     i {
       transform: rotateY(180deg);
     }
-  }
-}
-
-// 顶部渐变遮罩
-.top-gradient-mask {
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 30%;
-    background: linear-gradient(
-      to bottom,
-      rgba(var(--bs-body-bg-rgb), 0.8) 0%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    z-index: 1;
-    pointer-events: none;
   }
 }
 </style>

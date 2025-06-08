@@ -1,9 +1,9 @@
 <template>
   <main>
-    <!-- 顶部横幅 -->
-    <section class="hero-section position-relative overflow-hidden w-100" data-aos="fade-down">
+    <!-- 顶部首屏 -->
+    <section class="hero-section position-relative overflow-hidden w-100 pt-5" data-aos="fade-down">
       <div class="container">
-        <div class="row min-vh-50 align-items-center justify-content-center text-center pt-5">
+        <div class="row min-vh-50 align-items-center justify-content-center text-center">
           <p class="text-uppercase mt-2 mt-lg-4 mb-3 small fw-bold text-primary" data-aos="fade-up">
             About Us
           </p>
@@ -26,7 +26,8 @@
         </div>
       </div>
     </section>
-
+    <!-- 联系信息 -->
+    <ContactInfoSection />
     <!-- 主要内容部分 -->
     <section
       :style="{
@@ -477,6 +478,14 @@ const swiperModules = [Navigation, Pagination, EffectCoverflow, Autoplay]
 // Bootstrap中没有min-vh-50类，需要保留
 .min-vh-50 {
   min-height: 50vh;
+}
+
+// 在移动端减少首屏垂直间距
+@media (max-width: 991.98px) {
+  .min-vh-50 {
+    min-height: auto;
+    padding-bottom: 2rem;
+  }
 }
 
 // 数字完成动画后的效果

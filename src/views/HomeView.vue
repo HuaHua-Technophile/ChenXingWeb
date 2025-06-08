@@ -2,6 +2,7 @@
 // 首页组件
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
+import ContactInfoSection from '@/components/ContactInfoSection.vue'
 // 保留导入
 import 'aos/dist/aos.css'
 // 从JSON文件导入服务数据
@@ -127,11 +128,9 @@ const navigateToService = (index: number) => {
 </script>
 
 <template>
-  <main>
-    <!-- 首屏英雄部分 -->
-    <section
-      class="hero-section position-relative overflow-hidden min-vh-100 d-flex align-items-center pt-5 pt-lg-0"
-    >
+  <main class="home-main position-relative">
+    <!-- 首屏部分 -->
+    <section class="hero-section overflow-hidden min-vh-100 d-flex align-items-center pt-5 pt-lg-0">
       <div class="container">
         <div class="row align-items-center h-100">
           <div class="col-lg-6">
@@ -250,6 +249,8 @@ const navigateToService = (index: number) => {
       </div>
     </section>
 
+    <ContactInfoSection />
+
     <!-- 关于我们部分 -->
     <section class="py-3 py-lg-5">
       <div class="container py-2 py-lg-5">
@@ -349,23 +350,11 @@ const navigateToService = (index: number) => {
         </div>
       </div>
     </section>
-
-    <!-- 联系我们部分 -->
-    <section id="contact" class="py-3 py-lg-5">
-      <div class="container py-2 py-lg-5">
-        <div class="row justify-content-center">
-          <div class="col-lg-8 text-center mb-5" data-aos="fade-up">
-            <h2 class="fs-md-1 fs-2 fw-bold mb-3">联系我们</h2>
-            <p class="lead fs-md-4 fs-5">随时为您提供硬件施工与软件开发的智能化一体解决方案</p>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 </template>
 
 <style scoped lang="scss">
-.hero-section::before {
+.home-main::before {
   content: '';
   position: absolute;
   top: 0;
@@ -375,8 +364,8 @@ const navigateToService = (index: number) => {
   background-image: url('/images/home/电路板背景.svg');
   background-size: cover;
   background-position: center;
-  z-index: 0;
   opacity: 0.1;
+  z-index: -1;
 }
 
 /* 毛玻璃效果 */

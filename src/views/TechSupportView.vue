@@ -11,7 +11,7 @@
               class="img-fluid rounded"
             />
           </div>
-          <div class="col-lg-7">
+          <div class="col-lg-7 ps-lg-5">
             <div class="mb-3" data-aos="fade-up" data-aos-duration="800">
               <span
                 class="text-uppercase fw-bold text-primary border-bottom border-2 border-primary pb-1"
@@ -40,7 +40,7 @@
             </p>
             <a
               href="#services"
-              class="btn btn-primary px-4 py-2"
+              class="btn btn-primary text-body bg-body bg-opacity-25 blur-5 px-4 py-2 hover-up"
               data-aos="zoom-in"
               data-aos-duration="800"
               data-aos-delay="800"
@@ -52,6 +52,9 @@
         </div>
       </div>
     </section>
+
+    <!-- 联系信息 -->
+    <ContactInfoSection />
 
     <!-- 内容 -->
     <section class="container py-4" id="services">
@@ -98,39 +101,12 @@
         </div>
       </div>
     </section>
-
-    <!-- 联系信息 -->
-    <section class="container py-5 mt-4 text-center">
-      <h3 class="mb-4">需要技术支持？</h3>
-      <p class="lead">我们的专业团队随时准备为您的智能系统提供全方位技术服务</p>
-      <div class="row justify-content-center">
-        <div v-for="(contact, index) in contactInfo" :key="index" class="col-md-4 mb-3">
-          <div
-            class="card hover-up transition-500 overflow-hidden cursor-pointer"
-            @click="goToContact"
-          >
-            <div class="card-body">
-              <i :class="`bi ${contact.icon} fs-2 text-primary mb-3`"></i>
-              <h5>{{ contact.title }}</h5>
-              <p class="mb-0">{{ contact.value }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-
-const router = useRouter()
-
-// 跳转到联系我们页面
-const goToContact = () => {
-  router.push('/contact')
-}
+import ContactInfoSection from '@/components/ContactInfoSection.vue'
 
 // 抽离技术支持服务数据
 const services = ref([
@@ -173,20 +149,6 @@ const services = ref([
     description:
       '我们提供定期的预防性维护服务，为智能楼宇、水利监测、智慧养老等系统进行全面检查与维护，帮助您提前发现潜在问题，避免系统意外故障，延长设备使用寿命。',
     features: ['智能系统定期巡检服务', '设备性能评估与优化', '系统升级与扩展规划建议'],
-  },
-])
-
-// 抽离联系信息数据
-const contactInfo = ref([
-  {
-    icon: 'bi-telephone-fill',
-    title: '联系电话 / Contact Number',
-    value: '0751-8819008',
-  },
-  {
-    icon: 'bi-envelope-fill',
-    title: '电子邮箱 / Email',
-    value: '13726565111@139.com',
   },
 ])
 </script>
@@ -235,10 +197,5 @@ const contactInfo = ref([
   &:hover .bg-body {
     opacity: 0.5;
   }
-}
-
-// 添加鼠标指针样式
-.cursor-pointer {
-  cursor: pointer;
 }
 </style>

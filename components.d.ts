@@ -8,6 +8,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ContactInfoSection: typeof import('./src/components/ContactInfoSection.vue')['default']
     ElImage: typeof import('element-plus/es')['ElImage']
     Footer: typeof import('./src/components/Footer.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
