@@ -4,8 +4,8 @@
     style="background-image: url('/images/pexels-cookiecutter-17489160.webp')"
   >
     <!-- 首屏 -->
-    <section class="vh-100 container pt-5 pt-md-0">
-      <div class="row align-items-center h-100">
+    <section class="min-vh-100 container d-flex flex-column pt-5">
+      <div class="row align-items-center flex-grow-1">
         <div class="col-md-6" data-aos="fade-right" data-aos-duration="1000">
           <img :src="randomImage" class="img-fluid rounded" alt="智能集成" />
         </div>

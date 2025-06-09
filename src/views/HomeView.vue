@@ -130,74 +130,69 @@ const navigateToService = (index: number) => {
 <template>
   <main class="home-main position-relative">
     <!-- 首屏部分 -->
-    <section class="hero-section overflow-hidden min-vh-100 d-flex align-items-center pt-5 pt-lg-0">
-      <div class="container">
-        <div class="row align-items-center h-100">
-          <div class="col-lg-6">
-            <div
-              class="position-relative z-index-1 text-lg-start text-center"
+    <section class="container overflow-hidden min-vh-100 d-flex flex-column pt-5">
+      <div class="row align-items-center flex-grow-1">
+        <div class="col-lg-6">
+          <div class="position-relative z-index-1 text-lg-start text-center" data-aos="fade-right">
+            <h1 class="fs-4 fs-md-2 fs-lg-1 fw-bold mb-3 lh-sm">
+              Empowering
+              <span class="text-primary">Government & Enterprise Digital Transformation.</span>
+            </h1>
+            <p class="lead fs-5 fs-md-4 fs-lg-2 mb-3 mb-lg-4" data-aos="fade-right">
+              政企<span class="text-primary fw-bold">智能化转型</span>与智能集成服务商
+            </p>
+            <p
+              class="mb-3 mb-lg-5 d-flex fs-6 fs-md-4 justify-content-lg-start justify-content-center"
               data-aos="fade-right"
             >
-              <h1 class="fs-4 fs-md-2 fs-lg-1 fw-bold mb-3 lh-sm">
-                Empowering
-                <span class="text-primary">Government & Enterprise Digital Transformation.</span>
-              </h1>
-              <p class="lead fs-5 fs-md-4 fs-lg-2 mb-3 mb-lg-4" data-aos="fade-right">
-                政企<span class="text-primary fw-bold">智能化转型</span>与智能集成服务商
-              </p>
-              <p
-                class="mb-3 mb-lg-5 d-flex fs-6 fs-md-4 justify-content-lg-start justify-content-center"
-                data-aos="fade-right"
+              我们提供
+              <span
+                class="service-text-wrapper ms-1 d-inline-block overflow-hidden"
+                style="min-width: 5rem"
               >
-                我们提供
                 <span
-                  class="service-text-wrapper ms-1 d-inline-block overflow-hidden"
-                  style="min-width: 5rem"
+                  class="position-relative service-text transition-750 d-inline-block fw-bold text-primary overflow-hidden"
+                  :class="{ changing: isServiceChanging }"
                 >
-                  <span
-                    class="position-relative service-text transition-750 d-inline-block fw-bold text-primary overflow-hidden"
-                    :class="{ changing: isServiceChanging }"
-                  >
-                    {{ serviceTexts[currentServiceIndex] }}
-                  </span>
+                  {{ serviceTexts[currentServiceIndex] }}
                 </span>
-              </p>
-              <div
-                class="d-flex gap-3 justify-content-lg-start justify-content-center"
-                data-aos="fade-up"
+              </span>
+            </p>
+            <div
+              class="d-flex gap-3 justify-content-lg-start justify-content-center"
+              data-aos="fade-up"
+            >
+              <a href="#services" class="btn btn-primary d-none d-lg-block btn-lg px-4 py-2"
+                >了解更多</a
               >
-                <a href="#services" class="btn btn-primary d-none d-lg-block btn-lg px-4 py-2"
-                  >了解更多</a
-                >
-                <a href="#services" class="btn btn-primary d-lg-none btn px-3 py-1">了解更多</a>
-                <a
-                  href="#contact"
-                  class="btn btn-outline-secondary d-none d-lg-block btn-lg px-4 py-2 blur-3"
-                >
-                  联系我们
-                </a>
-                <a href="#contact" class="btn btn-outline-secondary d-lg-none btn px-3 py-1 blur-3">
-                  联系我们
-                </a>
-              </div>
+              <a href="#services" class="btn btn-primary d-lg-none btn px-3 py-1">了解更多</a>
+              <a
+                href="#contact"
+                class="btn btn-outline-secondary d-none d-lg-block btn-lg px-4 py-2 blur-3"
+              >
+                联系我们
+              </a>
+              <a href="#contact" class="btn btn-outline-secondary d-lg-none btn px-3 py-1 blur-3">
+                联系我们
+              </a>
             </div>
           </div>
-          <div class="col-lg-6 mt-lg-0 mt-5">
-            <div class="position-relative text-center z-index-1" data-aos="fade-left">
-              <div class="frosted-glass-backdrop position-absolute rounded-4"></div>
-              <transition
-                mode="out-in"
-                enter-active-class="animate__animated animate__fadeIn"
-                leave-active-class="animate__animated animate__fadeOut"
-              >
-                <img
-                  :key="currentImageIndex"
-                  :src="`/images/home/${svgImages[currentImageIndex]}`"
-                  alt="智能硬件系统"
-                  class="img-fluid position-relative z-index-1"
-                />
-              </transition>
-            </div>
+        </div>
+        <div class="col-lg-6 mt-lg-0 mt-5">
+          <div class="position-relative text-center z-index-1" data-aos="fade-left">
+            <div class="frosted-glass-backdrop position-absolute rounded-4"></div>
+            <transition
+              mode="out-in"
+              enter-active-class="animate__animated animate__fadeIn"
+              leave-active-class="animate__animated animate__fadeOut"
+            >
+              <img
+                :key="currentImageIndex"
+                :src="`/images/home/${svgImages[currentImageIndex]}`"
+                alt="智能硬件系统"
+                class="img-fluid position-relative z-index-1"
+              />
+            </transition>
           </div>
         </div>
       </div>

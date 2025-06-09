@@ -2,7 +2,7 @@
   <section
     class="py-4 py-md-5 position-relative overflow-hidden"
     style="
-      background-image: url('/images/technology-6801334_1920.jpg');
+      background-image: url('/images/technology-6801334_1920_11zon.webp');
       background-size: cover;
       background-position: center;
     "

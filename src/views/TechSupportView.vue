@@ -1,54 +1,52 @@
 <template>
   <main class="position-relative tech-support-main">
     <!-- 首屏部分 -->
-    <section class="py-5 vh-100 d-flex align-items-center">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-5 d-none d-lg-block" data-aos="fade-right" data-aos-duration="1000">
-            <img
-              src="/images/技术支持/slider-single-img3.webp"
-              alt="技术支持专家"
-              class="img-fluid rounded"
-            />
+    <section class="container min-vh-100 d-flex flex-column pt-5">
+      <div class="row align-items-center flex-grow-1">
+        <div class="col-lg-5 d-none d-lg-block" data-aos="fade-right" data-aos-duration="1000">
+          <img
+            src="/images/技术支持/slider-single-img3.webp"
+            alt="技术支持专家"
+            class="img-fluid rounded"
+          />
+        </div>
+        <div class="col-lg-7 ps-lg-5">
+          <div class="mb-3" data-aos="fade-up" data-aos-duration="800">
+            <span
+              class="text-uppercase fw-bold text-primary border-bottom border-2 border-primary pb-1"
+              >TECHNICAL SUPPORT & IT SERVICES</span
+            >
           </div>
-          <div class="col-lg-7 ps-lg-5">
-            <div class="mb-3" data-aos="fade-up" data-aos-duration="800">
-              <span
-                class="text-uppercase fw-bold text-primary border-bottom border-2 border-primary pb-1"
-                >TECHNICAL SUPPORT & IT SERVICES</span
-              >
-            </div>
-            <h1
-              class="display-4 fw-bold mb-3"
-              data-aos="fade-up"
-              data-aos-duration="1000"
-              data-aos-delay="200"
-            >
-              专业技术支持<br />
-              <span class="text-primary">Professional Technical Support</span>
-            </h1>
-            <p class="lead mb-2" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-              全天候专家团队 · 智能系统维护 · 高效问题解决
-            </p>
-            <p
-              class="lead mb-4 text-secondary"
-              data-aos="fade-up"
-              data-aos-duration="1000"
-              data-aos-delay="600"
-            >
-              24/7 Expert Team · Intelligent System Maintenance · Efficient Problem Solving
-            </p>
-            <a
-              href="#services"
-              class="btn btn-primary text-body bg-body bg-opacity-25 blur-5 px-4 py-2 hover-up"
-              data-aos="zoom-in"
-              data-aos-duration="800"
-              data-aos-delay="800"
-            >
-              了解详情 <span class="small ms-1">LEARN MORE</span>
-              <i class="bi bi-arrow-right ms-1 arrow-float"></i>
-            </a>
-          </div>
+          <h1
+            class="display-4 fw-bold mb-3"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+          >
+            专业技术支持<br />
+            <span class="text-primary">Professional Technical Support</span>
+          </h1>
+          <p class="lead mb-2" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+            全天候专家团队 · 智能系统维护 · 高效问题解决
+          </p>
+          <p
+            class="lead mb-4 text-secondary"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="600"
+          >
+            24/7 Expert Team · Intelligent System Maintenance · Efficient Problem Solving
+          </p>
+          <a
+            href="#services"
+            class="btn btn-primary text-body bg-body bg-opacity-25 blur-5 px-4 py-2 hover-up"
+            data-aos="zoom-in"
+            data-aos-duration="800"
+            data-aos-delay="800"
+          >
+            了解详情 <span class="small ms-1">LEARN MORE</span>
+            <i class="bi bi-arrow-right ms-1 arrow-float"></i>
+          </a>
         </div>
       </div>
     </section>

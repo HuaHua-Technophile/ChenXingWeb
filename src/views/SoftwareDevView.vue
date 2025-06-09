@@ -1,32 +1,99 @@
 <template>
-  <main class="pt-5 position-relative software-dev-main" style="z-index: 1">
-    <div class="container py-4">
-      <h1 class="text-center mb-4">软件开发</h1>
-
-      <!-- 开发服务概述 -->
-      <div class="row mb-5">
-        <div class="col-md-6">
-          <h2 class="mb-3">专业软件定制开发服务</h2>
-          <p class="lead">我们提供全面的软件开发解决方案，从需求分析到设计、开发、测试和部署。</p>
-          <p>
-            辰星科技拥有一支经验丰富的软件开发团队，专注于为各行业客户提供高质量、高性能的定制软件解决方案。我们深入理解客户需求，结合先进技术和行业最佳实践，打造满足您独特业务需求的软件系统。
+  <main class="software-dev-main">
+    <!-- Hero Section -->
+    <section class="min-vh-100 container d-flex flex-column pt-5">
+      <div class="row flex-grow-1 align-items-center">
+        <div class="col-lg-6">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <p class="text-primary fw-bold text-uppercase mb-0">Some Fact</p>
+            <div class="title-line bg-primary"></div>
+          </div>
+          <h1 class="fw-bold fs-3 fs-lg-1">我们用技术为您的商业成功赋能</h1>
+          <p class="lead my-3 my-lg-4">
+            我们提供全面的软件开发解决方案，从需求分析到系统上线，助力您的业务在数字化时代保持领先。
           </p>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-4">
-            <a href="#dev-process" class="btn btn-primary">了解我们的开发流程</a>
-            <a href="/contact" class="btn btn-outline-primary">联系我们</a>
+
+          <div class="mb-3 mb-lg-4">
+            <div class="d-flex justify-content-between mb-1">
+              <span>软件开发</span>
+              <span>80%</span>
+            </div>
+            <div class="position-relative progress-line-track">
+              <div
+                class="progress bg-transparent position-relative z-index-2 overflow-visible"
+                style="height: 8px"
+              >
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  style="width: 80%"
+                  aria-valuenow="80"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3 mb-lg-4">
+            <div class="d-flex justify-content-between mb-1">
+              <span>UI/UX 设计</span>
+              <span>90%</span>
+            </div>
+            <div class="position-relative progress-line-track">
+              <div
+                class="progress bg-transparent position-relative z-index-2 overflow-visible"
+                style="height: 8px"
+              >
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  style="width: 90%"
+                  aria-valuenow="90"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3 mb-lg-4">
+            <div class="d-flex justify-content-between mb-1">
+              <span>Web 开发</span>
+              <span>70%</span>
+            </div>
+            <div class="position-relative progress-line-track">
+              <div
+                class="progress bg-transparent position-relative z-index-2 overflow-visible"
+                style="height: 8px"
+              >
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  style="width: 70%"
+                  aria-valuenow="70"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-6 d-flex align-items-center justify-content-center">
-          <img
-            src="@/assets/images/辰星LOGO.webp"
-            alt="软件开发"
-            class="img-fluid rounded shadow-sm"
-            style="max-height: 300px; width: auto"
-          />
+        <div class="col-lg-6 mt-4 mt-lg-0">
+          <div class="position-relative hero-image-container">
+            <img
+              src="/images/软件开发/software-developer-6521720_1920_11zon.webp"
+              class="img-fluid rounded shadow"
+              alt="软件开发团队"
+            />
+            <div class="decorative-shape position-absolute z-index-1"></div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- 开发类型 -->
+    <!-- 开发类型 -->
+    <section class="container py-4">
       <div class="row mb-5">
         <div class="col-12 text-center mb-4">
           <h2>我们的软件开发服务</h2>
@@ -88,8 +155,10 @@
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- 开发流程 -->
+    <!-- 开发流程 -->
+    <section class="container py-4">
       <div id="dev-process" class="row mb-5">
         <div class="col-12 text-center mb-4">
           <h2>我们的开发流程</h2>
@@ -97,12 +166,18 @@
         </div>
 
         <div class="col-12">
-          <div class="timeline">
+          <div class="timeline position-relative py-4">
             <div class="row g-0">
               <div class="col-md-6">
-                <div class="timeline-item">
-                  <div class="timeline-badge bg-primary">1</div>
-                  <div class="timeline-panel p-4 bg-light rounded shadow-sm">
+                <div class="timeline-item position-relative mb-3 mb-md-4">
+                  <div
+                    class="timeline-badge bg-primary text-white text-center rounded-circle position-absolute z-index-1 start-50 translate-middle-x"
+                  >
+                    1
+                  </div>
+                  <div
+                    class="timeline-panel position-relative p-4 bg-light rounded shadow-sm ms-5 me-0 mx-md-4"
+                  >
                     <h4>需求分析</h4>
                     <p>
                       深入了解客户业务流程和需求，明确系统功能范围和技术要求，形成详细的需求规格说明书。
@@ -114,9 +189,15 @@
 
             <div class="row g-0">
               <div class="col-md-6 offset-md-6">
-                <div class="timeline-item">
-                  <div class="timeline-badge bg-primary">2</div>
-                  <div class="timeline-panel p-4 bg-light rounded shadow-sm">
+                <div class="timeline-item position-relative mb-3 mb-md-4">
+                  <div
+                    class="timeline-badge bg-primary text-white text-center rounded-circle position-absolute z-index-1 start-50 translate-middle-x"
+                  >
+                    2
+                  </div>
+                  <div
+                    class="timeline-panel position-relative p-4 bg-light rounded shadow-sm ms-5 me-0 mx-md-4"
+                  >
                     <h4>系统设计</h4>
                     <p>
                       制定系统架构设计、数据库设计、接口设计和UI设计，确保系统结构合理、可扩展。
@@ -128,9 +209,15 @@
 
             <div class="row g-0">
               <div class="col-md-6">
-                <div class="timeline-item">
-                  <div class="timeline-badge bg-primary">3</div>
-                  <div class="timeline-panel p-4 bg-light rounded shadow-sm">
+                <div class="timeline-item position-relative mb-3 mb-md-4">
+                  <div
+                    class="timeline-badge bg-primary text-white text-center rounded-circle position-absolute z-index-1 start-50 translate-middle-x"
+                  >
+                    3
+                  </div>
+                  <div
+                    class="timeline-panel position-relative p-4 bg-light rounded shadow-sm ms-5 me-0 mx-md-4"
+                  >
                     <h4>编码开发</h4>
                     <p>
                       遵循最佳开发实践，使用适合的技术栈进行模块化开发，保证代码质量和可维护性。
@@ -142,9 +229,15 @@
 
             <div class="row g-0">
               <div class="col-md-6 offset-md-6">
-                <div class="timeline-item">
-                  <div class="timeline-badge bg-primary">4</div>
-                  <div class="timeline-panel p-4 bg-light rounded shadow-sm">
+                <div class="timeline-item position-relative mb-3 mb-md-4">
+                  <div
+                    class="timeline-badge bg-primary text-white text-center rounded-circle position-absolute z-index-1 start-50 translate-middle-x"
+                  >
+                    4
+                  </div>
+                  <div
+                    class="timeline-panel position-relative p-4 bg-light rounded shadow-sm ms-5 me-0 mx-md-4"
+                  >
                     <h4>测试验证</h4>
                     <p>
                       进行单元测试、集成测试、系统测试和用户验收测试，确保软件质量和功能符合预期。
@@ -156,9 +249,15 @@
 
             <div class="row g-0">
               <div class="col-md-6">
-                <div class="timeline-item">
-                  <div class="timeline-badge bg-primary">5</div>
-                  <div class="timeline-panel p-4 bg-light rounded shadow-sm">
+                <div class="timeline-item position-relative mb-3 mb-md-4">
+                  <div
+                    class="timeline-badge bg-primary text-white text-center rounded-circle position-absolute z-index-1 start-50 translate-middle-x"
+                  >
+                    5
+                  </div>
+                  <div
+                    class="timeline-panel position-relative p-4 bg-light rounded shadow-sm ms-5 me-0 mx-md-4"
+                  >
                     <h4>部署上线</h4>
                     <p>规划部署策略，配置生产环境，执行系统部署和数据迁移，确保系统稳定运行。</p>
                   </div>
@@ -168,9 +267,15 @@
 
             <div class="row g-0">
               <div class="col-md-6 offset-md-6">
-                <div class="timeline-item">
-                  <div class="timeline-badge bg-primary">6</div>
-                  <div class="timeline-panel p-4 bg-light rounded shadow-sm">
+                <div class="timeline-item position-relative mb-3 mb-md-4">
+                  <div
+                    class="timeline-badge bg-primary text-white text-center rounded-circle position-absolute z-index-1 start-50 translate-middle-x"
+                  >
+                    6
+                  </div>
+                  <div
+                    class="timeline-panel position-relative p-4 bg-light rounded shadow-sm ms-5 me-0 mx-md-4"
+                  >
                     <h4>运维支持</h4>
                     <p>
                       提供系统运行维护、性能监控、故障处理和功能升级服务，确保系统持续稳定运行。
@@ -182,8 +287,10 @@
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- 技术栈 -->
+    <!-- 技术栈 -->
+    <section class="container py-4">
       <div class="row mb-5">
         <div class="col-12 text-center mb-4">
           <h2>我们的技术栈</h2>
@@ -222,18 +329,7 @@
           </div>
         </div>
       </div>
-
-      <!-- CTA -->
-      <div class="row">
-        <div class="col-12">
-          <div class="bg-primary text-white p-4 rounded text-center">
-            <h3>准备开始您的软件开发项目?</h3>
-            <p class="lead">联系我们，获取专业解决方案和报价</p>
-            <a href="/contact" class="btn btn-light btn-lg">立即咨询</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
   </main>
 </template>
 
@@ -243,69 +339,79 @@
 
 <style scoped lang="scss">
 // 页面背景
-.software-dev-main {
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image:
-      linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 1),
-        rgba(255, 255, 255, 0.5),
-        rgba(255, 255, 255, 1)
-      ),
-      url('/images/home/电路板背景.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.2;
-    z-index: -1;
-  }
+.software-dev-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 1)
+    ),
+    url('/images/home/电路板背景.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.title-line {
+  height: 3px;
+  width: 6rem;
+}
+
+.progress-line-track::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  background-color: var(--bs-primary);
+  z-index: 1;
+}
+
+.decorative-shape {
+  top: -20px;
+  right: -20px;
+  width: 120px;
+  height: 120px;
+  border-top: 20px solid var(--bs-primary);
+  border-right: 20px solid var(--bs-primary);
 }
 
 // 时间线样式
-.timeline {
-  position: relative;
-  padding: 20px 0;
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  margin-left: -1px;
+  background-color: var(--bs-primary);
+}
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 2px;
-    margin-left: -1px;
-    background-color: var(--bs-primary);
-  }
+.timeline .timeline-badge {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+}
 
-  .timeline-badge {
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    color: white;
-    text-align: center;
-    border-radius: 50%;
-    position: absolute;
-    left: 50%;
-    margin-left: -20px;
-    z-index: 1;
-  }
+.timeline .timeline-item {
+  margin-bottom: 30px;
+}
 
-  .timeline-item {
-    position: relative;
-    margin-bottom: 30px;
-  }
-
-  .timeline-panel {
-    position: relative;
-    margin-right: 30px;
-    margin-left: 30px;
-  }
+.timeline .timeline-panel {
+  margin-right: 30px;
+  margin-left: 30px;
 }
 
 @media (max-width: 767.98px) {
@@ -314,17 +420,22 @@
   }
 
   .timeline .timeline-badge {
-    left: 40px;
-    margin-left: 0;
+    left: 40px !important;
+    transform: none !important;
   }
 
-  .timeline .timeline-panel {
-    width: calc(100% - 90px);
-    margin-left: 90px;
+  .hero-image-container {
+    width: 90%;
+    margin: 0 auto;
   }
 
-  .timeline .timeline-item {
-    margin-bottom: 20px;
+  .decorative-shape {
+    top: -15px;
+    right: -15px;
+    width: 80px;
+    height: 80px;
+    border-top: 15px solid var(--bs-primary);
+    border-right: 15px solid var(--bs-primary);
   }
 }
 </style>
