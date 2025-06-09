@@ -135,24 +135,13 @@
       <div class="row mt-4">
         <div class="col-12 z-index-1" data-aos="fade-up" data-aos-delay="1000">
           <div class="d-flex flex-wrap justify-content-center small text-secondary gap-3">
-            <span>能源管控</span>
+            <span>软件开发</span>
             <span>•</span>
-            <span>消防系统</span>
-            <span>•</span>
-            <span>智慧养老</span>
-            <span>•</span>
-            <span>智能门禁</span>
-            <span>•</span>
-            <span>网络工程</span>
-            <span>•</span>
-            <span>水利监测</span>
-            <span>•</span>
-            <span>软件定制</span>
-            <span>•</span>
-            <span>系统集成</span>
-            <span>•</span>
-            <span>智能楼宇</span>
-            <span class="d-inline d-lg-none">•</span>
+            <template v-for="(service, index) in services" :key="service.title">
+              <span>{{ service.title }}</span>
+              <span v-if="index < services.length - 1">•</span>
+              <span v-else class="d-inline d-lg-none">•</span>
+            </template>
           </div>
         </div>
       </div>
@@ -173,9 +162,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import servicesData from '@/assets/services.json'
 
 const activeQrCode = ref('')
+const services = ref<any[]>([])
+
+onMounted(() => {
+  services.value = servicesData
+})
 
 const toggleQrCode = (code: string) => {
   activeQrCode.value = code
