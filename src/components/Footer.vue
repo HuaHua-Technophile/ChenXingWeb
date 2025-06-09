@@ -163,7 +163,7 @@
           <p class="mb-0 text-secondary small">
             © 2024 辰星科技. 保留所有权利 |
             <a href="https://beian.miit.gov.cn/" target="_blank" class="text-secondary"
-              >粤ICP备XXXXXXXX号</a
+              >粤ICP备2025425262号</a
             >
           </p>
         </div>
