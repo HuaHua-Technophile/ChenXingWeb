@@ -138,7 +138,7 @@ const navigateToService = (index: number) => {
               Empowering
               <span class="text-primary">Government & Enterprise Digital Transformation.</span>
             </h1>
-            <p class="lead fs-5 fs-md-4 fs-lg-2 mb-3 mb-lg-4" data-aos="fade-right">
+            <p class="lead fs-5 fs-md-4 fs-lg-2 mb-3 mb-lg-4 text-nowrap" data-aos="fade-right">
               政企<span class="text-primary fw-bold">智能化转型</span>与智能集成服务商
             </p>
             <p
@@ -178,7 +178,7 @@ const navigateToService = (index: number) => {
             </div>
           </div>
         </div>
-        <div class="col-lg-6 mt-lg-0 mt-5">
+        <div class="col-lg-6 col-10 offset-1 offset-lg-0">
           <div class="position-relative text-center z-index-1" data-aos="fade-left">
             <div class="frosted-glass-backdrop position-absolute rounded-4"></div>
             <transition
