@@ -179,7 +179,10 @@ const navigateToService = (index: number) => {
           </div>
         </div>
         <div class="col-lg-6 col-10 offset-1 offset-lg-0">
-          <div class="position-relative text-center z-index-1" data-aos="fade-left">
+          <div
+            class="position-relative text-center z-index-1 hero-image-wrapper"
+            data-aos="fade-left"
+          >
             <div class="frosted-glass-backdrop position-absolute rounded-4"></div>
             <transition
               mode="out-in"
@@ -377,6 +380,12 @@ const navigateToService = (index: number) => {
 
   [data-bs-theme='dark'] & {
     border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+@media (min-width: 992px) {
+  .hero-image-wrapper {
+    margin: 0 20px;
   }
 }
 

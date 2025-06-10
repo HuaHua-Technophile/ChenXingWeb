@@ -3,12 +3,12 @@
     <!-- Hero Section -->
     <section class="min-vh-100 container d-flex flex-column pt-5">
       <div class="row flex-grow-1 align-items-center">
-        <div class="col-lg-6">
+        <div class="col-lg-6 pe-lg-5">
           <div class="d-flex align-items-center gap-3 mb-2">
             <p class="text-primary fw-bold text-uppercase mb-0">Some Fact</p>
             <div class="title-line bg-primary"></div>
           </div>
-          <h1 class="fw-bold fs-3 fs-lg-1">我们用技术为您的商业成功赋能</h1>
+          <h1 class="fw-bold fs-3 fs-lg-1">We empower your business success with technology</h1>
           <p class="lead my-3 my-lg-4">
             我们提供全面的软件开发解决方案，从需求分析到系统上线，助力您的业务在数字化时代保持领先。
           </p>
@@ -79,11 +79,11 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-6 mt-4 mt-lg-0">
+        <div class="col-lg-6 mt-4 mt-lg-0 ps-lg-5">
           <div class="position-relative hero-image-container">
             <img
               src="/images/软件开发/software-developer-6521720_1920_11zon.webp"
-              class="img-fluid rounded shadow"
+              class="img-fluid rounded-bottom rounded-start shadow"
               alt="软件开发团队"
             />
             <div class="decorative-shape position-absolute z-index-1"></div>
