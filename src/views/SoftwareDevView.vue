@@ -3,13 +3,15 @@
     <!-- Hero Section -->
     <section class="min-vh-100 container d-flex flex-column pt-5">
       <div class="row flex-grow-1 align-items-center">
-        <div class="col-lg-6 pe-lg-5">
+        <div class="col-lg-6 pe-lg-5 mb-4 mb-lg-0">
           <div class="d-flex align-items-center gap-3 mb-2">
             <p class="text-primary fw-bold text-uppercase mb-0">Some Fact</p>
             <div class="title-line bg-primary"></div>
           </div>
-          <h1 class="fw-bold fs-3 fs-lg-1">We empower your business success with technology</h1>
-          <p class="lead my-3 my-lg-4">
+          <h1 class="fw-bold fs-3 fs-lg-1 mb-3 mb-lg-4">
+            We empower your business success with technology
+          </h1>
+          <p class="lead mb-3 mb-lg-4">
             我们提供全面的软件开发解决方案，从需求分析到系统上线，助力您的业务在数字化时代保持领先。
           </p>
 
@@ -46,7 +48,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-6 mt-4 mt-lg-0 ps-lg-5">
+        <div class="col-lg-6 ps-lg-5">
           <div class="position-relative hero-image-container w-90 mx-auto w-md-auto">
             <img
               src="/images/软件开发/software-developer-6521720_1920_11zon.webp"
@@ -60,37 +62,36 @@
     </section>
 
     <!-- 开发类型 -->
-    <section class="container py-4">
-      <div class="row mb-5">
+    <section class="container mb-5">
+      <div class="row">
         <div class="col-12 text-center mb-4">
           <h2>我们的软件开发服务</h2>
           <p class="lead">覆盖多种应用类型，满足不同场景需求</p>
         </div>
 
         <div v-for="(devType, index) in devTypes" :key="devType.title" class="col-md-4">
-          <div class="card dev-type-card h-100 transition-750">
+          <div
+            class="card overflow-hidden h-100 transition-750 z-index-2 bg-body bg-opacity-25 blur-10 hover-up"
+          >
             <div class="card-body">
               <div
-                class="icon-wrapper mb-3 d-inline-flex align-items-center justify-content-center bg-primary border border-2 border-primary transition-250"
-                style="
-                  --bs-bg-opacity: 0.05;
-                  --bs-border-opacity: 0.15;
-                  width: 64px;
-                  height: 64px;
-                  border-radius: 0.75rem;
-                "
+                class="icon-wrapper mb-3 d-inline-flex align-items-center justify-content-center bg-primary border border-3 border-primary transition-750 rounded-4"
+                style="--bs-bg-opacity: 0.05; --bs-border-opacity: 0.15; width: 64px; height: 64px"
               >
-                <i :class="['bi', devType.icon, 'fs-1', 'text-primary']"></i>
+                <i
+                  :class="[devType.icon]"
+                  class="fs-1 text-primary icon-rotate transition-750 bi"
+                ></i>
               </div>
-              <h4 class="card-title mt-4 mb-3">{{ devType.title }}</h4>
-              <p class="card-text">
+              <h4 class="card-title">{{ devType.title }}</h4>
+              <p>
                 {{ devType.descriptionCN }}<br /><small class="text-muted">{{
                   devType.descriptionEN
                 }}</small>
               </p>
               <div
-                class="card-bg-number position-absolute end-4 user-select-none lh-1 z-index-1 fw-bold text-primary"
-                style="--bs-text-opacity: 0.06"
+                class="position-absolute end-0 user-select-none lh-1 z-index-1 fw-bold text-primary"
+                style="--bs-text-opacity: 0.06; bottom: -1rem; font-size: 9rem"
               >
                 0{{ index + 1 }}
               </div>
@@ -100,9 +101,11 @@
       </div>
     </section>
 
+    <ContactInfoSection class="mb-5" />
+
     <!-- 开发流程 -->
-    <section class="container py-4">
-      <div id="dev-process" class="row mb-5">
+    <section class="container mb-5">
+      <div id="dev-process" class="row">
         <div class="col-12 text-center mb-4">
           <h2>我们的开发流程</h2>
           <p class="lead">科学高效的软件开发方法论</p>
@@ -135,8 +138,8 @@
     </section>
 
     <!-- 技术栈 -->
-    <section class="container py-4">
-      <div class="row mb-5">
+    <section class="container mb-5">
+      <div class="row">
         <div class="col-12 text-center mb-4">
           <h2>我们的技术栈</h2>
           <p class="lead">采用业界领先技术，构建高质量软件系统</p>
@@ -144,8 +147,8 @@
 
         <div v-for="stack in techStacks" :key="stack.title" class="col-md-3 col-6 mb-4 text-center">
           <div class="p-3 bg-light rounded">
-            <i :class="['bi', stack.icon, 'fs-2', 'text-primary']"></i>
-            <h5 class="mt-2">{{ stack.title }}</h5>
+            <i :class="['bi', stack.icon, 'fs-2', 'text-primary']" class="mb-2"></i>
+            <h5 class="">{{ stack.title }}</h5>
             <p class="small">{{ stack.text }}</p>
           </div>
         </div>
@@ -364,23 +367,9 @@ const { stop } = useIntersectionObserver(
   margin-left: 30px;
 }
 
-.dev-type-card {
-  .icon-wrapper {
-  }
-
-  .card-bg-number {
-    bottom: -1rem;
-    font-size: 9rem;
-  }
-
-  &:hover {
-    transform: translateY(-5px);
-
-    .icon-wrapper {
-      --bs-bg-opacity: 0.1;
-      --bs-border-opacity: 0.4;
-    }
-  }
+.card:hover .icon-wrapper {
+  --bs-bg-opacity: 0.1 !important;
+  --bs-border-opacity: 0.5 !important;
 }
 
 @media (max-width: 767.98px) {

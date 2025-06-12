@@ -12,11 +12,11 @@
         <div class="col-md-6 ps-lg-5" data-aos="fade-left" data-aos-duration="1000">
           <p class="text-primary fw-bold">OUR ADVANTAGES</p>
           <h2 class="h3 mb-3">通过智能集成为您的业务赋能</h2>
-          <p class="mb-4 text-body-secondary fs-lg-5">
+          <p class="mb-5 text-body-secondary fs-lg-5">
             我们将分散的系统、应用和数据连接起来，打破信息孤岛，实现数据和流程的无缝流转，帮助您优化业务流程、提高决策效率、创造新的商业价值。
           </p>
           <div class="row row-cols-1 row-cols-md-2 g-3">
-            <div class="col mt-2 mt-md-4" v-for="advantage in advantages" :key="advantage">
+            <div class="col" v-for="advantage in advantages" :key="advantage">
               <div
                 class="bg-body bg-opacity-25 blur-5 ps-3 py-2 py-md-3 rounded shadow-sm border-start border-primary border-5 h-100 d-flex align-items-center hover-up transition-500 fs-7 fs-md-6"
               >
@@ -29,19 +29,19 @@
     </section>
 
     <!-- 联系信息 -->
-    <ContactInfoSection />
+    <ContactInfoSection class="mb-5" />
 
     <!-- 服务区域 -->
-    <section class="container mt-5 pb-3">
+    <section class="container pb-3">
       <!-- 服务Tab导航栏,aos动画会限制最大宽度，因此需要显式指定 -->
       <div
-        class="row row-cols-4 row-cols-md-auto justify-content-between"
+        class="row row-cols-4 row-cols-md-auto justify-content-between mb-4"
         id="servicesTabs"
         role="tablist"
         data-aos="fade-up"
         style="max-width: none !important"
       >
-        <div class="col mb-3" v-for="(service, index) in services" :key="index">
+        <div class="col" v-for="(service, index) in services" :key="index">
           <button
             class="w-100 card overflow-hidden px-md-4 px-2 py-md-2 py-1 transition-750 bg-opacity-25 blur-6 hover-up"
             :class="[index === activeTab ? 'bg-primary-subtle text-primary shadow' : 'bg-body']"
@@ -52,8 +52,8 @@
             :aria-controls="`service-content-${index}`"
             :aria-selected="index === activeTab"
           >
-            <i :class="`bi ${service.icon} fs-4 icon-rotate transition-750`"></i>
-            <span class="d-none d-md-inline mt-2">{{ service.title }}</span>
+            <i :class="`bi ${service.icon} fs-4 icon-rotate transition-750 mb-md-2`"></i>
+            <span class="d-none d-md-inline">{{ service.title }}</span>
           </button>
         </div>
       </div>
@@ -79,7 +79,7 @@
             role="tabpanel"
             :aria-labelledby="`service-tab-${activeTab}`"
           >
-            <div class="service-header mb-4">
+            <div class="service-header mb-5">
               <h2 class="mb-2">{{ services[activeTab].title }}</h2>
               <h4 class="text-primary mb-3">{{ services[activeTab].titleEn }}</h4>
               <p class="lead">{{ services[activeTab].description }}</p>
@@ -89,7 +89,7 @@
             </div>
 
             <!-- 服务详情内容区域 -->
-            <div class="service-detail mt-4" v-if="services[activeTab].detailContent">
+            <div class="service-detail" v-if="services[activeTab].detailContent">
               <!-- 方案概述 -->
               <div
                 class="card overflow-hidden hover-up bg-transparent blur-10 mb-4 transition-750"

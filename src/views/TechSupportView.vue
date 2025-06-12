@@ -81,13 +81,13 @@
               <div
                 class="bg-body bg-opacity-50 blur-10 pt-3 px-3 flex-grow-1 d-flex flex-column transition-750"
               >
-                <div class="d-flex align-items-center mb-2">
+                <div class="d-flex align-items-center mb-3">
                   <i
                     :class="`bi ${service.icon} fs-4 text-primary me-2 icon-rotate transition-750`"
                   ></i>
                   <span class="fw-medium">{{ service.tag }}</span>
                 </div>
-                <h4 class="mt-3 mb-3 fw-bold">{{ service.title }}</h4>
+                <h4 class="mb-3 fw-bold">{{ service.title }}</h4>
                 <p>{{ service.description }}</p>
                 <ul class="list-unstyled">
                   <li

@@ -28,7 +28,7 @@
       </div>
 
       <!-- 案例列表 -->
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
         <div
           v-for="(item, index) in filteredCases"
           :key="index"
@@ -60,7 +60,7 @@
       </div>
 
       <!-- 分页 -->
-      <div class="row mt-5">
+      <div class="row">
         <div class="col-12">
           <nav aria-label="案例分页">
             <ul class="pagination justify-content-center">
@@ -117,26 +117,26 @@
                 </div>
                 <div class="col-md-6">
                   <h4>项目概述</h4>
-                  <p>{{ selectedCase.fullDescription || selectedCase.description }}</p>
+                  <p class="mb-3">{{ selectedCase.fullDescription || selectedCase.description }}</p>
 
-                  <div class="mt-3">
+                  <div class="mb-3">
                     <h5>项目类型</h5>
                     <div class="badge bg-primary">{{ getCategoryName(selectedCase.category) }}</div>
                   </div>
 
-                  <div class="mt-3" v-if="selectedCase.client">
+                  <div class="mb-3" v-if="selectedCase.client">
                     <h5>客户</h5>
                     <p>{{ selectedCase.client }}</p>
                   </div>
 
-                  <div class="mt-3" v-if="selectedCase.completionDate">
+                  <div v-if="selectedCase.completionDate">
                     <h5>完成时间</h5>
                     <p>{{ selectedCase.completionDate }}</p>
                   </div>
                 </div>
               </div>
 
-              <div class="row mt-4" v-if="selectedCase.keyPoints && selectedCase.keyPoints.length">
+              <div class="row mb-4" v-if="selectedCase.keyPoints && selectedCase.keyPoints.length">
                 <div class="col-12">
                   <h4>项目要点</h4>
                   <ul class="list-group list-group-flush">
@@ -152,14 +152,14 @@
                 </div>
               </div>
 
-              <div class="row mt-4" v-if="selectedCase.testimonial">
+              <div class="row" v-if="selectedCase.testimonial">
                 <div class="col-12">
                   <div class="card overflow-hidden bg-light">
                     <div class="card-body">
                       <h5 class="mb-3">客户评价</h5>
                       <blockquote class="blockquote">
-                        <p class="mb-0">{{ selectedCase.testimonial.content }}</p>
-                        <footer class="blockquote-footer mt-2">
+                        <p>{{ selectedCase.testimonial.content }}</p>
+                        <footer class="blockquote-footer">
                           {{ selectedCase.testimonial.author }}
                           <cite v-if="selectedCase.testimonial.position">
                             , {{ selectedCase.testimonial.position }}

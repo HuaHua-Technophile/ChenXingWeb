@@ -237,8 +237,8 @@ const navigateToService = (index: number) => {
               </div>
               <h3 class="fs-md-4 fs-5 fw-bold mb-2">{{ service.title }}</h3>
               <h4 class="fs-md-5 fs-6 text-primary mb-3">{{ service.titleEn }}</h4>
-              <p class="mb-0 text-body-secondary fs-sm-6 fs-7">{{ service.description }}</p>
-              <p class="mt-2 mb-0 text-primary fst-italic small fs-8">
+              <p class="mb-2 text-body-secondary fs-sm-6 fs-7">{{ service.description }}</p>
+              <p class="mb-0 text-primary fst-italic small fs-8">
                 {{ service.descriptionEn }}
               </p>
             </div>
@@ -262,7 +262,7 @@ const navigateToService = (index: number) => {
             <p class="mb-4 fs-sm-6 fs-7">
               我们致力于为政企客户提供从硬件施工到软件开发的一站式服务。多年来，我们已为众多政府部门和企业提供了能源管控、消防系统、智慧养老等智能化硬件施工，同时具备软件定制开发能力，为客户提供更全面的解决方案。
             </p>
-            <div class="row g-4 mt-2">
+            <div class="row g-4">
               <div class="col-6" data-aos="zoom-in">
                 <div class="d-flex align-items-center">
                   <div class="me-3">
@@ -314,38 +314,36 @@ const navigateToService = (index: number) => {
     </section>
 
     <!-- 客户案例部分 -->
-    <section class="py-3 py-lg-5">
-      <div class="container py-2 py-lg-5">
-        <div class="row text-center mb-5">
-          <div class="col-lg-8 mx-auto" data-aos="fade-up">
-            <h2 class="fs-md-1 fs-2 fw-bold mb-3">客户案例</h2>
-            <p class="lead fs-md-4 fs-5">我们成功为众多政企客户提供智能化集成解决方案</p>
-          </div>
+    <section class="container py-2 py-lg-5">
+      <div class="row text-center">
+        <div class="col-lg-8 mx-auto" data-aos="fade-up">
+          <h2 class="fs-md-1 fs-2 fw-bold mb-3">客户案例</h2>
+          <p class="lead fs-md-4 fs-5">我们成功为众多政企客户提供智能化集成解决方案</p>
         </div>
-        <div class="row g-4">
-          <div
-            v-for="(item, index) in cases"
-            :key="index"
-            class="col-md-4"
-            data-aos="flip-up"
-            :data-aos-delay="index * 100"
-          >
-            <div class="bg-body h-100 border-0 shadow-sm overflow-hidden transition-750">
-              <img
-                :src="`/images/home/${svgImages[(index + 8) % svgImages.length]}`"
-                :alt="item.title"
-                class="card-img-top"
-              />
-              <div class="p-4">
-                <h3 class="fs-md-4 fs-5 fw-bold mb-3">{{ item.title }}</h3>
-                <p class="mb-0 text-secondary fs-sm-6 fs-7">{{ item.description }}</p>
-              </div>
+      </div>
+      <div class="row g-4 mb-5">
+        <div
+          v-for="(item, index) in cases"
+          :key="index"
+          class="col-md-4"
+          data-aos="flip-up"
+          :data-aos-delay="index * 100"
+        >
+          <div class="bg-body h-100 border-0 shadow-sm overflow-hidden transition-750">
+            <img
+              :src="`/images/home/${svgImages[(index + 8) % svgImages.length]}`"
+              :alt="item.title"
+              class="card-img-top"
+            />
+            <div class="p-4">
+              <h3 class="fs-md-4 fs-5 fw-bold mb-3">{{ item.title }}</h3>
+              <p class="mb-0 text-secondary fs-sm-6 fs-7">{{ item.description }}</p>
             </div>
           </div>
         </div>
-        <div class="text-center mt-5" data-aos="fade-up">
-          <button class="btn btn-outline-primary btn-lg fs-md-5 fs-6">查看更多案例</button>
-        </div>
+      </div>
+      <div class="text-center" data-aos="fade-up">
+        <button class="btn btn-outline-primary btn-lg fs-md-5 fs-6">查看更多案例</button>
       </div>
     </section>
   </main>

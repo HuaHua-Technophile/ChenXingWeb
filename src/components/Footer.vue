@@ -4,7 +4,7 @@
     <div class="footer-bg-pattern"></div>
 
     <div class="container position-relative z-index-1">
-      <div class="row">
+      <div class="row mb-4">
         <!-- 公司信息 -->
         <div class="col-lg-4 col-md-6 mb-4 mb-lg-0" data-aos="fade-right" data-aos-delay="400">
           <div class="d-flex align-items-center mb-3">
@@ -53,7 +53,7 @@
             <!-- 微信 -->
             <div class="position-relative mx-1" data-aos="zoom-in" data-aos-delay="700">
               <div
-                class="social-icon-circle d-flex align-items-center justify-content-center rounded-circle"
+                class="social-icon-circle d-flex align-items-center justify-content-center rounded-circle mb-3"
                 @mouseenter="toggleQrCode('wechat')"
                 @mouseleave="hideQrCode('wechat')"
                 @click="toggleQrCode('wechat')"
@@ -61,7 +61,7 @@
                 <i class="bi bi-wechat fs-4 text-white"></i>
               </div>
               <div
-                class="qr-dropdown position-absolute start-50 translate-middle-x mt-3"
+                class="qr-dropdown position-absolute start-50 translate-middle-x"
                 :class="{ show: activeQrCode === 'wechat' }"
               >
                 <div class="bg-white p-3 rounded shadow">
@@ -70,8 +70,9 @@
                     alt="微信二维码"
                     width="120"
                     height="120"
+                    class="mb-2"
                   />
-                  <p class="mb-0 text-center mt-2 text-dark fs-6">微信公众号</p>
+                  <p class="mb-0 text-center text-dark fs-6">微信公众号</p>
                 </div>
               </div>
             </div>
@@ -79,7 +80,7 @@
             <!-- 微博 -->
             <div class="position-relative mx-1" data-aos="zoom-in" data-aos-delay="800">
               <div
-                class="social-icon-circle d-flex align-items-center justify-content-center rounded-circle"
+                class="social-icon-circle d-flex align-items-center justify-content-center rounded-circle mb-3"
                 @mouseenter="toggleQrCode('weibo')"
                 @mouseleave="hideQrCode('weibo')"
                 @click="toggleQrCode('weibo')"
@@ -87,7 +88,7 @@
                 <i class="bi bi-sina-weibo fs-4 text-white"></i>
               </div>
               <div
-                class="qr-dropdown position-absolute start-50 translate-middle-x mt-3"
+                class="qr-dropdown position-absolute start-50 translate-middle-x"
                 :class="{ show: activeQrCode === 'weibo' }"
               >
                 <div class="bg-white p-3 rounded shadow">
@@ -96,8 +97,9 @@
                     alt="微博二维码"
                     width="120"
                     height="120"
+                    class="mb-2"
                   />
-                  <p class="mb-0 text-center mt-2 text-dark fs-6">微博官方账号</p>
+                  <p class="mb-0 text-center text-dark fs-6">微博官方账号</p>
                 </div>
               </div>
             </div>
@@ -105,7 +107,7 @@
             <!-- 抖音 -->
             <div class="position-relative mx-1" data-aos="zoom-in" data-aos-delay="900">
               <div
-                class="social-icon-circle d-flex align-items-center justify-content-center rounded-circle"
+                class="social-icon-circle d-flex align-items-center justify-content-center rounded-circle mb-3"
                 @mouseenter="toggleQrCode('tiktok')"
                 @mouseleave="hideQrCode('tiktok')"
                 @click="toggleQrCode('tiktok')"
@@ -113,7 +115,7 @@
                 <i class="bi bi-tiktok fs-4 text-white"></i>
               </div>
               <div
-                class="qr-dropdown position-absolute start-50 translate-middle-x mt-3"
+                class="qr-dropdown position-absolute start-50 translate-middle-x"
                 :class="{ show: activeQrCode === 'tiktok' }"
               >
                 <div class="bg-white p-3 rounded shadow">
@@ -122,8 +124,9 @@
                     alt="抖音二维码"
                     width="120"
                     height="120"
+                    class="mb-2"
                   />
-                  <p class="mb-0 text-center mt-2 text-dark fs-6">抖音官方账号</p>
+                  <p class="mb-0 text-center text-dark fs-6">抖音官方账号</p>
                 </div>
               </div>
             </div>
@@ -132,7 +135,7 @@
       </div>
 
       <!-- 产品服务列表 -->
-      <div class="row mt-4">
+      <div class="row mb-4">
         <div class="col-12 z-index-1" data-aos="fade-up" data-aos-delay="1000">
           <div class="d-flex flex-wrap justify-content-center small text-secondary gap-3">
             <span>软件开发</span>
@@ -147,7 +150,7 @@
       </div>
 
       <!-- 备案信息 -->
-      <div class="row mt-4 pt-3 border-top border-secondary">
+      <div class="row pt-3 border-top border-secondary">
         <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="1100">
           <p class="mb-0 text-secondary small">
             © 2024 辰星科技. 保留所有权利 |
@@ -228,6 +231,7 @@ const hideQrCode = (code: string) => {
   opacity: 0;
   transition: all 0.75s;
   z-index: 100;
+  top: 100%;
 
   &.show {
     visibility: visible;

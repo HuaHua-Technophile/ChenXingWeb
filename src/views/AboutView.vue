@@ -3,10 +3,10 @@
     <!-- 顶部首屏 -->
     <section class="hero-section position-relative overflow-hidden w-100 pt-5" data-aos="fade-down">
       <div class="container">
-        <div class="row min-vh-50 align-items-center justify-content-center text-center">
-          <p class="text-uppercase mt-2 mt-lg-4 mb-3 small fw-bold text-primary" data-aos="fade-up">
-            About Us
-          </p>
+        <div
+          class="row min-vh-50 align-items-center justify-content-center text-center mb-2 mb-lg-4"
+        >
+          <p class="text-uppercase mb-3 small fw-bold text-primary" data-aos="fade-up">About Us</p>
           <h1 class="display-4 fw-bold mb-4" data-aos="fade-up">公司简介</h1>
           <p class="lead mb-0" data-aos="fade-up">
             专注<span class="text-primary">信息技术服务</span> · 助力企业数字化转型
@@ -62,11 +62,11 @@
                     data-aos="fade-right"
                   >
                     <div class="card-body">
-                      <h5 class="card-title">
+                      <h5 class="card-title mb-3">
                         <i class="bi bi-building-check icon-rotate me-2 text-primary"></i
                         >企业资质证书
                       </h5>
-                      <ul class="list-unstyled mb-0 mt-3">
+                      <ul class="list-unstyled mb-0">
                         <li class="mb-3">
                           <i class="bi bi-check-circle-fill text-primary me-2"></i>
                           广东省安全防范系统设计、施工、维修资格证四级证书
@@ -87,10 +87,10 @@
                     data-aos="fade-up"
                   >
                     <div class="card-body">
-                      <h5 class="card-title">
+                      <h5 class="card-title mb-3">
                         <i class="bi bi-person-badge icon-rotate me-2 text-primary"></i>人员资质证书
                       </h5>
-                      <ul class="list-unstyled mb-0 mt-3">
+                      <ul class="list-unstyled mb-0">
                         <li class="mb-3">
                           <i class="bi bi-person-badge-fill text-primary me-2"></i>
                           PMP项目管理师
@@ -115,11 +115,11 @@
                     data-aos="fade-up"
                   >
                     <div class="card-body">
-                      <h5 class="card-title">
+                      <h5 class="card-title mb-3">
                         <i class="bi bi-file-earmark-check icon-rotate me-2 text-primary"></i
                         >知识产权证书
                       </h5>
-                      <p class="mt-3 mb-0">
+                      <p class="mb-0">
                         公司已建立完整的知识产权体系，拥有<span class="text-primary fw-bold"
                           ><span ref="copyrightCountElement">0</span>项</span
                         >软件著作权登记证书。
@@ -147,8 +147,8 @@
                         <i :class="`bi ${service.icon} icon-rotate me-2 text-primary`"></i
                         >{{ service.title }}
                       </h5>
-                      <p class="card-text">{{ service.description }}</p>
-                      <div class="mt-3 text-end">
+                      <p class="card-text mb-3">{{ service.description }}</p>
+                      <div class="text-end">
                         <span class="badge bg-primary rounded-pill">
                           <span ref="businessCountElements" class="counter-element">0</span>+ 项目
                         </span>
@@ -189,8 +189,8 @@
                 发展规划
               </h3>
               <div class="alert alert-primary" role="alert" data-aos="fade-up">
-                <p class="mb-0">为提高企业核心竞争力，我们正在积极：</p>
-                <ul class="mb-0 mt-2">
+                <p class="mb-2">为提高企业核心竞争力，我们正在积极：</p>
+                <ul class="mb-0">
                   <li>申请科技性中小企业认证</li>
                   <li>申请高新技术企业认证</li>
                   <li>完善公司ISO管理体系建设</li>
@@ -245,6 +245,7 @@
                       :preview-src-list="certificateImages.map((img) => img.src)"
                       :initial-index="index"
                       :preview-teleported="true"
+                      loading="lazy"
                     />
                   </swiper-slide>
                 </swiper>
