@@ -13,68 +13,35 @@
             我们提供全面的软件开发解决方案，从需求分析到系统上线，助力您的业务在数字化时代保持领先。
           </p>
 
-          <div class="mb-3 mb-lg-4">
-            <div class="d-flex justify-content-between mb-1">
-              <span>软件开发</span>
-              <span>80%</span>
-            </div>
-            <div class="position-relative progress-line-track">
-              <div
-                class="progress bg-transparent position-relative z-index-2 overflow-visible"
-                style="height: 8px"
-              >
-                <div
-                  class="progress-bar"
-                  role="progressbar"
-                  style="width: 80%"
-                  aria-valuenow="80"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
+          <div ref="progressContainer">
+            <div v-for="(skill, index) in skills" :key="skill.name" class="mb-3 mb-lg-4">
+              <div class="d-flex justify-content-between mb-1">
+                <span>{{ skill.name }}</span>
+                <span
+                  ><span
+                    :ref="
+                      (el) => {
+                        if (el) skillNumberRefs[index] = el as HTMLElement
+                      }
+                    "
+                    >0</span
+                  >%</span
+                >
               </div>
-            </div>
-          </div>
-
-          <div class="mb-3 mb-lg-4">
-            <div class="d-flex justify-content-between mb-1">
-              <span>UI/UX 设计</span>
-              <span>90%</span>
-            </div>
-            <div class="position-relative progress-line-track">
-              <div
-                class="progress bg-transparent position-relative z-index-2 overflow-visible"
-                style="height: 8px"
-              >
+              <div class="position-relative progress-line-track">
                 <div
-                  class="progress-bar"
-                  role="progressbar"
-                  style="width: 90%"
-                  aria-valuenow="90"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="mb-3 mb-lg-4">
-            <div class="d-flex justify-content-between mb-1">
-              <span>Web 开发</span>
-              <span>70%</span>
-            </div>
-            <div class="position-relative progress-line-track">
-              <div
-                class="progress bg-transparent position-relative z-index-2 overflow-visible"
-                style="height: 8px"
-              >
-                <div
-                  class="progress-bar"
-                  role="progressbar"
-                  style="width: 70%"
-                  aria-valuenow="70"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
+                  class="progress bg-transparent position-relative z-index-2 overflow-visible"
+                  style="height: 8px"
+                >
+                  <div
+                    class="progress-bar"
+                    role="progressbar"
+                    :style="{ width: skill.animatedValue + '%' }"
+                    :aria-valuenow="Math.round(skill.animatedValue)"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
               </div>
             </div>
           </div>
@@ -334,7 +301,70 @@
 </template>
 
 <script setup lang="ts">
-// 无需额外逻辑
+import { ref } from 'vue'
+import { CountUp } from 'countup.js'
+import { useIntersectionObserver } from '@vueuse/core'
+
+const skills = ref([
+  { name: '软件开发', value: 80, animatedValue: 0 },
+  { name: 'UI/UX 设计', value: 90, animatedValue: 0 },
+  { name: 'Web 开发', value: 70, animatedValue: 0 },
+])
+
+const progressContainer = ref<HTMLElement | null>(null)
+const skillNumberRefs = ref<HTMLElement[]>([])
+
+const { stop } = useIntersectionObserver(
+  progressContainer,
+  ([{ isIntersecting }]) => {
+    if (isIntersecting) {
+      // 1. 动画进度条宽度
+      const animationDuration = 1500 // ms
+      let startTime = 0
+
+      const animate = (timestamp: number) => {
+        if (!startTime) startTime = timestamp
+        const elapsedTime = timestamp - startTime
+        const progress = Math.min(elapsedTime / animationDuration, 1)
+
+        skills.value.forEach((skill) => {
+          skill.animatedValue = skill.value * progress
+        })
+
+        if (progress < 1) {
+          requestAnimationFrame(animate)
+        } else {
+          skills.value.forEach((skill) => {
+            skill.animatedValue = skill.value
+          })
+        }
+      }
+      requestAnimationFrame(animate)
+
+      // 2. Animate numbers with CountUp.js
+      skillNumberRefs.value.forEach((el, index) => {
+        if (el) {
+          const skill = skills.value[index]
+          const countUp = new CountUp(el, skill.value, {
+            duration: 1.5,
+            useEasing: false,
+          })
+          if (!countUp.error) {
+            countUp.start()
+          } else {
+            console.error(countUp.error)
+          }
+        }
+      })
+
+      // Stop observing after the animation is triggered
+      stop()
+    }
+  },
+  {
+    threshold: 0.1, // 当元素可见10%时触发
+  },
+)
 </script>
 
 <style scoped lang="scss">
@@ -346,18 +376,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image:
-    linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 1),
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 1)
-    ),
-    url('/images/home/电路板背景.svg');
+  background-image: url('/images/home/电路板背景.svg');
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.2;
+  opacity: 0.1;
   z-index: -1;
 }
 
