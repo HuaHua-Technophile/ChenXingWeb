@@ -223,7 +223,7 @@ const navigateToService = (index: number) => {
         <div class="row g-4">
           <div v-for="(service, index) in services" :key="index" class="col-md-6 col-lg-4">
             <div
-              class="h-100 shadow-sm card overflow-hidden hover-up bg-body bg-opacity-25 transition-750 position-relative rounded-4 p-4 text-center blur-10"
+              class="h-100 card overflow-hidden hover-up bg-body bg-opacity-25 transition-750 rounded-4 p-4 text-center blur-10"
               data-aos="fade-up"
               :data-aos-delay="index * 100"
               style="cursor: pointer"

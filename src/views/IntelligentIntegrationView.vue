@@ -43,7 +43,7 @@
       >
         <div class="col mb-3" v-for="(service, index) in services" :key="index">
           <button
-            class="w-100 card overflow-hidden px-md-4 px-2 py-md-2 py-1 transition-750 position-relative bg-opacity-25 blur-6 hover-up"
+            class="w-100 card overflow-hidden px-md-4 px-2 py-md-2 py-1 transition-750 bg-opacity-25 blur-6 hover-up"
             :class="[index === activeTab ? 'bg-primary-subtle text-primary shadow' : 'bg-body']"
             :id="`service-tab-${index}`"
             @click="activeTab = index"

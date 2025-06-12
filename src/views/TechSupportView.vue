@@ -65,9 +65,7 @@
           data-aos-duration="800"
           :data-aos-delay="(index % 2) * 200 + 200"
         >
-          <div
-            class="h-100 card overflow-hidden service-card rounded-4 hover-up transition-750 position-relative"
-          >
+          <div class="h-100 card overflow-hidden service-card rounded-4 hover-up transition-750">
             <!-- 将图片设置为背景 -->
             <div
               class="card-background-image position-absolute top-0 left-0 w-100 h-100 z-index-0 bgimg-center-cover transition-750"

@@ -47,7 +47,7 @@
           </div>
         </div>
         <div class="col-lg-6 mt-4 mt-lg-0 ps-lg-5">
-          <div class="position-relative hero-image-container">
+          <div class="position-relative hero-image-container w-90 mx-auto w-md-auto">
             <img
               src="/images/软件开发/software-developer-6521720_1920_11zon.webp"
               class="img-fluid rounded-bottom rounded-start shadow"
@@ -67,57 +67,33 @@
           <p class="lead">覆盖多种应用类型，满足不同场景需求</p>
         </div>
 
-        <div class="col-md-4 mb-4">
-          <div class="card overflow-hidden h-100 shadow-sm">
-            <div class="card-body text-center">
-              <div class="mb-3">
-                <i class="bi bi-globe fs-1 text-primary"></i>
+        <div v-for="(devType, index) in devTypes" :key="devType.title" class="col-md-4">
+          <div class="card dev-type-card h-100 transition-750">
+            <div class="card-body">
+              <div
+                class="icon-wrapper mb-3 d-inline-flex align-items-center justify-content-center bg-primary border border-2 border-primary transition-250"
+                style="
+                  --bs-bg-opacity: 0.05;
+                  --bs-border-opacity: 0.15;
+                  width: 64px;
+                  height: 64px;
+                  border-radius: 0.75rem;
+                "
+              >
+                <i :class="['bi', devType.icon, 'fs-1', 'text-primary']"></i>
               </div>
-              <h4 class="card-title">Web应用开发</h4>
+              <h4 class="card-title mt-4 mb-3">{{ devType.title }}</h4>
               <p class="card-text">
-                开发响应式、高性能的企业级Web应用，支持多设备访问，提供流畅的用户体验。
+                {{ devType.descriptionCN }}<br /><small class="text-muted">{{
+                  devType.descriptionEN
+                }}</small>
               </p>
-              <ul class="list-unstyled text-start">
-                <li><i class="bi bi-check-circle-fill text-success me-2"></i>企业管理系统</li>
-                <li><i class="bi bi-check-circle-fill text-success me-2"></i>客户服务平台</li>
-                <li><i class="bi bi-check-circle-fill text-success me-2"></i>数据可视化系统</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4">
-          <div class="card overflow-hidden h-100 shadow-sm">
-            <div class="card-body text-center">
-              <div class="mb-3">
-                <i class="bi bi-phone fs-1 text-primary"></i>
+              <div
+                class="card-bg-number position-absolute end-4 user-select-none lh-1 z-index-1 fw-bold text-primary"
+                style="--bs-text-opacity: 0.06"
+              >
+                0{{ index + 1 }}
               </div>
-              <h4 class="card-title">移动应用开发</h4>
-              <p class="card-text">
-                开发适用于iOS和Android平台的原生或跨平台移动应用，实现随时随地的业务操作。
-              </p>
-              <ul class="list-unstyled text-start">
-                <li><i class="bi bi-check-circle-fill text-success me-2"></i>企业移动办公</li>
-                <li><i class="bi bi-check-circle-fill text-success me-2"></i>现场服务工具</li>
-                <li><i class="bi bi-check-circle-fill text-success me-2"></i>数据采集应用</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-4">
-          <div class="card overflow-hidden h-100 shadow-sm">
-            <div class="card-body text-center">
-              <div class="mb-3">
-                <i class="bi bi-gear fs-1 text-primary"></i>
-              </div>
-              <h4 class="card-title">系统集成开发</h4>
-              <p class="card-text">开发系统间接口和集成方案，实现跨系统数据流转和业务协同。</p>
-              <ul class="list-unstyled text-start">
-                <li><i class="bi bi-check-circle-fill text-success me-2"></i>API开发与集成</li>
-                <li><i class="bi bi-check-circle-fill text-success me-2"></i>数据交换平台</li>
-                <li><i class="bi bi-check-circle-fill text-success me-2"></i>第三方系统对接</li>
-              </ul>
             </div>
           </div>
         </div>
@@ -134,118 +110,20 @@
 
         <div class="col-12">
           <div class="timeline position-relative py-4">
-            <div class="row g-0">
-              <div class="col-md-6">
+            <div v-for="(process, index) in devProcesses" :key="process.title" class="row g-0">
+              <div :class="['col-md-6', { 'offset-md-6': (index + 1) % 2 === 0 }]">
                 <div class="timeline-item position-relative mb-3 mb-md-4">
                   <div
                     class="timeline-badge bg-primary text-white text-center rounded-circle position-absolute z-index-1 start-50 translate-middle-x"
                   >
-                    1
+                    {{ index + 1 }}
                   </div>
                   <div
                     class="timeline-panel position-relative p-4 bg-light rounded shadow-sm ms-5 me-0 mx-md-4"
                   >
-                    <h4>需求分析</h4>
+                    <h4>{{ process.title }}</h4>
                     <p>
-                      深入了解客户业务流程和需求，明确系统功能范围和技术要求，形成详细的需求规格说明书。
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row g-0">
-              <div class="col-md-6 offset-md-6">
-                <div class="timeline-item position-relative mb-3 mb-md-4">
-                  <div
-                    class="timeline-badge bg-primary text-white text-center rounded-circle position-absolute z-index-1 start-50 translate-middle-x"
-                  >
-                    2
-                  </div>
-                  <div
-                    class="timeline-panel position-relative p-4 bg-light rounded shadow-sm ms-5 me-0 mx-md-4"
-                  >
-                    <h4>系统设计</h4>
-                    <p>
-                      制定系统架构设计、数据库设计、接口设计和UI设计，确保系统结构合理、可扩展。
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row g-0">
-              <div class="col-md-6">
-                <div class="timeline-item position-relative mb-3 mb-md-4">
-                  <div
-                    class="timeline-badge bg-primary text-white text-center rounded-circle position-absolute z-index-1 start-50 translate-middle-x"
-                  >
-                    3
-                  </div>
-                  <div
-                    class="timeline-panel position-relative p-4 bg-light rounded shadow-sm ms-5 me-0 mx-md-4"
-                  >
-                    <h4>编码开发</h4>
-                    <p>
-                      遵循最佳开发实践，使用适合的技术栈进行模块化开发，保证代码质量和可维护性。
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row g-0">
-              <div class="col-md-6 offset-md-6">
-                <div class="timeline-item position-relative mb-3 mb-md-4">
-                  <div
-                    class="timeline-badge bg-primary text-white text-center rounded-circle position-absolute z-index-1 start-50 translate-middle-x"
-                  >
-                    4
-                  </div>
-                  <div
-                    class="timeline-panel position-relative p-4 bg-light rounded shadow-sm ms-5 me-0 mx-md-4"
-                  >
-                    <h4>测试验证</h4>
-                    <p>
-                      进行单元测试、集成测试、系统测试和用户验收测试，确保软件质量和功能符合预期。
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row g-0">
-              <div class="col-md-6">
-                <div class="timeline-item position-relative mb-3 mb-md-4">
-                  <div
-                    class="timeline-badge bg-primary text-white text-center rounded-circle position-absolute z-index-1 start-50 translate-middle-x"
-                  >
-                    5
-                  </div>
-                  <div
-                    class="timeline-panel position-relative p-4 bg-light rounded shadow-sm ms-5 me-0 mx-md-4"
-                  >
-                    <h4>部署上线</h4>
-                    <p>规划部署策略，配置生产环境，执行系统部署和数据迁移，确保系统稳定运行。</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row g-0">
-              <div class="col-md-6 offset-md-6">
-                <div class="timeline-item position-relative mb-3 mb-md-4">
-                  <div
-                    class="timeline-badge bg-primary text-white text-center rounded-circle position-absolute z-index-1 start-50 translate-middle-x"
-                  >
-                    6
-                  </div>
-                  <div
-                    class="timeline-panel position-relative p-4 bg-light rounded shadow-sm ms-5 me-0 mx-md-4"
-                  >
-                    <h4>运维支持</h4>
-                    <p>
-                      提供系统运行维护、性能监控、故障处理和功能升级服务，确保系统持续稳定运行。
+                      {{ process.text }}
                     </p>
                   </div>
                 </div>
@@ -264,35 +142,11 @@
           <p class="lead">采用业界领先技术，构建高质量软件系统</p>
         </div>
 
-        <div class="col-md-3 col-6 mb-4 text-center">
+        <div v-for="stack in techStacks" :key="stack.title" class="col-md-3 col-6 mb-4 text-center">
           <div class="p-3 bg-light rounded">
-            <i class="bi bi-filetype-html fs-2 text-primary"></i>
-            <h5 class="mt-2">前端开发</h5>
-            <p class="small">Vue.js, React, Angular</p>
-          </div>
-        </div>
-
-        <div class="col-md-3 col-6 mb-4 text-center">
-          <div class="p-3 bg-light rounded">
-            <i class="bi bi-server fs-2 text-primary"></i>
-            <h5 class="mt-2">后端开发</h5>
-            <p class="small">Java, .NET, Node.js, Python</p>
-          </div>
-        </div>
-
-        <div class="col-md-3 col-6 mb-4 text-center">
-          <div class="p-3 bg-light rounded">
-            <i class="bi bi-phone fs-2 text-primary"></i>
-            <h5 class="mt-2">移动开发</h5>
-            <p class="small">Flutter, React Native, Swift</p>
-          </div>
-        </div>
-
-        <div class="col-md-3 col-6 mb-4 text-center">
-          <div class="p-3 bg-light rounded">
-            <i class="bi bi-database fs-2 text-primary"></i>
-            <h5 class="mt-2">数据库</h5>
-            <p class="small">MySQL, PostgreSQL, MongoDB</p>
+            <i :class="['bi', stack.icon, 'fs-2', 'text-primary']"></i>
+            <h5 class="mt-2">{{ stack.title }}</h5>
+            <p class="small">{{ stack.text }}</p>
           </div>
         </div>
       </div>
@@ -309,6 +163,80 @@ const skills = ref([
   { name: '软件开发', value: 80, animatedValue: 0 },
   { name: 'UI/UX 设计', value: 90, animatedValue: 0 },
   { name: 'Web 开发', value: 70, animatedValue: 0 },
+])
+
+const devTypes = ref([
+  {
+    icon: 'bi-globe',
+    title: 'Web应用开发',
+    descriptionCN: '开发响应式、高性能的企业级Web应用，支持多设备访问，提供流畅的用户体验。',
+    descriptionEN:
+      'We build responsive and high-performance web applications for a seamless multi-device experience.',
+  },
+  {
+    icon: 'bi-phone',
+    title: '移动应用开发',
+    descriptionCN: '开发适用于iOS和Android平台的原生或跨平台移动应用，实现随时随地的业务操作。',
+    descriptionEN:
+      'We create native and cross-platform mobile apps for iOS and Android, enabling business operations anywhere, anytime.',
+  },
+  {
+    icon: 'bi-gear',
+    title: '系统集成开发',
+    descriptionCN: '开发系统间接口和集成方案，实现跨系统数据流转和业务协同。',
+    descriptionEN:
+      'We develop system interfaces and integration solutions to enable data flow and business synergy across systems.',
+  },
+])
+
+const devProcesses = ref([
+  {
+    title: '需求分析',
+    text: '深入了解客户业务流程和需求，明确系统功能范围和技术要求，形成详细的需求规格说明书。',
+  },
+  {
+    title: '系统设计',
+    text: '制定系统架构设计、数据库设计、接口设计和UI设计，确保系统结构合理、可扩展。',
+  },
+  {
+    title: '编码开发',
+    text: '遵循最佳开发实践，使用适合的技术栈进行模块化开发，保证代码质量和可维护性。',
+  },
+  {
+    title: '测试验证',
+    text: '进行单元测试、集成测试、系统测试和用户验收测试，确保软件质量和功能符合预期。',
+  },
+  {
+    title: '部署上线',
+    text: '规划部署策略，配置生产环境，执行系统部署和数据迁移，确保系统稳定运行。',
+  },
+  {
+    title: '运维支持',
+    text: '提供系统运行维护、性能监控、故障处理和功能升级服务，确保系统持续稳定运行。',
+  },
+])
+
+const techStacks = ref([
+  {
+    icon: 'bi-filetype-html',
+    title: '前端开发',
+    text: 'Vue.js, React, Angular',
+  },
+  {
+    icon: 'bi-server',
+    title: '后端开发',
+    text: 'Java, .NET, Node.js, Python',
+  },
+  {
+    icon: 'bi-phone',
+    title: '移动开发',
+    text: 'Flutter, React Native, Swift',
+  },
+  {
+    icon: 'bi-database',
+    title: '数据库',
+    text: 'MySQL, PostgreSQL, MongoDB',
+  },
 ])
 
 const progressContainer = ref<HTMLElement | null>(null)
@@ -436,6 +364,25 @@ const { stop } = useIntersectionObserver(
   margin-left: 30px;
 }
 
+.dev-type-card {
+  .icon-wrapper {
+  }
+
+  .card-bg-number {
+    bottom: -1rem;
+    font-size: 9rem;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+
+    .icon-wrapper {
+      --bs-bg-opacity: 0.1;
+      --bs-border-opacity: 0.4;
+    }
+  }
+}
+
 @media (max-width: 767.98px) {
   .timeline::before {
     left: 40px;
@@ -443,12 +390,6 @@ const { stop } = useIntersectionObserver(
 
   .timeline .timeline-badge {
     left: 40px !important;
-    transform: none !important;
-  }
-
-  .hero-image-container {
-    width: 90%;
-    margin: 0 auto;
   }
 
   .decorative-shape {

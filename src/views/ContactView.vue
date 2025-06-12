@@ -68,7 +68,7 @@ const contactInfoList = [
         <div class="row justify-content-center">
           <div class="col-lg-10">
             <div
-              class="card hover-up bg-body bg-opacity-50 overflow-hidden blur-10 position-relative p-4 p-md-5 transition-750"
+              class="card hover-up bg-body bg-opacity-50 overflow-hidden blur-10 p-4 transition-750"
               data-aos="zoom-in"
               data-aos-duration="1000"
             >
