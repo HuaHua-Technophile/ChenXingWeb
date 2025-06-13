@@ -125,13 +125,13 @@
               >
                 <div class="timeline-item position-relative mb-5">
                   <div
-                    class="timeline-panel card bg-body rounded-4 shadow-sm mx-md-4 overflow-visible border-0 border-top border-primary border-5"
+                    class="timeline-panel card bg-body bg-opacity-25 blur-10 hover-up transition-750 rounded-4 mx-md-4 overflow-visible border-0 border-top border-primary border-5 z-index-2"
                   >
                     <div class="timeline-icon-wrapper position-absolute">
                       <div
                         class="icon-shape bg-primary text-white rounded-circle d-flex align-items-center justify-content-center"
                       >
-                        <i :class="['bi fs-4', process.icon]"></i>
+                        <i :class="['bi fs-2 icon-rotate transition-750', process.icon]"></i>
                       </div>
                     </div>
                     <div class="card-body p-4 pt-5 mt-2 position-relative overflow-hidden">

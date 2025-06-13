@@ -161,6 +161,7 @@ $breakpoints: (sm, md, lg, xl, xxl);
     opacity: 0.9;
     transition: height 0.4s;
     z-index: -1;
+    border-radius: inherit;
   }
 
   &:hover {

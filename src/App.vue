@@ -29,7 +29,7 @@ onMounted(() => {
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 /* 全局样式可以在这里添加 */
 .animate__fadeIn,
 .animate__fadeOut {
