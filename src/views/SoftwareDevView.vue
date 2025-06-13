@@ -1,9 +1,9 @@
 <template>
   <main class="software-dev-main">
     <!-- Hero Section -->
-    <section class="min-vh-100 container d-flex flex-column pt-5">
+    <section class="min-vh-100 container d-flex flex-column pt-5 mb-5">
       <div class="row flex-grow-1 align-items-center">
-        <div class="col-lg-6 pe-lg-5 mb-4 mb-lg-0">
+        <div class="col-lg-6 pe-lg-5 mb-4 mb-lg-0" data-aos="fade-up">
           <div class="d-flex align-items-center gap-3 mb-2">
             <p class="text-primary fw-bold text-uppercase mb-0">Some Fact</p>
             <div class="title-line bg-primary"></div>
@@ -48,7 +48,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-6 ps-lg-5">
+        <div class="col-lg-6 ps-lg-5" data-aos="fade-left">
           <div class="position-relative hero-image-container w-90 mx-auto w-md-auto">
             <img
               src="/images/软件开发/software-developer-6521720_1920_11zon.webp"
@@ -63,13 +63,19 @@
 
     <!-- 开发类型 -->
     <section class="container mb-5">
-      <div class="row">
-        <div class="col-12 text-center mb-4">
+      <div class="row justify-content-center g-4">
+        <div class="col-12 text-center mb-4" data-aos="fade-up">
           <h2>我们的软件开发服务</h2>
           <p class="lead">覆盖多种应用类型，满足不同场景需求</p>
         </div>
 
-        <div v-for="(devType, index) in devTypes" :key="devType.title" class="col-md-4">
+        <div
+          v-for="(devType, index) in devTypes"
+          :key="devType.title"
+          class="col-lg-4 col-md-6"
+          data-aos="fade-up"
+          :data-aos-delay="index * 100"
+        >
           <div
             class="card overflow-hidden h-100 transition-750 z-index-2 bg-body bg-opacity-25 blur-10 hover-up"
           >
@@ -101,55 +107,69 @@
       </div>
     </section>
 
-    <ContactInfoSection class="mb-5" />
+    <ContactInfoSection class="" data-aos="fade-up" />
 
     <!-- 开发流程 -->
-    <section class="container mb-5">
-      <div id="dev-process" class="row">
-        <div class="col-12 text-center mb-5">
-          <h2>我们的开发流程</h2>
-          <p class="lead">科学高效的软件开发方法论</p>
-        </div>
+    <section class="mb-5 py-5 dev-process-section position-relative bgimg-mask">
+      <div class="container position-relative z-index-1">
+        <div id="dev-process" class="row">
+          <div class="col-12 text-center mb-5" data-aos="fade-up">
+            <h2>我们的开发流程</h2>
+            <p class="lead">科学高效的软件开发方法论</p>
+          </div>
 
-        <div class="col-12">
-          <div class="timeline position-relative py-4">
-            <div v-for="(process, index) in devProcesses" :key="process.title" class="row g-0">
-              <div
-                :class="[
-                  'col-md-6',
-                  {
-                    'offset-md-6 timeline-item-right': (index + 1) % 2 === 0,
-                    'timeline-item-left': (index + 1) % 2 !== 0,
-                  },
-                ]"
-              >
-                <div class="timeline-item position-relative mb-5">
-                  <div
-                    class="timeline-panel card bg-body bg-opacity-25 blur-10 hover-up transition-750 rounded-4 mx-md-4 overflow-visible border-0 border-top border-primary border-5 z-index-2"
-                  >
-                    <div class="timeline-icon-wrapper position-absolute">
+          <div class="col-12">
+            <div class="timeline position-relative py-4">
+              <div v-for="(process, index) in devProcesses" :key="process.title" class="row g-0">
+                <div
+                  :class="[
+                    'col-12 col-md-6',
+                    {
+                      'offset-md-6': (index + 1) % 2 === 0,
+                      'timeline-item-right': (index + 1) % 2 === 0,
+                      'timeline-item-left': (index + 1) % 2 !== 0,
+                    },
+                  ]"
+                  :data-aos="(index + 1) % 2 !== 0 ? 'fade-right' : 'fade-left'"
+                >
+                  <div class="timeline-item position-relative mb-5">
+                    <div
+                      class="timeline-panel card bg-body bg-opacity-25 blur-10 hover-up transition-750 rounded-4 mx-md-4 overflow-visible border-0 border-top border-primary border-5 z-index-2"
+                    >
                       <div
-                        class="icon-shape bg-primary text-white rounded-circle d-flex align-items-center justify-content-center"
+                        :class="[
+                          'timeline-icon-wrapper position-absolute top-0',
+                          {
+                            'start-100 translate-middle': (index + 1) % 2 !== 0,
+                            'start-0 translate-middle': (index + 1) % 2 === 0,
+                          },
+                        ]"
                       >
-                        <i :class="['bi fs-2 icon-rotate transition-750', process.icon]"></i>
+                        <div
+                          class="icon-shape w-100 h-100 bg-primary text-white rounded-circle d-flex align-items-center justify-content-center"
+                        >
+                          <i :class="['bi fs-2 icon-rotate transition-750', process.icon]"></i>
+                        </div>
                       </div>
-                    </div>
-                    <div class="card-body p-4 pt-5 mt-2 position-relative overflow-hidden">
-                      <h4 class="card-title mb-1">
-                        {{ process.title }}
-                      </h4>
-                      <h6 class="card-subtitle mb-3 text-muted fw-light">
-                        {{ process.titleEN }}
-                      </h6>
-                      <p class="card-text mb-1 text-start">{{ process.text }}</p>
-                      <p class="card-text text-start lh-sm">
-                        <small class="text-muted">{{ process.textEN }}</small>
-                      </p>
                       <div
-                        class="position-absolute end-0 user-select-none lh-1 z-index-1 fw-bold text-primary"
-                        style="--bs-text-opacity: 0.06; bottom: -1rem; font-size: 9rem"
+                        class="card-body p-4 mt-2 position-relative overflow-hidden timeline-card-body"
                       >
-                        0{{ index + 1 }}
+                        <h4 class="card-title mb-1">
+                          {{ process.title }}
+                        </h4>
+                        <h6 class="card-subtitle mb-3 text-muted fw-light">
+                          {{ process.titleEN }}
+                        </h6>
+                        <p class="card-text mb-1 text-start">{{ process.text }}</p>
+                        <p class="card-text text-start lh-sm">
+                          <small class="text-muted">{{ process.textEN }}</small>
+                        </p>
+                        <div
+                          class="position-absolute end-0 user-select-none lh-1 z-index-1 fw-bold text-primary"
+                          style="--bs-text-opacity: 0.06; bottom: -1rem; font-size: 9rem"
+                        >
+                          0{{ index + 1 }}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -163,8 +183,10 @@
 
     <!-- 技术栈 -->
     <section class="mb-5 overflow-hidden">
-      <h2 class="text-center">我们的技术栈</h2>
-      <p class="lead text-center">采用业界领先技术，构建高质量软件系统</p>
+      <h2 class="text-center" data-aos="fade-up">我们的技术栈</h2>
+      <p class="lead text-center" data-aos="fade-up" data-aos-delay="100">
+        采用业界领先技术，构建高质量软件系统
+      </p>
 
       <swiper-container
         class="mb-4"
@@ -177,6 +199,7 @@
         speed="3000"
         allow-touch-move="false"
         simulate-touch="false"
+        data-aos="fade-up"
       >
         <swiper-slide
           v-for="tech in techLogos.slice(0, Math.ceil(techLogos.length / 2))"
@@ -203,6 +226,7 @@
         speed="3000"
         allow-touch-move="false"
         simulate-touch="false"
+        data-aos="fade-up"
       >
         <swiper-slide
           v-for="tech in techLogos.slice(Math.ceil(techLogos.length / 2))"
@@ -436,6 +460,10 @@ const { stop } = useIntersectionObserver(
   z-index: -1;
 }
 
+.dev-process-section {
+  background: url('/images/软件开发/source-4280758_11zon.webp') center/cover fixed;
+}
+
 .title-line {
   height: 3px;
   width: 6rem;
@@ -480,37 +508,14 @@ const { stop } = useIntersectionObserver(
   top: 0;
   bottom: 0;
   left: 50%;
-  width: 2px;
+  width: 3px;
   margin-left: -1px;
   background-color: var(--bs-primary);
 }
 
-.timeline .timeline-badge {
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-}
-
-.timeline .timeline-item {
-  margin-bottom: 30px;
-}
-
-.timeline .timeline-panel {
-  margin-right: 30px;
-  margin-left: 30px;
-}
-
 .timeline-icon-wrapper {
-  top: 0;
-  left: 1.5rem;
   width: 60px;
   height: 60px;
-  transform: translateY(-50%);
-}
-
-.timeline-icon-wrapper .icon-shape {
-  width: 100%;
-  height: 100%;
 }
 
 .card:hover .icon-wrapper {
@@ -521,16 +526,20 @@ const { stop } = useIntersectionObserver(
 // 移动端适配
 @media (max-width: 767.98px) {
   .timeline::before {
-    left: 40px;
+    left: 2.5rem;
+    transform: translateX(-50%);
   }
 
-  .timeline .timeline-badge {
-    left: 40px !important;
+  .timeline-card-body {
+    padding-left: 5rem !important;
+    padding-top: 2rem !important;
+    padding-right: 1rem !important;
+    padding-bottom: 1rem !important;
   }
 
-  .timeline .timeline-panel {
-    margin-left: 65px;
-    margin-right: 15px;
+  .timeline-icon-wrapper {
+    left: 2.5rem !important;
+    transform: translate(-50%, -50%) !important;
   }
 
   .decorative-shape {
