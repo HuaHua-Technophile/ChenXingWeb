@@ -106,7 +106,7 @@
     <!-- 开发流程 -->
     <section class="container mb-5">
       <div id="dev-process" class="row">
-        <div class="col-12 text-center mb-4">
+        <div class="col-12 text-center mb-5">
           <h2>我们的开发流程</h2>
           <p class="lead">科学高效的软件开发方法论</p>
         </div>
@@ -114,20 +114,44 @@
         <div class="col-12">
           <div class="timeline position-relative py-4">
             <div v-for="(process, index) in devProcesses" :key="process.title" class="row g-0">
-              <div :class="['col-md-6', { 'offset-md-6': (index + 1) % 2 === 0 }]">
-                <div class="timeline-item position-relative mb-3 mb-md-4">
+              <div
+                :class="[
+                  'col-md-6',
+                  {
+                    'offset-md-6 timeline-item-right': (index + 1) % 2 === 0,
+                    'timeline-item-left': (index + 1) % 2 !== 0,
+                  },
+                ]"
+              >
+                <div class="timeline-item position-relative mb-5">
                   <div
-                    class="timeline-badge bg-primary text-white text-center rounded-circle position-absolute z-index-1 start-50 translate-middle-x"
+                    class="timeline-panel card bg-body rounded-4 shadow-sm mx-md-4 overflow-visible border-0 border-top border-primary border-5"
                   >
-                    {{ index + 1 }}
-                  </div>
-                  <div
-                    class="timeline-panel position-relative p-4 bg-light rounded shadow-sm ms-5 me-0 mx-md-4"
-                  >
-                    <h4>{{ process.title }}</h4>
-                    <p>
-                      {{ process.text }}
-                    </p>
+                    <div class="timeline-icon-wrapper position-absolute">
+                      <div
+                        class="icon-shape bg-primary text-white rounded-circle d-flex align-items-center justify-content-center"
+                      >
+                        <i :class="['bi fs-4', process.icon]"></i>
+                      </div>
+                    </div>
+                    <div class="card-body p-4 pt-5 mt-2 position-relative overflow-hidden">
+                      <h4 class="card-title mb-1">
+                        {{ process.title }}
+                      </h4>
+                      <h6 class="card-subtitle mb-3 text-muted fw-light">
+                        {{ process.titleEN }}
+                      </h6>
+                      <p class="card-text mb-1 text-start">{{ process.text }}</p>
+                      <p class="card-text text-start lh-sm">
+                        <small class="text-muted">{{ process.textEN }}</small>
+                      </p>
+                      <div
+                        class="position-absolute end-0 user-select-none lh-1 z-index-1 fw-bold text-primary"
+                        style="--bs-text-opacity: 0.06; bottom: -1rem; font-size: 9rem"
+                      >
+                        0{{ index + 1 }}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -150,7 +174,7 @@
         autoplay
         autoplay-delay="1"
         autoplay-disable-on-interaction="false"
-        speed="5000"
+        speed="3000"
         allow-touch-move="false"
         simulate-touch="false"
       >
@@ -176,7 +200,7 @@
         autoplay-delay="1"
         autoplay-disable-on-interaction="false"
         autoplay-reverse-direction="true"
-        speed="5000"
+        speed="3000"
         allow-touch-move="false"
         simulate-touch="false"
       >
@@ -237,28 +261,52 @@ const devTypes = ref([
 
 const devProcesses = ref([
   {
+    icon: 'bi-clipboard-data',
     title: '需求分析',
+    titleEN: 'Requirement Analysis',
     text: '深入了解客户业务流程和需求，明确系统功能范围和技术要求，形成详细的需求规格说明书。',
+    textEN:
+      'In-depth understanding of customer business processes and needs, clarifying the scope of system functions and technical requirements, and forming a detailed requirement specification document.',
   },
   {
+    icon: 'bi-diagram-3',
     title: '系统设计',
+    titleEN: 'System Design',
     text: '制定系统架构设计、数据库设计、接口设计和UI设计，确保系统结构合理、可扩展。',
+    textEN:
+      'Formulate system architecture design, database design, interface design, and UI design to ensure a reasonable and scalable system structure.',
   },
   {
+    icon: 'bi-code-slash',
     title: '编码开发',
+    titleEN: 'Coding & Development',
     text: '遵循最佳开发实践，使用适合的技术栈进行模块化开发，保证代码质量和可维护性。',
+    textEN:
+      'Follow best development practices, use suitable tech stacks for modular development, ensuring code quality and maintainability.',
   },
   {
+    icon: 'bi-check2-circle',
     title: '测试验证',
+    titleEN: 'Testing & Verification',
     text: '进行单元测试、集成测试、系统测试和用户验收测试，确保软件质量和功能符合预期。',
+    textEN:
+      'Conduct unit testing, integration testing, system testing, and user acceptance testing to ensure software quality and functionality meet expectations.',
   },
   {
+    icon: 'bi-rocket-takeoff',
     title: '部署上线',
+    titleEN: 'Deployment',
     text: '规划部署策略，配置生产环境，执行系统部署和数据迁移，确保系统稳定运行。',
+    textEN:
+      'Plan deployment strategy, configure production environment, execute system deployment and data migration to ensure stable system operation.',
   },
   {
+    icon: 'bi-headset',
     title: '运维支持',
+    titleEN: 'Maintenance & Support',
     text: '提供系统运行维护、性能监控、故障处理和功能升级服务，确保系统持续稳定运行。',
+    textEN:
+      'Provide system operation and maintenance, performance monitoring, troubleshooting, and functional upgrade services to ensure continuous and stable system operation.',
   },
 ])
 
@@ -452,6 +500,19 @@ const { stop } = useIntersectionObserver(
   margin-left: 30px;
 }
 
+.timeline-icon-wrapper {
+  top: 0;
+  left: 1.5rem;
+  width: 60px;
+  height: 60px;
+  transform: translateY(-50%);
+}
+
+.timeline-icon-wrapper .icon-shape {
+  width: 100%;
+  height: 100%;
+}
+
 .card:hover .icon-wrapper {
   --bs-bg-opacity: 0.1 !important;
   --bs-border-opacity: 0.5 !important;
@@ -465,6 +526,11 @@ const { stop } = useIntersectionObserver(
 
   .timeline .timeline-badge {
     left: 40px !important;
+  }
+
+  .timeline .timeline-panel {
+    margin-left: 65px;
+    margin-right: 15px;
   }
 
   .decorative-shape {
