@@ -138,29 +138,72 @@
     </section>
 
     <!-- 技术栈 -->
-    <section class="container mb-5">
-      <div class="row">
-        <div class="col-12 text-center mb-4">
-          <h2>我们的技术栈</h2>
-          <p class="lead">采用业界领先技术，构建高质量软件系统</p>
-        </div>
+    <section class="mb-5 overflow-hidden">
+      <h2 class="text-center">我们的技术栈</h2>
+      <p class="lead text-center">采用业界领先技术，构建高质量软件系统</p>
 
-        <div v-for="stack in techStacks" :key="stack.title" class="col-md-3 col-6 mb-4 text-center">
-          <div class="p-3 bg-light rounded">
-            <i :class="['bi', stack.icon, 'fs-2', 'text-primary']" class="mb-2"></i>
-            <h5 class="">{{ stack.title }}</h5>
-            <p class="small">{{ stack.text }}</p>
+      <swiper-container
+        class="mb-4"
+        slides-per-view="auto"
+        space-between="30"
+        loop
+        autoplay
+        autoplay-delay="1"
+        autoplay-disable-on-interaction="false"
+        speed="5000"
+        allow-touch-move="false"
+        simulate-touch="false"
+      >
+        <swiper-slide
+          v-for="tech in techLogos.slice(0, Math.ceil(techLogos.length / 2))"
+          :key="tech.name"
+          class="card py-1 pe-md-3 w-auto h-auto bg-body bg-opacity-50 blur-3 flex-column flex-md-row overflow-hidden d-flex align-items-center justify-content-center rounded-4 gap-3"
+        >
+          <div
+            class="tech-logo-img-container overflow-hidden d-flex align-items-center justify-content-center"
+          >
+            <img :src="tech.path" class="h-100 object-fit-cover" style="transform: scale(1.3)" />
           </div>
-        </div>
-      </div>
+          <span class="fs-6 fs-md-5">{{ tech.name }}</span>
+        </swiper-slide>
+      </swiper-container>
+
+      <swiper-container
+        slides-per-view="auto"
+        space-between="30"
+        loop
+        autoplay
+        autoplay-delay="1"
+        autoplay-disable-on-interaction="false"
+        autoplay-reverse-direction="true"
+        speed="5000"
+        allow-touch-move="false"
+        simulate-touch="false"
+      >
+        <swiper-slide
+          v-for="tech in techLogos.slice(Math.ceil(techLogos.length / 2))"
+          :key="tech.name"
+          class="card py-1 pe-md-3 w-auto h-auto bg-body bg-opacity-50 blur-3 flex-column flex-md-row overflow-hidden d-flex align-items-center justify-content-center rounded-4 gap-3"
+        >
+          <div
+            class="tech-logo-img-container overflow-hidden d-flex align-items-center justify-content-center"
+          >
+            <img :src="tech.path" class="h-100 object-fit-cover" style="transform: scale(1.3)" />
+          </div>
+          <span class="fs-6 fs-md-5">{{ tech.name }}</span>
+        </swiper-slide>
+      </swiper-container>
     </section>
   </main>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { CountUp } from 'countup.js'
 import { useIntersectionObserver } from '@vueuse/core'
+import { register } from 'swiper/element/bundle'
+
+onMounted(register)
 
 const skills = ref([
   { name: '软件开发', value: 80, animatedValue: 0 },
@@ -242,6 +285,37 @@ const techStacks = ref([
   },
 ])
 
+// 技术栈Logo数据
+const techLogos = ref([
+  { name: 'Vue.js', path: '/images/软件开发/Vue.js-Logo.wine.svg', category: '前端' },
+  { name: 'TypeScript', path: '/images/软件开发/TypeScript-Logo.wine.svg', category: '前端' },
+  {
+    name: 'Bootstrap',
+    path: '/images/软件开发/Bootstrap_(front-end_framework)-Logo.wine.svg',
+    category: '前端',
+  },
+  { name: 'jQuery', path: '/images/软件开发/JQuery-Logo.wine.svg', category: '前端' },
+  { name: 'Node.js', path: '/images/软件开发/Node.js-Logo.wine.svg', category: '后端' },
+  {
+    name: 'Python',
+    path: '/images/软件开发/Python_(programming_language)-Logo.wine.svg',
+    category: '后端',
+  },
+  {
+    name: 'Java',
+    path: '/images/软件开发/Java_(programming_language)-Logo.wine.svg',
+    category: '后端',
+  },
+  { name: 'MySQL', path: '/images/软件开发/MySQL-Logo.wine.svg', category: '数据库' },
+  { name: 'Docker', path: '/images/软件开发/Docker_(software)-Logo.wine.svg', category: '工具' },
+  { name: 'Kubernetes', path: '/images/软件开发/Kubernetes-Logo.wine.svg', category: '工具' },
+  { name: 'Linux', path: '/images/软件开发/Linux-Logo.wine.svg', category: '系统' },
+  { name: 'Nginx', path: '/images/软件开发/Nginx-Logo.wine.svg', category: '服务器' },
+  { name: 'GitHub', path: '/images/软件开发/GitHub-Logo.wine.svg', category: '版本控制' },
+  { name: 'GitLab', path: '/images/软件开发/GitLab-Logo.wine.svg', category: '版本控制' },
+  { name: 'DeepSeek', path: '/images/软件开发/DeepSeek-Logo.wine.svg', category: 'AI' },
+])
+
 const progressContainer = ref<HTMLElement | null>(null)
 const skillNumberRefs = ref<HTMLElement[]>([])
 
@@ -319,6 +393,17 @@ const { stop } = useIntersectionObserver(
   width: 6rem;
 }
 
+.tech-logo-img-container {
+  width: 8rem;
+  aspect-ratio: 15 / 8;
+}
+
+@media (min-width: 768px) {
+  .tech-logo-img-container {
+    width: 15rem;
+  }
+}
+
 .progress-line-track::after {
   content: '';
   position: absolute;
@@ -372,6 +457,7 @@ const { stop } = useIntersectionObserver(
   --bs-border-opacity: 0.5 !important;
 }
 
+// 移动端适配
 @media (max-width: 767.98px) {
   .timeline::before {
     left: 40px;
