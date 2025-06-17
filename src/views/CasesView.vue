@@ -1,393 +1,282 @@
 <template>
-  <main class="pt-5 position-relative cases-main" style="z-index: 1">
-    <div class="container py-4">
-      <h1 class="text-center mb-4">工程案例</h1>
-
-      <!-- 案例筛选 -->
-      <div class="row mb-4">
-        <div class="col-12">
-          <div class="d-flex flex-wrap justify-content-center">
-            <button
-              class="btn btn-outline-primary m-1"
-              :class="{ active: selectedCategory === 'all' }"
-              @click="filterCases('all')"
-            >
-              全部案例
-            </button>
-            <button
-              v-for="category in categories"
-              :key="category.id"
-              class="btn btn-outline-primary m-1"
-              :class="{ active: selectedCategory === category.id }"
-              @click="filterCases(category.id)"
-            >
-              {{ category.name }}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- 案例列表 -->
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
-        <div
-          v-for="(item, index) in filteredCases"
-          :key="index"
-          class="col"
-          data-aos="fade-up"
-          :data-aos-delay="index * 100"
-        >
-          <div class="card overflow-hidden h-100 shadow-sm case-card">
-            <img
-              :src="item.imageUrl"
-              class="card-img-top"
-              :alt="item.title"
-              style="height: 200px; object-fit: cover"
-            />
-            <div class="card-body">
-              <div class="badge bg-primary mb-2">
-                {{ getCategoryName(item.category) }}
-              </div>
-              <h5 class="card-title">{{ item.title }}</h5>
-              <p class="card-text">{{ item.description }}</p>
-            </div>
-            <div class="card-footer bg-transparent border-top-0">
-              <button class="btn btn-outline-primary" @click="showCaseDetail(item)">
-                查看详情
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 分页 -->
-      <div class="row">
-        <div class="col-12">
-          <nav aria-label="案例分页">
-            <ul class="pagination justify-content-center">
-              <li class="page-item" :class="{ disabled: currentPage === 1 }">
-                <a class="page-link" href="#" @click.prevent="changePage(currentPage - 1)"
-                  >上一页</a
-                >
-              </li>
-              <li
-                v-for="page in totalPages"
-                :key="page"
-                class="page-item"
-                :class="{ active: currentPage === page }"
-              >
-                <a class="page-link" href="#" @click.prevent="changePage(page)">{{ page }}</a>
-              </li>
-              <li class="page-item" :class="{ disabled: currentPage === totalPages }">
-                <a class="page-link" href="#" @click.prevent="changePage(currentPage + 1)"
-                  >下一页</a
-                >
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-
-      <!-- 案例详情模态框 -->
+  <main class="position-relative">
+    <section class="hero-section pt-5 min-vh-100 position-relative">
       <div
-        class="modal fade"
-        id="caseDetailModal"
-        tabindex="-1"
-        aria-labelledby="caseDetailModalLabel"
-        aria-hidden="true"
+        class="hero-image-container position-absolute z-index-1"
+        style="top: 10vh; left: 2vw; width: 49%; height: 75vh; max-height: 800px"
       >
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="caseDetailModalLabel">{{ selectedCase.title }}</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+        <img
+          src="/images/工程案例/architect-3979490_1920_11zon.webp"
+          class="shadow-lg w-100 h-100 object-fit-cover rounded-3"
+          alt="工程案例背景"
+        />
+        <div
+          class="projects-badge position-absolute bg-primary text-white py-3 px-4 z-index-2"
+          style="bottom: 2rem; left: -2rem; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%)"
+        >
+          <div class="display-6 fw-bold">1500万+</div>
+          <div class="text-uppercase small">项目额</div>
+        </div>
+      </div>
+
+      <div
+        class="hero-content-container position-absolute z-index-2"
+        style="bottom: 10vh; right: 2vw; width: 49%; height: 75vh"
+      >
+        <div
+          class="hero-content h-100 bg-dark text-white p-5 shadow-lg position-relative rounded-3"
+        >
+          <h6 class="text-primary text-uppercase fw-bold">// 为什么选择我们</h6>
+          <h1 class="display-4 fw-bold">为什么选择辰星信息？</h1>
+          <hr class="border-primary mt-3 mb-4" style="width: 60px; border-width: 4px; opacity: 1" />
+
+          <div class="d-flex align-items-start mb-4">
+            <div class="flex-shrink-0">
+              <i class="bi bi-vector-pen fs-1 text-primary"></i>
             </div>
-            <div class="modal-body">
+            <div class="flex-grow-1 ms-4">
+              <h5 class="fw-bold">专业设计</h5>
+              <p class="text-white-50">技术精湛的专业人员随时准备为我们的客户提供可靠的服务。</p>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-start mb-4">
+            <div class="flex-shrink-0">
+              <i class="bi bi-graph-up-arrow fs-1 text-primary"></i>
+            </div>
+            <div class="flex-grow-1 ms-4">
+              <h5 class="fw-bold">大数据与分析</h5>
+              <p class="text-white-50">我们的分支机构遍布国内外主要城市，随时为您服务。</p>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-start">
+            <div class="flex-shrink-0">
+              <i class="bi bi-gear-wide-connected fs-1 text-primary"></i>
+            </div>
+            <div class="flex-grow-1 ms-4">
+              <h5 class="fw-bold">应用数据维护</h5>
+              <p class="text-white-50">我们的分支机构遍布国内外主要城市，随时为您服务。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container py-5">
+      <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">我们的成功案例</h1>
+        <p class="lead text-muted">我们为各行各业的客户提供了高质量的技术解决方案。</p>
+      </div>
+
+      <div class="row g-4">
+        <div v-for="(caseItem, index) in cases" :key="index" class="col-12">
+          <div class="card shadow-sm h-100 border-0 overflow-hidden hover-up transition-250">
+            <div class="card-body p-4">
+              <h3 class="card-title fw-bold mb-1">{{ caseItem.title }}</h3>
+              <span class="badge bg-primary-subtle text-primary mb-3">{{ caseItem.category }}</span>
+              <p class="card-text text-muted">{{ caseItem.description }}</p>
+
+              <hr />
+
               <div class="row">
-                <div class="col-md-6 mb-3">
-                  <img
-                    :src="selectedCase.imageUrl"
-                    class="img-fluid rounded"
-                    :alt="selectedCase.title"
-                  />
-                </div>
-                <div class="col-md-6">
-                  <h4>项目概述</h4>
-                  <p class="mb-3">{{ selectedCase.fullDescription || selectedCase.description }}</p>
-
-                  <div class="mb-3">
-                    <h5>项目类型</h5>
-                    <div class="badge bg-primary">{{ getCategoryName(selectedCase.category) }}</div>
-                  </div>
-
-                  <div class="mb-3" v-if="selectedCase.client">
-                    <h5>客户</h5>
-                    <p>{{ selectedCase.client }}</p>
-                  </div>
-
-                  <div v-if="selectedCase.completionDate">
-                    <h5>完成时间</h5>
-                    <p>{{ selectedCase.completionDate }}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row mb-4" v-if="selectedCase.keyPoints && selectedCase.keyPoints.length">
-                <div class="col-12">
-                  <h4>项目要点</h4>
-                  <ul class="list-group list-group-flush">
-                    <li
-                      v-for="(point, pointIndex) in selectedCase.keyPoints"
-                      :key="pointIndex"
-                      class="list-group-item"
-                    >
-                      <i class="bi bi-check-circle-fill text-success me-2"></i>
-                      {{ point }}
+                <!-- 统一显示基本信息 -->
+                <div class="col-md-4">
+                  <h6 class="text-primary">项目信息</h6>
+                  <ul class="list-unstyled">
+                    <li v-if="caseItem.client || caseItem.details?.client">
+                      <strong>客户:</strong> {{ caseItem.client || caseItem.details?.client }}
+                    </li>
+                    <li v-if="caseItem.location || caseItem.details?.location">
+                      <strong>地点:</strong> {{ caseItem.location || caseItem.details?.location }}
+                    </li>
+                    <li v-if="caseItem.date || caseItem.details?.date">
+                      <strong>日期:</strong> {{ caseItem.date || caseItem.details?.date }}
+                    </li>
+                    <li v-if="caseItem.amount">
+                      <strong>金额:</strong> {{ formatAmount(caseItem.amount) }}
                     </li>
                   </ul>
                 </div>
-              </div>
 
-              <div class="row" v-if="selectedCase.testimonial">
-                <div class="col-12">
-                  <div class="card overflow-hidden bg-light">
-                    <div class="card-body">
-                      <h5 class="mb-3">客户评价</h5>
-                      <blockquote class="blockquote">
-                        <p>{{ selectedCase.testimonial.content }}</p>
-                        <footer class="blockquote-footer">
-                          {{ selectedCase.testimonial.author }}
-                          <cite v-if="selectedCase.testimonial.position">
-                            , {{ selectedCase.testimonial.position }}
-                          </cite>
-                        </footer>
-                      </blockquote>
-                    </div>
+                <!-- 格式 1 的特有信息 -->
+                <template v-if="!caseItem.details">
+                  <div class="col-md-4">
+                    <h6 class="text-primary">项目亮点</h6>
+                    <ul
+                      v-if="caseItem.highlights && caseItem.highlights.length"
+                      class="list-unstyled"
+                    >
+                      <li
+                        v-for="highlight in caseItem.highlights"
+                        :key="highlight"
+                        class="d-flex align-items-start mb-1"
+                      >
+                        <i class="bi bi-check-lg text-success me-2"></i>
+                        <span>{{ highlight }}</span>
+                      </li>
+                    </ul>
                   </div>
-                </div>
+                  <div class="col-md-4">
+                    <h6 class="text-primary">提供的服务</h6>
+                    <ul
+                      v-if="caseItem.services_provided && caseItem.services_provided.length"
+                      class="list-unstyled"
+                    >
+                      <li
+                        v-for="service in caseItem.services_provided"
+                        :key="service"
+                        class="d-flex align-items-start mb-1"
+                      >
+                        <i class="bi bi-check-lg text-success me-2"></i>
+                        <span>{{ service }}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </template>
+
+                <!-- 格式 2 的特有信息 -->
+                <template v-if="caseItem.details">
+                  <div class="col-md-8">
+                    <h6 class="text-primary">项目详情</h6>
+                    <p><strong>挑战:</strong> {{ caseItem.details.challenge }}</p>
+                    <p><strong>解决方案:</strong> {{ caseItem.details.solution }}</p>
+                    <h6 class="mt-3">主要成果</h6>
+                    <ul
+                      v-if="caseItem.details.results && caseItem.details.results.length"
+                      class="list-unstyled"
+                    >
+                      <li
+                        v-for="result in caseItem.details.results"
+                        :key="result"
+                        class="d-flex align-items-start mb-1"
+                      >
+                        <i class="bi bi-check-lg text-success me-2"></i>
+                        <span>{{ result }}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </template>
               </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">关闭</button>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </main>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
+// @ts-ignore
+import casesData from '@/assets/cases.json'
 
-// 定义案例类型
 interface Case {
-  id: number
   title: string
-  description: string
-  fullDescription?: string
-  imageUrl: string
-  category: string
   client?: string
-  completionDate?: string
-  keyPoints?: string[]
-  testimonial?: {
-    content: string
-    author: string
-    position?: string
+  date?: string
+  amount?: string
+  location?: string
+  description: string
+  highlights?: string[]
+  services_provided?: string[]
+  category: string
+  coverImageUrl?: string
+  details?: {
+    client: string
+    location: string
+    date: string
+    challenge: string
+    solution: string
+    results: string[]
   }
 }
 
-// 模拟数据 - 实际项目中可从API获取
-const categories = ref([
-  { id: 'intelligent-system', name: '智能系统集成' },
-  { id: 'industrial-automation', name: '工业自动化' },
-  { id: 'software-development', name: '软件开发' },
-  { id: 'iot', name: '物联网应用' },
-])
+const cases = ref<Case[]>([])
 
-// 案例数据
-const cases = ref<Case[]>([
-  {
-    id: 1,
-    title: '大型制造企业智能工厂系统',
-    description: '为某大型制造企业打造完整的智能工厂解决方案，实现生产过程自动化、数字化和智能化。',
-    fullDescription:
-      '为某大型制造企业打造的智能工厂解决方案，覆盖从原材料入库到成品出库的完整流程。系统集成了工业自动化控制、MES生产执行系统、工业物联网和数据分析平台，实现了生产过程的自动化、数字化和智能化。',
-    imageUrl: '/images/cases/case1.jpg',
-    category: 'intelligent-system',
-    client: '某大型制造企业',
-    completionDate: '2023年6月',
-    keyPoints: [
-      '实现生产全流程数字化管理',
-      '生产效率提升30%，能源消耗降低15%',
-      '质量缺陷率下降40%',
-      '系统集成多种工业协议和设备',
-    ],
-    testimonial: {
-      content:
-        '辰星科技的智能工厂解决方案帮助我们实现了生产流程的数字化转型，大幅提升了生产效率和产品质量，为公司创造了可观的经济效益。',
-      author: '张总监',
-      position: '生产管理部',
-    },
-  },
-  {
-    id: 2,
-    title: '智慧园区管理系统',
-    description: '为某科技园区开发的一体化园区管理平台，集成安防、能源、环境和访客管理等功能。',
-    imageUrl: '/images/cases/case2.jpg',
-    category: 'software-development',
-    client: '某科技园区',
-    completionDate: '2023年3月',
-  },
-  {
-    id: 3,
-    title: '工业设备远程监控系统',
-    description: '基于物联网技术的工业设备远程监控系统，实现设备数据采集、状态监控和预测性维护。',
-    imageUrl: '/images/cases/case3.jpg',
-    category: 'iot',
-    client: '某能源公司',
-    completionDate: '2022年12月',
-  },
-  {
-    id: 4,
-    title: '自动化生产线改造项目',
-    description: '对某食品企业老旧生产线进行自动化改造，提升生产效率和产品质量。',
-    imageUrl: '/images/cases/case4.jpg',
-    category: 'industrial-automation',
-  },
-  {
-    id: 5,
-    title: '企业资源管理系统开发',
-    description: '为某集团企业开发的定制化ERP系统，满足其特殊业务流程和管理需求。',
-    imageUrl: '/images/cases/case5.jpg',
-    category: 'software-development',
-  },
-  {
-    id: 6,
-    title: '智能仓储物流系统',
-    description: '结合AGV、自动化仓库和智能调度系统，构建高效仓储物流解决方案。',
-    imageUrl: '/images/cases/case6.jpg',
-    category: 'intelligent-system',
-  },
-])
-
-// 分页相关
-const itemsPerPage = 6
-const currentPage = ref(1)
-const totalPages = computed(() => Math.ceil(filteredCases.value.length / itemsPerPage))
-
-// 筛选相关
-const selectedCategory = ref('all')
-
-// 案例详情
-const selectedCase = ref<Case>({} as Case)
-let caseDetailModal: any = null
-
-// 根据类别筛选案例
-const filteredCases = computed(() => {
-  let result = [...cases.value]
-
-  if (selectedCategory.value !== 'all') {
-    result = result.filter((item) => item.category === selectedCategory.value)
-  }
-
-  return result
-})
-
-// 页面变更
-const changePage = (page: number) => {
-  if (page < 1 || page > totalPages.value) return
-  currentPage.value = page
-}
-
-// 筛选案例
-const filterCases = (category: string) => {
-  selectedCategory.value = category
-  currentPage.value = 1
-}
-
-// 获取类别名称
-const getCategoryName = (categoryId: string) => {
-  const category = categories.value.find((c) => c.id === categoryId)
-  return category ? category.name : '其他'
-}
-
-// 显示案例详情
-const showCaseDetail = (caseItem: any) => {
-  selectedCase.value = caseItem
-  if (caseDetailModal) {
-    caseDetailModal.show()
-  }
-}
-
-// 组件挂载后初始化模态框
 onMounted(() => {
-  // 使用 Bootstrap 原生 API 初始化模态框
-  if (typeof window !== 'undefined' && (window as any).bootstrap) {
-    const modalElement = document.getElementById('caseDetailModal')
-    if (modalElement) {
-      caseDetailModal = new (window as any).bootstrap.Modal(modalElement)
-    }
-  }
+  const sortedCases = [...(casesData as Case[])].sort((a, b) => {
+    const dateA = a.details ? new Date(a.details.date) : new Date(a.date || 0)
+    const dateB = b.details ? new Date(b.details.date) : new Date(b.date || 0)
+    if (isNaN(dateA.getTime())) return 1
+    if (isNaN(dateB.getTime())) return -1
+    return dateB.getTime() - dateA.getTime()
+  })
+  cases.value = sortedCases
 })
+
+const formatAmount = (amountStr: string | undefined): string => {
+  if (!amountStr) return '未提供'
+  const amount = parseFloat(amountStr)
+  if (isNaN(amount)) return '未提供'
+  return `¥${(amount / 10000).toFixed(2)} 万元`
+}
 </script>
 
 <style scoped lang="scss">
-// 页面背景
-.cases-main {
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image:
-      linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 1),
-        rgba(255, 255, 255, 0.5),
-        rgba(255, 255, 255, 1)
-      ),
-      url('/images/home/电路板背景.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.2;
-    z-index: -1;
+main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/images/home/电路板背景.svg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  z-index: -1;
+}
+.projects-badge {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+}
+
+.hero-content {
+  isolation: isolate;
+}
+
+.hero-content::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 80%;
+  height: 60%;
+  background-image: url('/images/decorations/graph-decoration.svg');
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: contain;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+@media (max-width: 992px) {
+  .hero-section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    min-height: auto;
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .hero-image-container,
+  .hero-content-container {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+  }
+
+  .hero-image-container {
+    height: 50vh;
   }
 }
 
-// 案例卡片样式
-.case-card {
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-  overflow: hidden;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-
-    img {
-      transform: scale(1.05);
-    }
-  }
-
-  img {
-    transition: transform 0.5s ease;
-  }
-}
-
-// 过滤按钮样式
-.btn-outline-primary {
-  &.active {
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-  }
+.card:hover {
+  box-shadow: var(--bs-box-shadow) !important;
 }
 </style>

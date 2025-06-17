@@ -1,0 +1,51 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="400"
+  height="200"
+  viewBox="0 0 400 200"
+  preserveAspectRatio="xMidYMid meet"
+>
+  <style>
+    .line1 {
+      stroke: #495057; /* A muted gray color */
+      stroke-width: 2;
+      fill: none;
+    }
+    .line2 {
+      stroke: var(--bs-primary, #0d6efd); /* Uses CSS variable, with fallback */
+      stroke-width: 2.5;
+      fill: none;
+      filter: url(#glow);
+    }
+    .dot {
+      fill: var(--bs-primary, #0d6efd);
+      filter: url(#glow);
+    }
+    .label {
+      font-family: sans-serif;
+      font-size: 16px;
+      fill: #6c757d;
+      text-anchor: middle;
+    }
+  </style>
+
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+      <feMerge>
+        <feMergeNode in="coloredBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Gray Line -->
+  <path class="line1" d="M 20,150 Q 80,80 150,110 T 300,100" />
+  <text x="50" y="115" class="label">+125</text>
+  <text x="350" y="80" class="label">+250</text>
+
+  <!-- Primary Color Line -->
+  <path class="line2" d="M 120,180 C 180,30 250,60 320,120" />
+  <circle cx="215" cy="74" r="4" class="dot" />
+  <text x="215" y="55" class="label">+200</text>
+</svg> 
