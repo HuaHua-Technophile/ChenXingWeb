@@ -103,6 +103,22 @@ $transition-times: (250, 500, 750, 1000, 1250, 1500);
 }
 
 /**
+  * @description 响应式定位类
+  */
+$positions: static, relative, absolute, fixed, sticky;
+$breakpoints: sm, md, lg, xl, xxl;
+
+@each $breakpoint in $breakpoints {
+  @include media-breakpoint-up($breakpoint) {
+    @each $position in $positions {
+      .position-#{$breakpoint}-#{$position} {
+        position: $position !important;
+      }
+    }
+  }
+}
+
+/**
   * @description 响应式字体大小类扩展
   */
 // 定义响应式字体大小变量
@@ -134,9 +150,6 @@ $fs-sizes: (
     font-size: $value !important;
   }
 }
-
-// 定义断点列表
-$breakpoints: (sm, md, lg, xl, xxl);
 
 // 使用嵌套循环为所有断点生成字体大小类
 @each $breakpoint in $breakpoints {
