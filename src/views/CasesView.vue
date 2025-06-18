@@ -4,6 +4,7 @@
       <div
         class="hero-image-container position-relative position-lg-absolute z-index-1 mx-auto"
         style="top: 10vh; left: 2vw; width: 49%; height: 75vh"
+        data-aos="fade-right"
       >
         <img
           src="/images/工程案例/architect-3979490_1920_11zon.webp"
@@ -13,6 +14,8 @@
         <div
           class="projects-badge position-absolute bg-primary text-white py-2 px-3 py-lg-3 px-lg-4 z-index-2"
           style="bottom: 2rem; left: -2rem; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%)"
+          data-aos="fade-up"
+          data-aos-delay="300"
         >
           <div class="display-6 fw-bold fs-lg-1">15M+</div>
           <div class="text-uppercase small">项目总金额</div>
@@ -23,13 +26,34 @@
         class="hero-content position-relative position-lg-absolute z-index-2 mx-auto mt-lg-0 bg-body bg-opacity-50 blur-5 text-body p-2 p-lg-5 shadow-lg rounded-3"
         style="top: 15vh; right: 2vw; width: 49%; height: 75vh; margin-top: -1.5rem"
       >
-        <h6 class="text-primary text-uppercase fw-bold mb-1">// Why Choose Us</h6>
-        <p class="text-uppercase small text-body-secondary">为什么选择我们</p>
-        <h1 class="display-4 fw-bold mb-1">卓越实践的证明</h1>
-        <p class="lead text-body-secondary fs-6 fs-lg-5">Proven Expertise in Action</p>
-        <hr class="border-primary mb-lg-4" style="width: 60px; border-width: 4px; opacity: 1" />
+        <h6
+          class="text-primary text-uppercase fw-bold mb-1"
+          data-aos="fade-left"
+          data-aos-delay="100"
+        >
+          // Why Choose Us
+        </h6>
+        <p
+          class="text-uppercase small text-body-secondary"
+          data-aos="fade-left"
+          data-aos-delay="200"
+        >
+          为什么选择我们
+        </p>
+        <h1 class="display-4 fw-bold mb-1" data-aos="fade-left" data-aos-delay="300">
+          卓越实践的证明
+        </h1>
+        <p class="lead text-body-secondary fs-6 fs-lg-5" data-aos="fade-left" data-aos-delay="400">
+          Proven Expertise in Action
+        </p>
+        <hr
+          class="border-primary mb-lg-4"
+          style="width: 60px; border-width: 4px; opacity: 1"
+          data-aos="fade-left"
+          data-aos-delay="500"
+        />
 
-        <div class="d-flex align-items-start mb-lg-4">
+        <div class="d-flex align-items-start mb-lg-4" data-aos="fade-up" data-aos-delay="600">
           <div class="flex-shrink-0">
             <i class="bi bi-vector-pen fs-1 text-primary"></i>
           </div>
@@ -41,7 +65,7 @@
           </div>
         </div>
 
-        <div class="d-flex align-items-start mb-lg-4">
+        <div class="d-flex align-items-start mb-lg-4" data-aos="fade-up" data-aos-delay="700">
           <div class="flex-shrink-0">
             <i class="bi bi-graph-up-arrow fs-1 text-primary"></i>
           </div>
@@ -53,7 +77,7 @@
           </div>
         </div>
 
-        <div class="d-flex align-items-start">
+        <div class="d-flex align-items-start" data-aos="fade-up" data-aos-delay="800">
           <div class="flex-shrink-0">
             <i class="bi bi-gear-wide-connected fs-1 text-primary"></i>
           </div>
@@ -69,15 +93,21 @@
 
     <section class="cases-section position-relative py-5 bgimg-mask">
       <div class="container position-relative z-index-1">
-        <div class="text-center mb-5 text-body">
+        <div class="text-center mb-5 text-body" data-aos="fade-up">
           <h1 class="display-4 fw-bold">我们的成功案例</h1>
           <p class="lead">我们为各行各业的客户提供了高质量的技术解决方案。</p>
         </div>
 
         <div class="row g-4">
-          <div v-for="(caseItem, index) in cases" :key="index" class="col-12">
+          <div
+            v-for="(caseItem, index) in cases"
+            :key="index"
+            class="col-12"
+            data-aos="fade-up"
+            :data-aos-delay="index * 100"
+          >
             <div
-              class="card bg-body bg-opacity-50 blur-3 border-0 overflow-hidden hover-up transition-250"
+              class="card bg-body bg-opacity-50 blur-8 border-0 overflow-hidden hover-up transition-250"
             >
               <div class="card-body p-4 pb-0">
                 <h3 class="card-title fw-bold mb-1">{{ caseItem.title }}</h3>
