@@ -1,11 +1,7 @@
 <template>
   <section
-    class="py-4 py-md-5 position-relative overflow-hidden"
-    style="
-      background-image: url('/images/technology-6801334_1920_11zon.webp');
-      background-size: cover;
-      background-position: center;
-    "
+    class="py-4 py-md-5 position-relative overflow-hidden bgimg-center-cover"
+    :style="{ backgroundImage: `url(${getAssetUrl('images/technology-6801334_1920_11zon.webp')})` }"
     data-aos="fade-left"
   >
     <div class="position-absolute top-0 start-0 w-100 h-100 bg-black bg-opacity-50"></div>
@@ -40,6 +36,7 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import { getAssetUrl } from '@/utils/getAssetUrl'
 
 const router = useRouter()
 

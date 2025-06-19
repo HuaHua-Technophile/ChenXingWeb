@@ -1,7 +1,7 @@
 <template>
   <main class="home-main position-relative">
     <!-- 首屏部分 -->
-    <section class="container overflow-hidden min-vh-100 d-flex flex-column pt-5">
+    <section class="container min-vh-100 d-flex flex-column pt-5">
       <div class="row align-items-center flex-grow-1">
         <div class="col-lg-6">
           <div class="position-relative z-index-1 text-lg-start text-center" data-aos="fade-right">
@@ -62,7 +62,7 @@
             >
               <img
                 :key="currentImageIndex"
-                :src="`/images/home/${svgImages[currentImageIndex]}`"
+                :src="getAssetUrl(`images/home/${svgImages[currentImageIndex]}`)"
                 alt="智能硬件系统"
                 class="img-fluid position-relative z-index-1"
               />
@@ -76,7 +76,9 @@
     <section
       id="services"
       class="py-3 py-lg-5 bgimg-center-cover bgimg-mask position-relative"
-      :style="{ backgroundImage: `url(${bgComputer})` }"
+      :style="{
+        backgroundImage: `url(${getAssetUrl('images/computer-1149148_1920_11zon.webp')})`,
+      }"
     >
       <div class="container py-2 py-lg-5">
         <div class="row text-center mb-3 mb-lg-5">
@@ -84,7 +86,7 @@
             <h2 class="fs-md-1 fs-2 fw-bold mb-3">
               我们的服务 <span class="text-primary">Our Services</span>
             </h2>
-            <p class="lead fs-md-4 fs-5" data-aos="fade-up">
+            <p class="lead fs-md-4 fs-6" data-aos="fade-up">
               提供硬件施工与软件开发的一体化智能解决方案<br /><span class="text-primary"
                 >Integrated Smart Solutions for Hardware Construction and Software Development</span
               >
@@ -94,22 +96,22 @@
         <div class="row g-4">
           <div v-for="(service, index) in services" :key="index" class="col-md-6 col-lg-4">
             <div
-              class="h-100 card overflow-hidden hover-up bg-body bg-opacity-25 transition-750 rounded-4 p-4 text-center blur-10"
+              class="h-100 card overflow-hidden hover-up bg-body bg-opacity-25 transition-750 rounded-4 p-2 p-lg-4 pb-0 text-center blur-10"
               data-aos="fade-up"
               :data-aos-delay="index * 100"
               style="cursor: pointer"
               @click="navigateToService(index)"
             >
-              <div class="mb-4">
+              <div class="mb-2 mb-lg-4">
                 <i
                   :class="service.icon"
                   class="bi icon-rotate transition-750 d-inline-block fs-md-1 fs-2 text-primary"
                 ></i>
               </div>
-              <h3 class="fs-md-4 fs-5 fw-bold mb-2">{{ service.title }}</h3>
-              <h4 class="fs-md-5 fs-6 text-primary mb-3">{{ service.titleEn }}</h4>
-              <p class="mb-2 text-body-secondary fs-sm-6 fs-7">{{ service.description }}</p>
-              <p class="mb-0 text-primary fst-italic small fs-8">
+              <h3 class="fs-md-4 fs-5 fw-bold mb-1 mb-lg-2">{{ service.title }}</h3>
+              <h4 class="fs-md-5 fs-6 text-primary mb-2 mb-lg-4">{{ service.titleEn }}</h4>
+              <p class="text-body-secondary fs-sm-6 fs-7 mb-1 mb-lg-2">{{ service.description }}</p>
+              <p class="text-primary fst-italic small fs-8">
                 {{ service.descriptionEn }}
               </p>
             </div>
@@ -121,16 +123,18 @@
     <!-- 关于我们部分 -->
     <RouterLink
       to="/about"
-      class="pt-3 pt-lg-5 position-relative bgimg-center-cover bgimg-mask text-decoration-none"
-      :style="{ backgroundImage: `url('/images/home/stairs-6133971_1920_11zon.webp')` }"
+      class="pt-3 pt-lg-5 position-relative bgimg-center-cover bgimg-mask text-decoration-none d-block text-body"
+      :style="{
+        backgroundImage: `url(${getAssetUrl('images/home/stairs-6133971_1920_11zon.webp')})`,
+      }"
     >
-      <div class="container">
-        <div class="row text-center mb-3 mb-lg-5">
+      <div class="container mb-3 mb-lg-5">
+        <div class="row text-center">
           <div class="col-lg-8 mx-auto" data-aos="fade-up">
             <h2 class="fs-md-1 fs-2 fw-bold mb-3">
               为什么选择我们 <span class="text-primary">Why Choose Us</span>
             </h2>
-            <p class="lead fs-md-4 fs-5" data-aos="fade-up">
+            <p class="lead fs-md-4 fs-6 text-body-secondary" data-aos="fade-up">
               我们凭借专业知识和可靠服务，为您的成功保驾护航<br /><span class="text-primary"
                 >We pave the way for your success with expertise and reliable service</span
               >
@@ -147,7 +151,7 @@
           <!-- Feature Card -->
           <div v-else data-aos="fade-up" :data-aos-delay="item.delay" class="my-3 my-lg-0">
             <div
-              class="card h-100 p-4 bg-body bg-opacity-75 blur-10 transition-750 border-0 rounded-3 rounded-lg-0 d-flex flex-column"
+              class="card h-100 p-3 p-lg-4 bg-body bg-opacity-75 blur-10 transition-750 border-0 rounded-0 d-flex flex-column"
             >
               <div>
                 <div
@@ -158,20 +162,14 @@
               </div>
               <h5 class="fw-bold my-3">{{ item.title }}</h5>
               <hr
-                class="mt-0 mb-3"
-                style="
-                  width: 40px;
-                  border-top-width: 2px;
-                  color: var(--bs-primary);
-                  opacity: 1;
-                  margin-left: 0;
-                "
+                class="mt-0 mb-3 ms-0 text-primary"
+                style="width: 40px; border-top-width: 2px; opacity: 1"
               />
-              <div class="mt-auto">
-                <p class="text-body-secondary fs-sm-6 fs-7 mb-1">
+              <div class="mt-auto text-body-secondary">
+                <p class="fs-sm-6 fs-7 mb-1">
                   {{ item.description }}
                 </p>
-                <p class="text-body-secondary fs-8 mb-0 fst-italic">
+                <p class="fs-8 mb-0 fst-italic">
                   {{ item.descriptionEn }}
                 </p>
               </div>
@@ -183,13 +181,13 @@
 
     <!-- 工程案例部分 -->
     <section id="cases" class="py-3 py-lg-5 bg-body-tertiary">
-      <div class="container py-2 py-lg-5">
-        <div class="row text-center mb-3 mb-lg-5">
+      <div class="container py-2 py-lg-5 mb-3 mb-lg-5">
+        <div class="row text-center">
           <div class="col-lg-8 mx-auto" data-aos="fade-up">
             <h2 class="fs-md-1 fs-2 fw-bold mb-3">
               工程案例 <span class="text-primary">Case Studies</span>
             </h2>
-            <p class="lead fs-md-4 fs-5" data-aos="fade-up">
+            <p class="lead fs-md-4 fs-6" data-aos="fade-up">
               我们的成功案例是卓越实践的证明<br /><span class="text-primary"
                 >Our Success Stories are Proof of Excellence in Practice</span
               >
@@ -237,9 +235,7 @@ import 'aos/dist/aos.css'
 // 从JSON文件导入服务数据
 import servicesData from '@/assets/services.json'
 import casesData from '@/assets/cases.json'
-// 导入背景图片
-import bgComputer from '@/assets/images/computer-1149148_1920.jpg'
-
+import { getAssetUrl } from '@/utils/getAssetUrl'
 // 获取路由实例
 const router = useRouter()
 
@@ -457,7 +453,7 @@ const recentCases = ref<Case[]>([])
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/images/home/电路板背景.svg');
+  background-image: url('@/assets/images/电路板背景.svg');
   background-size: cover;
   background-position: center;
   opacity: 0.1;
@@ -498,6 +494,7 @@ const recentCases = ref<Case[]>([])
 .text-truncate-3 {
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

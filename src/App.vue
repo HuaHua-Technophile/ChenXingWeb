@@ -5,6 +5,7 @@ import { RouterView } from 'vue-router'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import 'animate.css'
+import { getAssetUrl } from '@/utils/getAssetUrl'
 
 // 组件挂载时进行初始化
 onMounted(() => {

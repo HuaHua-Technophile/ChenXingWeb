@@ -165,7 +165,7 @@ const services = ref([
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/images/home/电路板背景.svg');
+  background-image: url('@/assets/images/电路板背景.svg');
   background-size: cover;
   background-position: center;
   opacity: 0.1;

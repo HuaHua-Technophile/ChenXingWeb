@@ -9,7 +9,7 @@
         <div class="col-lg-4 col-md-6 mb-4 mb-lg-0" data-aos="fade-right" data-aos-delay="400">
           <div class="d-flex align-items-center mb-3">
             <img
-              src="@/assets/images/辰星LOGO.webp"
+              :src="getAssetUrl('images/辰星LOGO.webp')"
               alt="辰星Logo"
               width="45"
               height="45"
@@ -24,21 +24,13 @@
         <!-- 联系信息 -->
         <div class="col-lg-4 col-md-6 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="500">
           <h5 class="mb-3">联系我们 / Contact Us</h5>
-          <p class="d-flex align-items-center mb-2">
-            <i class="bi bi-geo-alt-fill me-2"></i>
-            <span>韶关市浈江区十里亭镇良村公路35号良村综合商贸城E栋八楼</span>
-          </p>
-          <p class="d-flex align-items-center mb-2">
-            <i class="bi bi-telephone-fill me-2"></i>
-            <span>0751-8819008</span>
-          </p>
-          <p class="d-flex align-items-center mb-2">
-            <i class="bi bi-phone-fill me-2"></i>
-            <span>叶灶生：13726565111</span>
-          </p>
-          <p class="d-flex align-items-center mb-2">
-            <i class="bi bi-envelope-fill me-2"></i>
-            <span>13726565111@139.com</span>
+          <p
+            v-for="(item, index) in contactInfo"
+            :key="index"
+            class="d-flex align-items-center mb-2"
+          >
+            <i class="bi me-2" :class="item.icon"></i>
+            <span>{{ item.text }}</span>
           </p>
         </div>
 
@@ -50,83 +42,34 @@
         >
           <h5 class="mb-3 text-center text-lg-start">关注我们</h5>
           <div class="d-flex gap-4 justify-content-center justify-content-lg-start">
-            <!-- 微信 -->
-            <div class="position-relative mx-1" data-aos="zoom-in" data-aos-delay="700">
+            <div
+              v-for="(social, index) in socialMedia"
+              :key="social.id"
+              class="position-relative mx-1"
+              data-aos="zoom-in"
+              :data-aos-delay="700 + index * 100"
+            >
               <div
-                class="social-icon-circle d-flex align-items-center justify-content-center rounded-circle mb-3"
-                @mouseenter="toggleQrCode('wechat')"
-                @mouseleave="hideQrCode('wechat')"
-                @click="toggleQrCode('wechat')"
+                class="social-icon-circle transition-500 cursor-pointer d-flex align-items-center justify-content-center rounded-circle mb-3"
+                @mouseenter="activeQrCode = social.id"
+                @mouseleave="activeQrCode = ''"
+                @click="activeQrCode = activeQrCode === social.id ? '' : social.id"
               >
-                <i class="bi bi-wechat fs-4 text-white"></i>
+                <i class="bi fs-4 text-white" :class="social.iconClass"></i>
               </div>
               <div
-                class="qr-dropdown position-absolute start-50 translate-middle-x"
-                :class="{ show: activeQrCode === 'wechat' }"
+                class="qr-dropdown t-100 position-absolute start-50 translate-middle-x transition-750"
+                :class="{ show: activeQrCode === social.id }"
               >
                 <div class="bg-white p-3 rounded shadow">
                   <img
-                    src="@/assets/images/辰星LOGO.webp"
-                    alt="微信二维码"
+                    :src="getAssetUrl(social.qrImage)"
+                    :alt="`${social.name}二维码`"
                     width="120"
                     height="120"
                     class="mb-2"
                   />
-                  <p class="mb-0 text-center text-dark fs-6">微信公众号</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- 微博 -->
-            <div class="position-relative mx-1" data-aos="zoom-in" data-aos-delay="800">
-              <div
-                class="social-icon-circle d-flex align-items-center justify-content-center rounded-circle mb-3"
-                @mouseenter="toggleQrCode('weibo')"
-                @mouseleave="hideQrCode('weibo')"
-                @click="toggleQrCode('weibo')"
-              >
-                <i class="bi bi-sina-weibo fs-4 text-white"></i>
-              </div>
-              <div
-                class="qr-dropdown position-absolute start-50 translate-middle-x"
-                :class="{ show: activeQrCode === 'weibo' }"
-              >
-                <div class="bg-white p-3 rounded shadow">
-                  <img
-                    src="@/assets/images/辰星LOGO.webp"
-                    alt="微博二维码"
-                    width="120"
-                    height="120"
-                    class="mb-2"
-                  />
-                  <p class="mb-0 text-center text-dark fs-6">微博官方账号</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- 抖音 -->
-            <div class="position-relative mx-1" data-aos="zoom-in" data-aos-delay="900">
-              <div
-                class="social-icon-circle d-flex align-items-center justify-content-center rounded-circle mb-3"
-                @mouseenter="toggleQrCode('tiktok')"
-                @mouseleave="hideQrCode('tiktok')"
-                @click="toggleQrCode('tiktok')"
-              >
-                <i class="bi bi-tiktok fs-4 text-white"></i>
-              </div>
-              <div
-                class="qr-dropdown position-absolute start-50 translate-middle-x"
-                :class="{ show: activeQrCode === 'tiktok' }"
-              >
-                <div class="bg-white p-3 rounded shadow">
-                  <img
-                    src="@/assets/images/辰星LOGO.webp"
-                    alt="抖音二维码"
-                    width="120"
-                    height="120"
-                    class="mb-2"
-                  />
-                  <p class="mb-0 text-center text-dark fs-6">抖音官方账号</p>
+                  <p class="mb-0 text-center text-dark fs-6">{{ social.qrText }}</p>
                 </div>
               </div>
             </div>
@@ -167,21 +110,45 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import servicesData from '@/assets/services.json'
+import { getAssetUrl } from '@/utils/getAssetUrl'
 
 const activeQrCode = ref('')
 const services = ref<any[]>([])
 
+const contactInfo = ref([
+  { icon: 'bi-geo-alt-fill', text: '韶关市浈江区十里亭镇良村公路35号良村综合商贸城E栋八楼' },
+  { icon: 'bi-telephone-fill', text: '0751-8819008' },
+  { icon: 'bi-phone-fill', text: '叶灶生：13726565111' },
+  { icon: 'bi-envelope-fill', text: '13726565111@139.com' },
+])
+
+const socialMedia = ref([
+  {
+    id: 'wechat',
+    name: '微信',
+    iconClass: 'bi-wechat',
+    qrImage: 'images/辰星LOGO.webp',
+    qrText: '微信公众号',
+  },
+  {
+    id: 'weibo',
+    name: '微博',
+    iconClass: 'bi-sina-weibo',
+    qrImage: 'images/辰星LOGO.webp',
+    qrText: '微博官方账号',
+  },
+  {
+    id: 'tiktok',
+    name: '抖音',
+    iconClass: 'bi-tiktok',
+    qrImage: 'images/辰星LOGO.webp',
+    qrText: '抖音官方账号',
+  },
+])
+
 onMounted(() => {
   services.value = servicesData
 })
-
-const toggleQrCode = (code: string) => {
-  activeQrCode.value = code
-}
-
-const hideQrCode = (code: string) => {
-  activeQrCode.value = ''
-}
 </script>
 
 <style scoped lang="scss">
@@ -193,7 +160,7 @@ const hideQrCode = (code: string) => {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('/images/home/电路板背景.svg');
+    background-image: url('@/assets/images/电路板背景.svg');
     background-size: cover;
     opacity: 0.05;
     z-index: 0;
@@ -215,8 +182,6 @@ const hideQrCode = (code: string) => {
   height: 40px;
   background-color: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  cursor: pointer;
-  transition: all 0.5s;
 
   &:hover {
     background-color: var(--bs-primary);
@@ -229,9 +194,7 @@ const hideQrCode = (code: string) => {
 .qr-dropdown {
   visibility: hidden;
   opacity: 0;
-  transition: all 0.75s;
   z-index: 100;
-  top: 100%;
 
   &.show {
     visibility: visible;

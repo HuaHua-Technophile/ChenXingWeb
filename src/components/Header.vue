@@ -1,3 +1,76 @@
+<template>
+  <header
+    class="navbar navbar-expand-lg position-fixed w-100 top-0 z-index-5 transition-750 bg-body bg-opacity-75"
+    :class="[
+      { 'bg-transparent': !isScrolled && !isNavOpen, 'blur-5 shadow': isScrolled || isNavOpen },
+    ]"
+  >
+    <div class="container">
+      <!-- Logo区域 -->
+      <div class="d-flex align-items-center">
+        <RouterLink
+          class="navbar-brand transition-750 d-flex align-items-center hover-scale"
+          to="/"
+        >
+          <img
+            src="../assets/images/辰星LOGO.webp"
+            alt="辰星Logo"
+            width="30"
+            height="30"
+            class="me-2 logo-img"
+          />
+          <span class="fw-bold">ChenXing</span>
+        </RouterLink>
+      </div>
+
+      <!-- 主题切换按钮 - 仅在移动端显示 -->
+      <div class="d-flex d-lg-none align-items-center me-2">
+        <ThemeToggle />
+      </div>
+
+      <!-- 移动端汉堡菜单按钮 -->
+      <button
+        class="navbar-toggler border-0 shadow-none"
+        type="button"
+        @click="toggleNav"
+        :aria-expanded="isNavOpen"
+        aria-controls="navbarContent"
+        aria-label="Toggle navigation"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarContent"
+      >
+        <div
+          class="hamburger-icon position-relative d-flex flex-column justify-content-between"
+          :class="{ 'is-active': isNavOpen }"
+        >
+          <span class="d-block w-100 transition-750"></span>
+          <span class="d-block w-100 transition-500"></span>
+          <span class="d-block w-100 transition-500"></span>
+        </div>
+      </button>
+
+      <!-- 导航链接 -->
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
+          <li v-for="(link, index) in navLinks" :key="index" class="nav-item py-2 py-lg-0">
+            <RouterLink
+              class="nav-link px-3 fw-medium transition-750 position-relative"
+              :to="link.path"
+              :class="{ 'active-link text-primary fw-bold': route.path === link.path }"
+            >
+              {{ link.name }}
+            </RouterLink>
+          </li>
+        </ul>
+
+        <!-- 主题切换按钮 - 仅在PC端显示 -->
+        <div class="d-none d-lg-flex ms-2">
+          <ThemeToggle />
+        </div>
+      </div>
+    </div>
+  </header>
+</template>
 <script setup lang="ts">
 // 导入必要的Vue组合API和Vue Router
 import { ref, onMounted, onUnmounted } from 'vue'
@@ -44,95 +117,13 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 </script>
-
-<template>
-  <header
-    class="navbar navbar-expand-lg position-fixed w-100 top-0 z-index-5 transition-750 bg-body bg-opacity-75"
-    :class="[
-      { 'bg-transparent': !isScrolled && !isNavOpen, 'blur-5 shadow': isScrolled || isNavOpen },
-    ]"
-  >
-    <div class="container">
-      <!-- Logo区域 -->
-      <div class="d-flex align-items-center">
-        <RouterLink
-          class="navbar-brand transition-750 d-flex align-items-center hover-scale"
-          to="/"
-        >
-          <img
-            src="../assets/images/辰星LOGO.webp"
-            alt="辰星Logo"
-            width="30"
-            height="30"
-            class="me-2 logo-img"
-          />
-          <span class="fw-bold">ChenXing</span>
-        </RouterLink>
-      </div>
-
-      <!-- 主题切换按钮 - 仅在移动端显示 -->
-      <div class="d-flex d-lg-none align-items-center me-2">
-        <ThemeToggle />
-      </div>
-
-      <!-- 移动端汉堡菜单按钮 -->
-      <button
-        class="navbar-toggler border-0 focus-none"
-        type="button"
-        @click="toggleNav"
-        :aria-expanded="isNavOpen"
-        aria-controls="navbarContent"
-        aria-label="Toggle navigation"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarContent"
-      >
-        <div class="hamburger-icon" :class="{ 'is-active': isNavOpen }">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </button>
-
-      <!-- 导航链接 -->
-      <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
-          <li v-for="(link, index) in navLinks" :key="index" class="nav-item py-2 py-lg-0">
-            <RouterLink
-              class="nav-link px-3 fw-medium transition-750 position-relative"
-              :to="link.path"
-              :class="{ 'active-link': route.path === link.path }"
-            >
-              {{ link.name }}
-            </RouterLink>
-          </li>
-        </ul>
-
-        <!-- 主题切换按钮 - 仅在PC端显示 -->
-        <div class="d-none d-lg-flex ms-2">
-          <ThemeToggle />
-        </div>
-      </div>
-    </div>
-  </header>
-</template>
-
 <style lang="scss" scoped>
 .hover-scale:hover {
   transform: scale(1.1);
 }
 
-.nav-link:hover {
-  color: var(--bs-primary);
-}
-
-.focus-none:focus {
-  box-shadow: none;
-}
-
 // 激活的导航链接样式
 .active-link {
-  color: var(--bs-primary) !important;
-  font-weight: bold;
   text-shadow: 0 0 1px var(--bs-primary);
   &::after {
     content: '';
@@ -150,19 +141,12 @@ onUnmounted(() => {
 .hamburger-icon {
   width: 24px;
   height: 20px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 
   span {
-    display: block;
     height: 2px;
-    width: 100%;
-    background-color: var(--bs-body-color);
     border-radius: 2px;
-    transition: all 0.3s;
     transform-origin: center;
+    background-color: var(--bs-body-color);
   }
 
   &.is-active {
