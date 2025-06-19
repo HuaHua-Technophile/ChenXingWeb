@@ -1,7 +1,9 @@
 <template>
   <main
     class="bgimg-center-cover bgimg-mask"
-    style="background-image: url('/images/pexels-cookiecutter-17489160.webp')"
+    :style="{
+      backgroundImage: `url(${getAssetUrl('images/pexels-cookiecutter-17489160.webp')})`,
+    }"
   >
     <!-- 首屏 -->
     <section class="min-vh-100 container d-flex flex-column pt-5">
@@ -216,6 +218,7 @@ import { ref, watch, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 // 从JSON文件导入服务数据
 import services from '@/assets/services.json'
+import { getAssetUrl } from '@/utils/getAssetUrl'
 
 const advantages = ['统一数据视图', '自动化业务流程', '提升运营效率', '快速响应市场']
 
@@ -250,7 +253,7 @@ const leaveClass = ref('animate__fadeOut animate__faster') // 默认退场动画
 onMounted(() => {
   // 为页首设置随机图片
   const randomIndex = Math.floor(Math.random() * homeImages.length)
-  randomImage.value = `/images/home/${homeImages[randomIndex]}`
+  randomImage.value = getAssetUrl(`images/home/${homeImages[randomIndex]}`)
 
   // 如果URL中有tab参数，则使用该参数设置激活的标签页
   if (route.query.tab !== undefined) {

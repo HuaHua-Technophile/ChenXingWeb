@@ -22,7 +22,7 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
     Components({
-      resolvers: [BootstrapVueNextResolver()],
+      resolvers: [ElementPlusResolver(), BootstrapVueNextResolver()],
     }),
   ],
   resolve: {

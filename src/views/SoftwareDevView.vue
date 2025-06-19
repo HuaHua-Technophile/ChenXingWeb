@@ -51,7 +51,7 @@
         <div class="col-lg-6 ps-lg-5" data-aos="fade-left">
           <div class="position-relative hero-image-container w-90 mx-auto w-md-auto">
             <img
-              src="/images/软件开发/software-developer-6521720_1920_11zon.webp"
+              :src="getAssetUrl('images/软件开发/software-developer-6521720_1920_11zon.webp')"
               class="img-fluid rounded-bottom rounded-start shadow"
               alt="软件开发团队"
             />
@@ -209,7 +209,11 @@
           <div
             class="tech-logo-img-container overflow-hidden d-flex align-items-center justify-content-center"
           >
-            <img :src="tech.path" class="h-100 object-fit-cover" style="transform: scale(1.3)" />
+            <img
+              :src="getAssetUrl(tech.path)"
+              class="h-100 object-fit-cover"
+              style="transform: scale(1.3)"
+            />
           </div>
           <span class="fs-6 fs-md-5">{{ tech.name }}</span>
         </swiper-slide>
@@ -236,7 +240,11 @@
           <div
             class="tech-logo-img-container overflow-hidden d-flex align-items-center justify-content-center"
           >
-            <img :src="tech.path" class="h-100 object-fit-cover" style="transform: scale(1.3)" />
+            <img
+              :src="getAssetUrl(tech.path)"
+              class="h-100 object-fit-cover"
+              style="transform: scale(1.3)"
+            />
           </div>
           <span class="fs-6 fs-md-5">{{ tech.name }}</span>
         </swiper-slide>
@@ -250,6 +258,7 @@ import { ref, onMounted } from 'vue'
 import { CountUp } from 'countup.js'
 import { useIntersectionObserver } from '@vueuse/core'
 import { register } from 'swiper/element/bundle'
+import { getAssetUrl } from '@/utils/getAssetUrl'
 
 onMounted(register)
 
@@ -359,33 +368,33 @@ const techStacks = ref([
 
 // 技术栈Logo数据
 const techLogos = ref([
-  { name: 'Vue.js', path: '/images/软件开发/Vue.js-Logo.wine.svg', category: '前端' },
-  { name: 'TypeScript', path: '/images/软件开发/TypeScript-Logo.wine.svg', category: '前端' },
+  { name: 'Vue.js', path: 'images/软件开发/Vue.js-Logo.wine.svg', category: '前端' },
+  { name: 'TypeScript', path: 'images/软件开发/TypeScript-Logo.wine.svg', category: '前端' },
   {
     name: 'Bootstrap',
-    path: '/images/软件开发/Bootstrap_(front-end_framework)-Logo.wine.svg',
+    path: 'images/软件开发/Bootstrap_(front-end_framework)-Logo.wine.svg',
     category: '前端',
   },
-  { name: 'jQuery', path: '/images/软件开发/JQuery-Logo.wine.svg', category: '前端' },
-  { name: 'Node.js', path: '/images/软件开发/Node.js-Logo.wine.svg', category: '后端' },
+  { name: 'jQuery', path: 'images/软件开发/JQuery-Logo.wine.svg', category: '前端' },
+  { name: 'Node.js', path: 'images/软件开发/Node.js-Logo.wine.svg', category: '后端' },
   {
     name: 'Python',
-    path: '/images/软件开发/Python_(programming_language)-Logo.wine.svg',
+    path: 'images/软件开发/Python_(programming_language)-Logo.wine.svg',
     category: '后端',
   },
   {
     name: 'Java',
-    path: '/images/软件开发/Java_(programming_language)-Logo.wine.svg',
+    path: 'images/软件开发/Java_(programming_language)-Logo.wine.svg',
     category: '后端',
   },
-  { name: 'MySQL', path: '/images/软件开发/MySQL-Logo.wine.svg', category: '数据库' },
-  { name: 'Docker', path: '/images/软件开发/Docker_(software)-Logo.wine.svg', category: '工具' },
-  { name: 'Kubernetes', path: '/images/软件开发/Kubernetes-Logo.wine.svg', category: '工具' },
-  { name: 'Linux', path: '/images/软件开发/Linux-Logo.wine.svg', category: '系统' },
-  { name: 'Nginx', path: '/images/软件开发/Nginx-Logo.wine.svg', category: '服务器' },
-  { name: 'GitHub', path: '/images/软件开发/GitHub-Logo.wine.svg', category: '版本控制' },
-  { name: 'GitLab', path: '/images/软件开发/GitLab-Logo.wine.svg', category: '版本控制' },
-  { name: 'DeepSeek', path: '/images/软件开发/DeepSeek-Logo.wine.svg', category: 'AI' },
+  { name: 'MySQL', path: 'images/软件开发/MySQL-Logo.wine.svg', category: '数据库' },
+  { name: 'Docker', path: 'images/软件开发/Docker_(software)-Logo.wine.svg', category: '工具' },
+  { name: 'Kubernetes', path: 'images/软件开发/Kubernetes-Logo.wine.svg', category: '工具' },
+  { name: 'Linux', path: 'images/软件开发/Linux-Logo.wine.svg', category: '系统' },
+  { name: 'Nginx', path: 'images/软件开发/Nginx-Logo.wine.svg', category: '服务器' },
+  { name: 'GitHub', path: 'images/软件开发/GitHub-Logo.wine.svg', category: '版本控制' },
+  { name: 'GitLab', path: 'images/软件开发/GitLab-Logo.wine.svg', category: '版本控制' },
+  { name: 'DeepSeek', path: 'images/软件开发/DeepSeek-Logo.wine.svg', category: 'AI' },
 ])
 
 const progressContainer = ref<HTMLElement | null>(null)
@@ -461,7 +470,7 @@ const { stop } = useIntersectionObserver(
 }
 
 .dev-process-section {
-  background: url('/images/软件开发/source-4280758_11zon.webp') center/cover fixed;
+  background: url('@/assets/images/软件开发/source-4280758_11zon.webp') center/cover fixed;
 }
 
 .title-line {

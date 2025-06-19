@@ -5,7 +5,7 @@
       <div class="row align-items-center flex-grow-1">
         <div class="col-lg-5 d-none d-lg-block" data-aos="fade-right" data-aos-duration="1000">
           <img
-            src="/images/技术支持/slider-single-img3.webp"
+            :src="getAssetUrl('images/技术支持/slider-single-img3.webp')"
             alt="技术支持专家"
             class="img-fluid rounded"
           />
@@ -69,7 +69,7 @@
             <!-- 将图片设置为背景 -->
             <div
               class="card-background-image position-absolute top-0 left-0 w-100 h-100 z-index-0 bgimg-center-cover transition-750"
-              :style="`background-image: url(${service.image})`"
+              :style="`background-image: url(${getAssetUrl(service.image)})`"
             ></div>
 
             <!-- 内容区域 -->
@@ -109,12 +109,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import ContactInfoSection from '@/components/ContactInfoSection.vue'
+import { getAssetUrl } from '@/utils/getAssetUrl'
 
 // 抽离技术支持服务数据
 const services = ref([
   {
-    image: '/images/技术支持/engineer-4915804_1920_11zon.webp',
+    image: 'images/技术支持/engineer-4915804_1920_11zon.webp',
     title: '专业现场技术支持与故障排除服务',
     team: '技术团队',
     tag: '现场服务',
@@ -124,7 +124,7 @@ const services = ref([
     features: ['7×24小时紧急响应服务', '智能化系统故障诊断与修复', '硬件设备维护与升级服务'],
   },
   {
-    image: '/images/技术支持/engineer-4941144_1920_11zon.webp',
+    image: 'images/技术支持/engineer-4941144_1920_11zon.webp',
     title: '全天候远程技术支持与系统监控服务',
     team: '远程团队',
     tag: '在线支持',
@@ -134,7 +134,7 @@ const services = ref([
     features: ['系统远程监控与健康检查', '专业技术顾问在线咨询', '软件远程更新与问题修复'],
   },
   {
-    image: '/images/技术支持/engineer-4941347_1920_11zon.webp',
+    image: 'images/技术支持/engineer-4941347_1920_11zon.webp',
     title: '智能系统专业技术培训与能力提升课程',
     team: '培训专家',
     tag: '专业培训',
@@ -144,7 +144,7 @@ const services = ref([
     features: ['智能系统操作培训', '常见故障处理指导', '系统维护技术文档提供'],
   },
   {
-    image: '/images/技术支持/engineer-4941351_1920_11zon.webp',
+    image: 'images/技术支持/engineer-4941351_1920_11zon.webp',
     title: '智能系统预防性维护与设备寿命延长方案',
     team: '维护团队',
     tag: '系统预防',

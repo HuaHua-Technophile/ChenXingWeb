@@ -3,15 +3,15 @@
     <!-- 顶部首屏 -->
     <section class="hero-section position-relative overflow-hidden w-100 pt-5" data-aos="fade-down">
       <div class="container">
-        <div
-          class="row min-vh-50 align-items-center justify-content-center text-center mb-2 mb-lg-4"
-        >
-          <p class="text-uppercase mb-3 small fw-bold text-primary" data-aos="fade-up">About Us</p>
-          <h1 class="display-4 fw-bold mb-4" data-aos="fade-up">公司简介</h1>
-          <p class="lead mb-0" data-aos="fade-up">
+        <div class="row min-vh-50 align-items-center justify-content-center text-center">
+          <p class="text-uppercase mb-1 mb-lg-3 small fw-bold text-primary" data-aos="fade-up">
+            About Us
+          </p>
+          <h1 class="display-4 fw-bold mb-3 mb-lg-4" data-aos="fade-up">公司简介</h1>
+          <p class="lead mb-0 fs-6 fs-lg-5" data-aos="fade-up">
             专注<span class="text-primary">信息技术服务</span> · 助力企业数字化转型
           </p>
-          <p class="lead mb-2" data-aos="fade-up" data-aos-delay="400">
+          <p class="lead mb-3 mb-lg-4 fs-6 fs-lg-5" data-aos="fade-up" data-aos-delay="400">
             Focus on <span class="text-primary">IT Services</span> · Empower Digital Transformation
           </p>
           <p
@@ -22,7 +22,7 @@
             成立于 <strong><span ref="foundYearElement">0</span></strong> 年，服务已持续
             <strong><span ref="serviceYearsElement">0</span></strong> 年+
           </p>
-          <i class="bi bi-chevron-down text-primary fs-1 floating-icon"></i>
+          <i class="bi bi-chevron-down text-primary fs-1 floating-icon d-inline-block"></i>
         </div>
       </div>
     </section>
@@ -31,7 +31,7 @@
     <!-- 主要内容部分 -->
     <section
       :style="{
-        backgroundImage: `url(${contentBgImage})`,
+        backgroundImage: `url(${getAssetUrl('images/business-7111764_1920.webp')})`,
       }"
       class="bgimg-center-cover bgimg-mask position-relative"
     >
@@ -62,7 +62,7 @@
                     data-aos="fade-right"
                   >
                     <div class="card-body">
-                      <h5 class="card-title mb-3">
+                      <h5 class="card-title text-primary mb-3">
                         <i class="bi bi-building-check icon-rotate me-2 text-primary"></i
                         >企业资质证书
                       </h5>
@@ -87,7 +87,7 @@
                     data-aos="fade-up"
                   >
                     <div class="card-body">
-                      <h5 class="card-title mb-3">
+                      <h5 class="card-title text-primary mb-3">
                         <i class="bi bi-person-badge icon-rotate me-2 text-primary"></i>人员资质证书
                       </h5>
                       <ul class="list-unstyled mb-0">
@@ -115,7 +115,7 @@
                     data-aos="fade-up"
                   >
                     <div class="card-body">
-                      <h5 class="card-title mb-3">
+                      <h5 class="card-title text-primary mb-3">
                         <i class="bi bi-file-earmark-check icon-rotate me-2 text-primary"></i
                         >知识产权证书
                       </h5>
@@ -143,7 +143,7 @@
                     :data-aos-delay="100 * (index + 1)"
                   >
                     <div class="card-body">
-                      <h5 class="card-title">
+                      <h5 class="card-title text-primary">
                         <i :class="`bi ${service.icon} icon-rotate me-2 text-primary`"></i
                         >{{ service.title }}
                       </h5>
@@ -202,53 +202,32 @@
             <div class="mb-5">
               <h3 class="border-start border-4 border-primary ps-3 mb-4">企业证书展示</h3>
               <div>
-                <swiper
-                  :slides-per-view="1"
-                  :space-between="30"
+                <swiper-container
+                  slides-per-view="auto"
                   :pagination="{ clickable: true }"
-                  :navigation="true"
-                  :loop="true"
-                  :effect="'coverflow'"
-                  :centered-slides="true"
-                  :autoplay="{ delay: 999999, disableOnInteraction: false }"
-                  :coverflow-effect="{
-                    rotate: 30,
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 1,
-                    slideShadows: false,
-                  }"
-                  :breakpoints="{
-                    '640': {
-                      slidesPerView: 2,
-                      spaceBetween: 20,
-                    },
-                    '992': {
-                      slidesPerView: 3,
-                      spaceBetween: 30,
-                    },
-                  }"
-                  :modules="swiperModules"
-                  class="certificate-swiper overflow-hidden"
+                  navigation="true"
+                  loop="true"
+                  effect="coverflow"
+                  grab-cursor="true"
+                  class="certificate-swiper mx-auto"
                 >
                   <swiper-slide
                     v-for="(image, index) in certificateImages"
                     :key="index"
-                    class="h-100 rounded overflow-hidden bgimg-mask blur-10 shadow border border-light border-opacity-50"
-                    style="aspect-ratio: 2 /3"
+                    class="rounded-4 overflow-hidden blur-5 border bg-body bg-opacity-25"
                   >
                     <el-image
                       fit="contain"
-                      :src="image.src"
+                      :src="getAssetUrl(image.src)"
                       :alt="image.alt"
-                      class="h-100 w-100"
-                      :preview-src-list="certificateImages.map((img) => img.src)"
+                      class="h-100 w-100 rounded"
+                      :preview-src-list="certificateImages.map((img) => getAssetUrl(img.src))"
                       :initial-index="index"
                       :preview-teleported="true"
                       loading="lazy"
                     />
                   </swiper-slide>
-                </swiper>
+                </swiper-container>
               </div>
             </div>
           </div>
@@ -262,15 +241,12 @@
 import { CountUp } from 'countup.js'
 import { onMounted, ref, watch } from 'vue'
 import { useElementVisibility } from '@vueuse/core'
-import contentBgImage from '@/assets/images/business-7111764_1920.webp'
-// 导入Swiper组件
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Navigation, Pagination, EffectCoverflow, Autoplay } from 'swiper/modules'
-// 导入Swiper样式
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css/effect-coverflow'
+import { getAssetUrl } from '@/utils/getAssetUrl'
+// 导入Swiper Element并注册
+import { register } from 'swiper/element/bundle'
+
+// 注册 Swiper 自定义元素
+onMounted(register)
 
 // 计算公司成立年限
 const foundYear = 2013
@@ -337,17 +313,23 @@ const businessServices = [
 
 // 证书图片数据
 const certificateImages = [
-  { src: '/images/韶关市辰星信息技术有限公司证书/图片 1_1.webp', alt: '安全生产许可证' },
-  { src: '/images/韶关市辰星信息技术有限公司证书/图片 2_2.webp', alt: '安全防范系统资质证书' },
-  { src: '/images/韶关市辰星信息技术有限公司证书/图片 3_3.webp', alt: '营业执照' },
-  { src: '/images/韶关市辰星信息技术有限公司证书/图片 4.webp', alt: '高新技术企业证书' },
-  { src: '/images/韶关市辰星信息技术有限公司证书/图片 5.webp', alt: '软件著作权证书1' },
-  { src: '/images/韶关市辰星信息技术有限公司证书/图片 6.webp', alt: '软件著作权证书2' },
-  { src: '/images/韶关市辰星信息技术有限公司证书/图片 7.webp', alt: '软件著作权证书3' },
-  { src: '/images/韶关市辰星信息技术有限公司证书/图片 8.webp', alt: '软件著作权证书4' },
-  { src: '/images/韶关市辰星信息技术有限公司证书/图片 9.webp', alt: '软件著作权证书5' },
-  { src: '/images/韶关市辰星信息技术有限公司证书/专利1_10.webp', alt: '专利证书1' },
-  { src: '/images/韶关市辰星信息技术有限公司证书/专利2_11.webp', alt: '专利证书2' },
+  { src: 'images/韶关市辰星信息技术有限公司证书/图片 1_1.webp', alt: '安全生产许可证' },
+  { src: 'images/韶关市辰星信息技术有限公司证书/图片 2_2.webp', alt: '安全防范系统资质证书' },
+  { src: 'images/韶关市辰星信息技术有限公司证书/图片 3_3.webp', alt: '营业执照' },
+  { src: 'images/韶关市辰星信息技术有限公司证书/专利1_10.webp', alt: '专利证书1' },
+  { src: 'images/韶关市辰星信息技术有限公司证书/专利2_11.webp', alt: '专利证书2' },
+  { src: 'images/韶关市辰星信息技术有限公司证书/图片 4.webp', alt: '高新技术企业证书' },
+  { src: 'images/韶关市辰星信息技术有限公司证书/图片 5.webp', alt: '软件著作权证书1' },
+  { src: 'images/韶关市辰星信息技术有限公司证书/图片 6.webp', alt: '软件著作权证书2' },
+  { src: 'images/韶关市辰星信息技术有限公司证书/图片 7.webp', alt: '软件著作权证书3' },
+  { src: 'images/韶关市辰星信息技术有限公司证书/图片 8.webp', alt: '软件著作权证书4' },
+  { src: 'images/韶关市辰星信息技术有限公司证书/图片 9.webp', alt: '软件著作权证书5' },
+  { src: 'images/韶关市辰星信息技术有限公司证书/图片 10_4.webp', alt: '软件著作权证书6' },
+  { src: 'images/韶关市辰星信息技术有限公司证书/图片 11_5.webp', alt: '软件著作权证书7' },
+  { src: 'images/韶关市辰星信息技术有限公司证书/图片 14_6.webp', alt: '软件著作权证书8' },
+  { src: 'images/韶关市辰星信息技术有限公司证书/图片 15_7.webp', alt: '软件著作权证书9' },
+  { src: 'images/韶关市辰星信息技术有限公司证书/图片 16_8.webp', alt: '软件著作权证书10' },
+  { src: 'images/韶关市辰星信息技术有限公司证书/图片 17_9.webp', alt: '软件著作权证书11' },
 ]
 
 // 使用useElementVisibility跟踪基本元素可见性
@@ -436,9 +418,6 @@ onMounted(() => {
     })
   }
 })
-
-// Swiper模块
-const swiperModules = [Navigation, Pagination, EffectCoverflow, Autoplay]
 </script>
 
 <style scoped lang="scss">
@@ -461,7 +440,6 @@ const swiperModules = [Navigation, Pagination, EffectCoverflow, Autoplay]
 // 添加浮动图标动画
 .floating-icon {
   animation: floating 2s infinite;
-  display: inline-block;
 }
 
 @keyframes floating {
@@ -506,14 +484,18 @@ const swiperModules = [Navigation, Pagination, EffectCoverflow, Autoplay]
 .card-title {
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--bs-primary);
 }
 
 // 证书展示样式
 .certificate-swiper {
   padding-bottom: 50px; // 为分页器留出空间
   max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+}
+
+swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 400px;
 }
 </style>

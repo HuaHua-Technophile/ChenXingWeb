@@ -7,7 +7,7 @@
         data-aos="fade-right"
       >
         <img
-          src="/images/工程案例/architect-3979490_1920_11zon.webp"
+          :src="getAssetUrl('images/工程案例/architect-3979490_1920_11zon.webp')"
           class="shadow-lg w-100 h-100 object-fit-cover rounded-3 d-block ms-auto"
           alt="工程案例背景"
         />
@@ -91,7 +91,12 @@
       </div>
     </section>
 
-    <section class="cases-section position-relative py-5 bgimg-mask">
+    <section
+      class="cases-section bgimg-center-cover bgimg-mask position-relative py-5"
+      :style="{
+        backgroundImage: `url(${getAssetUrl('images/工程案例/london-scaffolding-7387256_1920_11zon.webp')})`,
+      }"
+    >
       <div class="container position-relative z-index-1">
         <div class="text-center mb-5 text-body" data-aos="fade-up">
           <h1 class="display-4 fw-bold">我们的成功案例</h1>
@@ -211,6 +216,7 @@
 import { ref, onMounted } from 'vue'
 // @ts-ignore
 import casesData from '@/assets/cases.json'
+import { getAssetUrl } from '@/utils/getAssetUrl'
 
 interface Case {
   title: string
@@ -283,7 +289,7 @@ main::before {
   right: 0;
   width: 50%;
   aspect-ratio: 1/1 !important;
-  background-image: url('/images/decorations/graph-decoration.svg');
+  background-image: url('@/assets/images/decorations/graph-decoration.svg');
   background-size: 120%;
   background-position: 25% 25%;
   z-index: -1;
@@ -291,8 +297,6 @@ main::before {
 
 .cases-section {
   isolation: isolate;
-  background: url('/images/工程案例/london-scaffolding-7387256_1920_11zon.webp') no-repeat center
-    center/cover;
   background-attachment: fixed;
 }
 
