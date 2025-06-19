@@ -9,12 +9,12 @@
     <section class="min-vh-100 container d-flex flex-column pt-5">
       <div class="row align-items-center flex-grow-1">
         <div class="col-md-6" data-aos="fade-right" data-aos-duration="1000">
-          <img :src="randomImage" class="img-fluid rounded" alt="智能集成" />
+          <img :src="randomImage" class="hero-image rounded" alt="智能集成" />
         </div>
         <div class="col-md-6 ps-lg-5" data-aos="fade-left" data-aos-duration="1000">
           <p class="text-primary fw-bold">OUR ADVANTAGES</p>
           <h2 class="h3 mb-3">通过智能集成为您的业务赋能</h2>
-          <p class="mb-5 text-body-secondary fs-lg-5">
+          <p class="mb-2 mb-lg-5 text-body-secondary fs-lg-5">
             我们将分散的系统、应用和数据连接起来，打破信息孤岛，实现数据和流程的无缝流转，帮助您优化业务流程、提高决策效率、创造新的商业价值。
           </p>
           <div class="row row-cols-1 row-cols-md-2 g-3">
@@ -31,13 +31,13 @@
     </section>
 
     <!-- 联系信息 -->
-    <ContactInfoSection class="mb-5" />
+    <ContactInfoSection class="mb-3 mb-lg-4" />
 
     <!-- 服务区域 -->
     <section class="container pb-3">
       <!-- 服务Tab导航栏,aos动画会限制最大宽度，因此需要显式指定 -->
       <div
-        class="row row-cols-4 row-cols-md-auto justify-content-between mb-4"
+        class="row row-cols-4 row-cols-md-auto justify-content-between"
         id="servicesTabs"
         role="tablist"
         data-aos="fade-up"
@@ -45,7 +45,7 @@
       >
         <div class="col" v-for="(service, index) in services" :key="index">
           <button
-            class="w-100 card overflow-hidden px-md-4 px-2 py-md-2 py-1 transition-750 bg-opacity-25 blur-6 hover-up"
+            class="w-100 card overflow-hidden px-md-4 px-2 py-md-2 py-1 transition-750 bg-opacity-25 blur-6 hover-up mb-3"
             :class="[index === activeTab ? 'bg-primary-subtle text-primary shadow' : 'bg-body']"
             :id="`service-tab-${index}`"
             @click="activeTab = index"
@@ -62,7 +62,7 @@
 
       <!-- 服务内容区域 -->
       <div
-        class="tab-content p-md-4 p-3 border rounded bg-body bg-opacity-50 overflow-hidden"
+        class="tab-content p-md-4 p-2 border rounded bg-body bg-opacity-50 overflow-hidden"
         id="servicesTabContent"
         data-aos="zoom-in"
         data-aos-duration="1200"
@@ -81,11 +81,11 @@
             role="tabpanel"
             :aria-labelledby="`service-tab-${activeTab}`"
           >
-            <div class="service-header mb-5">
-              <h2 class="mb-2">{{ services[activeTab].title }}</h2>
+            <div class="service-header mb-3 mb-lg-5">
+              <h2>{{ services[activeTab].title }}</h2>
               <h4 class="text-primary mb-3">{{ services[activeTab].titleEn }}</h4>
-              <p class="lead">{{ services[activeTab].description }}</p>
-              <p class="text-secondary fst-italic mb-0">
+              <p class="lead fs-6 fs-lg-5 mb-1 mb-lg-2">{{ services[activeTab].description }}</p>
+              <p class="text-secondary mb-0">
                 {{ services[activeTab].descriptionEn }}
               </p>
             </div>
@@ -104,7 +104,7 @@
                   <h5 class="mb-0">方案概述</h5>
                 </div>
                 <div class="card-body p-md-3 p-2">
-                  <p>{{ services[activeTab].detailContent.overview }}</p>
+                  <p class="mb-0">{{ services[activeTab].detailContent.overview }}</p>
                 </div>
               </div>
 
@@ -313,6 +313,16 @@ watch(activeTab, (newValue, oldValue) => {
     i {
       transform: rotateY(180deg);
     }
+  }
+}
+
+.hero-image {
+  display: block;
+  margin-inline: auto;
+  max-width: 250px;
+
+  @media (min-width: 768px) {
+    max-width: 100%;
   }
 }
 </style>

@@ -3,20 +3,20 @@
     <!-- Hero Section -->
     <section class="min-vh-100 container d-flex flex-column pt-5 mb-5">
       <div class="row flex-grow-1 align-items-center">
-        <div class="col-lg-6 pe-lg-5 mb-4 mb-lg-0" data-aos="fade-up">
+        <div class="col-lg-6 pe-lg-5 mb-3 mb-lg-0" data-aos="fade-up">
           <div class="d-flex align-items-center gap-3 mb-2">
             <p class="text-primary fw-bold text-uppercase mb-0">Some Fact</p>
             <div class="title-line bg-primary"></div>
           </div>
-          <h1 class="fw-bold fs-3 fs-lg-1 mb-3 mb-lg-4">
+          <h1 class="fw-bold fs-4 fs-lg-1 mb-3 mb-lg-4">
             We empower your business success with technology
           </h1>
-          <p class="lead mb-3 mb-lg-4">
+          <p class="lead mb-3 mb-lg-4 fs-6 fs-lg-5">
             我们提供全面的软件开发解决方案，从需求分析到系统上线，助力您的业务在数字化时代保持领先。
           </p>
 
           <div ref="progressContainer">
-            <div v-for="(skill, index) in skills" :key="skill.name" class="mb-3 mb-lg-4">
+            <div v-for="(skill, index) in skills" :key="skill.name" class="mb-2 mb-lg-4">
               <div class="d-flex justify-content-between mb-1">
                 <span>{{ skill.name }}</span>
                 <span
@@ -90,7 +90,7 @@
                 ></i>
               </div>
               <h4 class="card-title">{{ devType.title }}</h4>
-              <p>
+              <p class="mb-0">
                 {{ devType.descriptionCN }}<br /><small class="text-muted">{{
                   devType.descriptionEN
                 }}</small>
@@ -110,29 +110,33 @@
     <ContactInfoSection class="" data-aos="fade-up" />
 
     <!-- 开发流程 -->
-    <section class="mb-5 py-5 dev-process-section position-relative bgimg-mask">
+    <section class="mb-4 mb-lg-5 pt-4 pt-lg-5 dev-process-section position-relative bgimg-mask">
       <div class="container position-relative z-index-1">
         <div id="dev-process" class="row">
-          <div class="col-12 text-center mb-5" data-aos="fade-up">
+          <div class="col-12 text-center" data-aos="fade-up">
             <h2>我们的开发流程</h2>
             <p class="lead">科学高效的软件开发方法论</p>
           </div>
 
           <div class="col-12">
             <div class="timeline position-relative py-4">
-              <div v-for="(process, index) in devProcesses" :key="process.title" class="row g-0">
+              <div
+                v-for="(process, index) in devProcesses"
+                :key="process.title"
+                class="row g-0 mb-5 mb-lg-0"
+              >
                 <div
                   :class="[
                     'col-12 col-md-6',
                     {
                       'offset-md-6': (index + 1) % 2 === 0,
-                      'timeline-item-right': (index + 1) % 2 === 0,
-                      'timeline-item-left': (index + 1) % 2 !== 0,
+                      'timeline-item-right ps-lg-3': (index + 1) % 2 === 0,
+                      'timeline-item-left pe-lg-3': (index + 1) % 2 !== 0,
                     },
                   ]"
                   :data-aos="(index + 1) % 2 !== 0 ? 'fade-right' : 'fade-left'"
                 >
-                  <div class="timeline-item position-relative mb-5">
+                  <div class="timeline-item position-relative">
                     <div
                       class="timeline-panel card bg-body bg-opacity-25 blur-10 hover-up transition-750 rounded-4 mx-md-4 overflow-visible border-0 border-top border-primary border-5 z-index-2"
                     >
@@ -152,7 +156,7 @@
                         </div>
                       </div>
                       <div
-                        class="card-body p-4 mt-2 position-relative overflow-hidden timeline-card-body"
+                        class="card-body pt-4 ps-5 pe-3 pb-3 p-lg-4 mt-2 position-relative overflow-hidden"
                       >
                         <h4 class="card-title mb-1">
                           {{ process.title }}
@@ -161,12 +165,12 @@
                           {{ process.titleEN }}
                         </h6>
                         <p class="card-text mb-1 text-start">{{ process.text }}</p>
-                        <p class="card-text text-start lh-sm">
+                        <p class="card-text text-start lh-sm mb-0">
                           <small class="text-muted">{{ process.textEN }}</small>
                         </p>
                         <div
                           class="position-absolute end-0 user-select-none lh-1 z-index-1 fw-bold text-primary"
-                          style="--bs-text-opacity: 0.06; bottom: -1rem; font-size: 9rem"
+                          style="--bs-text-opacity: 0.2; bottom: -1rem; font-size: 9rem"
                         >
                           0{{ index + 1 }}
                         </div>
@@ -537,13 +541,6 @@ const { stop } = useIntersectionObserver(
   .timeline::before {
     left: 2.5rem;
     transform: translateX(-50%);
-  }
-
-  .timeline-card-body {
-    padding-left: 5rem !important;
-    padding-top: 2rem !important;
-    padding-right: 1rem !important;
-    padding-bottom: 1rem !important;
   }
 
   .timeline-icon-wrapper {
