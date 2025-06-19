@@ -61,7 +61,7 @@
                 class="qr-dropdown t-100 position-absolute start-50 translate-middle-x transition-750"
                 :class="{ show: activeQrCode === social.id }"
               >
-                <div class="bg-white p-3 rounded shadow">
+                <div class="bg-body bg-opacity-50 blur-2 p-3 rounded shadow border">
                   <img
                     :src="getAssetUrl(social.qrImage)"
                     :alt="`${social.name}二维码`"
@@ -69,7 +69,7 @@
                     height="120"
                     class="mb-2"
                   />
-                  <p class="mb-0 text-center text-dark fs-6">{{ social.qrText }}</p>
+                  <p class="mb-0 text-center text-body fs-6">{{ social.qrText }}</p>
                 </div>
               </div>
             </div>

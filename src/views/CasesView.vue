@@ -112,7 +112,7 @@
             :data-aos-delay="index * 100"
           >
             <div
-              class="card bg-body bg-opacity-50 blur-8 border-0 overflow-hidden hover-up transition-250"
+              class="card rounded-4 bg-body bg-opacity-50 blur-8 border-0 overflow-hidden hover-up transition-250"
             >
               <div class="card-body p-4 pb-0">
                 <h3 class="card-title fw-bold mb-1">{{ caseItem.title }}</h3>

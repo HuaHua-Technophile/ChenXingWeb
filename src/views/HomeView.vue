@@ -180,7 +180,7 @@
     </RouterLink>
 
     <!-- 工程案例部分 -->
-    <section id="cases" class="py-2 py-lg-4 bg-body-tertiary">
+    <section id="cases" class="py-2 py-lg-4">
       <div class="container">
         <div class="row text-center">
           <div class="col-lg-8 mx-auto" data-aos="fade-up">
@@ -197,7 +197,7 @@
         <div class="row g-4">
           <div v-for="(caseItem, index) in recentCases" :key="index" class="col-md-6 col-lg-4">
             <div
-              class="card h-100 overflow-hidden hover-up bg-body transition-750 rounded-4"
+              class="card bg-body bg-opacity-25 blur-3 h-100 overflow-hidden hover-up transition-750 rounded-4"
               data-aos="fade-up"
               :data-aos-delay="index * 100"
             >
