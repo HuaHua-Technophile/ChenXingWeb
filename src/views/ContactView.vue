@@ -1,38 +1,8 @@
-<script setup lang="ts">
-// 联系我们页面组件
-import contactBg1 from '@/assets/images/contact1.webp'
-import contactBg2 from '@/assets/images/contact2.webp'
-
-// 联系方式数据
-const contactInfoList = [
-  {
-    icon: 'bi bi-geo-alt-fill',
-    title: '公司地址 / Company Address',
-    content: '韶关市浈江区十里亭镇良村公路35号良村综合商贸城E栋八楼',
-  },
-  {
-    icon: 'bi bi-telephone-fill',
-    title: '联系电话 / Contact Number',
-    content: '0751-8819008',
-  },
-  {
-    icon: 'bi bi-phone-fill',
-    title: '手机号码 / Phone Number',
-    content: '叶灶生：13726565111',
-  },
-  {
-    icon: 'bi bi-envelope-fill',
-    title: '电子邮箱 / Email',
-    content: '13726565111@139.com',
-  },
-]
-</script>
-
 <template>
   <main class="bg-body">
     <section
       class="position-relative bgimg-center-cover"
-      :style="{ backgroundImage: `url(${contactBg1})` }"
+      :style="{ backgroundImage: `url(${getAssetUrl('images/contact1.webp')})` }"
     >
       <div class="position-absolute top-0 start-0 w-100 h-100 bg-body bg-opacity-50"></div>
       <div class="container py-5">
@@ -61,7 +31,7 @@ const contactInfoList = [
     <section
       class="position-relative py-5 bgimg-center-cover"
       :style="{
-        backgroundImage: `url(${contactBg2})`,
+        backgroundImage: `url(${getAssetUrl('images/contact2.webp')})`,
       }"
     >
       <div class="container">
@@ -99,7 +69,33 @@ const contactInfoList = [
     </section>
   </main>
 </template>
+<script setup lang="ts">
+import { getAssetUrl } from '@/utils/getAssetUrl'
 
+// 联系方式数据
+const contactInfoList = [
+  {
+    icon: 'bi bi-geo-alt-fill',
+    title: '公司地址 / Company Address',
+    content: '韶关市浈江区十里亭镇良村公路35号良村综合商贸城E栋八楼',
+  },
+  {
+    icon: 'bi bi-telephone-fill',
+    title: '联系电话 / Contact Number',
+    content: '0751-8819008',
+  },
+  {
+    icon: 'bi bi-phone-fill',
+    title: '手机号码 / Phone Number',
+    content: '叶灶生：13726565111',
+  },
+  {
+    icon: 'bi bi-envelope-fill',
+    title: '电子邮箱 / Email',
+    content: '13726565111@139.com',
+  },
+]
+</script>
 <style scoped lang="scss">
 /* 移动端背景设置 */
 @media (max-width: 767.98px) {
