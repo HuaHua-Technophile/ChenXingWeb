@@ -75,13 +75,13 @@
     <!-- 服务介绍部分 -->
     <section
       id="services"
-      class="py-3 py-lg-5 bgimg-center-cover bgimg-mask position-relative"
+      class="py-3 py-lg-4 bgimg-center-cover bgimg-mask position-relative"
       :style="{
         backgroundImage: `url(${getAssetUrl('images/computer-1149148_1920_11zon.webp')})`,
       }"
     >
-      <div class="container py-2 py-lg-5">
-        <div class="row text-center mb-3 mb-lg-5">
+      <div class="container">
+        <div class="row text-center">
           <div class="col-lg-8 mx-auto" data-aos="fade-up">
             <h2 class="fs-md-1 fs-2 fw-bold mb-3">
               我们的服务 <span class="text-primary">Our Services</span>
@@ -96,22 +96,22 @@
         <div class="row g-4">
           <div v-for="(service, index) in services" :key="index" class="col-md-6 col-lg-4">
             <div
-              class="h-100 card overflow-hidden hover-up bg-body bg-opacity-25 transition-750 rounded-4 p-2 p-lg-4 pb-0 text-center blur-10"
+              class="h-100 card overflow-hidden hover-up bg-body bg-opacity-25 transition-750 rounded-4 p-2 p-lg-3 text-center blur-10"
               data-aos="fade-up"
               :data-aos-delay="index * 100"
               style="cursor: pointer"
               @click="navigateToService(index)"
             >
-              <div class="mb-2 mb-lg-4">
+              <div class="mb-2 mb-lg-3">
                 <i
                   :class="service.icon"
                   class="bi icon-rotate transition-750 d-inline-block fs-md-1 fs-2 text-primary"
                 ></i>
               </div>
               <h3 class="fs-md-4 fs-5 fw-bold mb-1 mb-lg-2">{{ service.title }}</h3>
-              <h4 class="fs-md-5 fs-6 text-primary mb-2 mb-lg-4">{{ service.titleEn }}</h4>
-              <p class="text-body-secondary fs-sm-6 fs-7 mb-1 mb-lg-2">{{ service.description }}</p>
-              <p class="text-primary fst-italic small fs-8">
+              <h4 class="fs-md-5 fs-6 text-primary mb-2 mb-lg-3">{{ service.titleEn }}</h4>
+              <p class="text-body-secondary fs-sm-6 fs-7 mb-1">{{ service.description }}</p>
+              <p class="text-primary fst-italic small fs-8 mb-0">
                 {{ service.descriptionEn }}
               </p>
             </div>
@@ -123,12 +123,12 @@
     <!-- 关于我们部分 -->
     <RouterLink
       to="/about"
-      class="pt-3 pt-lg-5 position-relative bgimg-center-cover bgimg-mask text-decoration-none d-block text-body"
+      class="pt-2 pt-lg-4 position-relative bgimg-center-cover bgimg-mask text-decoration-none d-block text-body"
       :style="{
         backgroundImage: `url(${getAssetUrl('images/home/stairs-6133971_1920_11zon.webp')})`,
       }"
     >
-      <div class="container mb-3 mb-lg-5">
+      <div class="container">
         <div class="row text-center">
           <div class="col-lg-8 mx-auto" data-aos="fade-up">
             <h2 class="fs-md-1 fs-2 fw-bold mb-3">
@@ -180,8 +180,8 @@
     </RouterLink>
 
     <!-- 工程案例部分 -->
-    <section id="cases" class="py-3 py-lg-5 bg-body-tertiary">
-      <div class="container py-2 py-lg-5 mb-3 mb-lg-5">
+    <section id="cases" class="py-2 py-lg-4 bg-body-tertiary">
+      <div class="container">
         <div class="row text-center">
           <div class="col-lg-8 mx-auto" data-aos="fade-up">
             <h2 class="fs-md-1 fs-2 fw-bold mb-3">
