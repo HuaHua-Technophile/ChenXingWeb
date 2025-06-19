@@ -35,22 +35,22 @@
       }"
       class="bgimg-center-cover bgimg-mask position-relative"
     >
-      <div class="container py-5 position-relative">
+      <div class="container pt-4 position-relative">
         <div class="row justify-content-center">
           <div class="col-lg-8">
             <!-- 公司概况 -->
-            <div class="mb-5" data-aos="fade-up">
+            <div class="mb-4 mb-lg-5" data-aos="fade-up">
               <h3 class="border-start border-4 border-primary ps-3 mb-4">企业概况</h3>
-              <p class="lead mb-4">
+              <p>
                 韶关市辰星信息技术有限公司成立于2013年，是一家集软件开发、信息系统集成、弱电智能化系统建设与维护服务为主的科技型企业。
               </p>
-              <p>
+              <p class="lead fs-6 fs-lg-5">
                 公司专注于安全防范系统、弱电智能化系统、信息中心机房及计算机信息系统的建设与维护；有广东省安全防范系统设计、施工、维修资格证四级证书、安全生产许可证；建立了完整的知识产权体系，及15项相关信息系统软件著作权。
               </p>
             </div>
 
             <!-- 资质认证 -->
-            <div class="mb-5">
+            <div class="mb-4 mb-lg-5">
               <h3 class="border-start border-4 border-primary ps-3 mb-4" data-aos="fade-left">
                 资质认证
               </h3>
@@ -131,7 +131,7 @@
             </div>
 
             <!-- 业务范围 -->
-            <div class="mb-5">
+            <div class="mb-4 mb-lg-5">
               <h3 class="border-start border-4 border-primary ps-3 mb-4" data-aos="fade-left">
                 业务范围
               </h3>
@@ -160,7 +160,7 @@
             </div>
 
             <!-- 团队架构 -->
-            <div class="mb-5">
+            <div class="mb-4 mb-lg-5">
               <h3 class="border-start border-4 border-primary ps-3 mb-4" data-aos="fade-left">
                 团队架构
               </h3>
@@ -184,7 +184,7 @@
             </div>
 
             <!-- 发展规划 -->
-            <div class="mb-5">
+            <div class="mb-4 mb-lg-5">
               <h3 class="border-start border-4 border-primary ps-3 mb-4" data-aos="fade-left">
                 发展规划
               </h3>
@@ -199,7 +199,7 @@
             </div>
 
             <!-- 企业证书展示 -->
-            <div class="mb-5">
+            <div class="mb-4 mb-lg-5">
               <h3 class="border-start border-4 border-primary ps-3 mb-4">企业证书展示</h3>
               <div>
                 <swiper-container

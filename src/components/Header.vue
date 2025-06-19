@@ -36,8 +36,6 @@
         :aria-expanded="isNavOpen"
         aria-controls="navbarContent"
         aria-label="Toggle navigation"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarContent"
       >
         <div
           class="hamburger-icon position-relative d-flex flex-column justify-content-between"
@@ -50,7 +48,12 @@
       </button>
 
       <!-- 导航链接 -->
-      <div class="collapse navbar-collapse" id="navbarContent">
+      <div
+        class="collapse navbar-collapse"
+        id="navbarContent"
+        ref="navbarContent"
+        @transitionend="onTransitionEnd"
+      >
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
           <li v-for="(link, index) in navLinks" :key="index" class="nav-item py-2 py-lg-0">
             <RouterLink
@@ -91,12 +94,38 @@ const navLinks = ref([
 // 控制移动端菜单显示
 const isNavOpen = ref(false)
 
+// 菜单内容DOM引用
+const navbarContent = ref<HTMLElement | null>(null)
+
 // 获取当前路由
 const route = useRoute()
 
 // 切换菜单显示状态
 const toggleNav = () => {
   isNavOpen.value = !isNavOpen.value
+  const el = navbarContent.value
+  if (el) {
+    if (isNavOpen.value) {
+      el.classList.add('show')
+      const height = el.scrollHeight
+      el.style.height = `${height}px`
+    } else {
+      el.style.height = `${el.scrollHeight}px`
+      // Force reflow
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const tmp = el.offsetHeight
+      el.style.height = '0px'
+    }
+  }
+}
+
+const onTransitionEnd = () => {
+  const el = navbarContent.value
+  if (el && isNavOpen.value) {
+    el.style.height = ''
+  } else if (el) {
+    el.classList.remove('show')
+  }
 }
 
 // 滚动状态控制
@@ -164,7 +193,23 @@ onUnmounted(() => {
   }
 }
 
+// 为导航菜单添加过渡效果
+.navbar-collapse {
+  transition: height 0.35s ease;
+  overflow: hidden;
+  height: 0;
+
+  &.show {
+    height: auto;
+  }
+}
+
 @media (min-width: 992px) {
+  .navbar-collapse {
+    height: auto;
+    overflow: visible;
+  }
+
   .logo-img {
     width: 45px;
     height: 45px;
