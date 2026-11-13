@@ -9,6 +9,8 @@ import { ElementPlusResolver, BootstrapVueNextResolver } from 'unplugin-vue-comp
 
 // https://vite.dev/config/
 export default defineConfig({
+  // 子路径部署（如 GitHub Pages 项目站）时用 VITE_BASE 指定，默认根路径
+  base: process.env.VITE_BASE || '/',
   plugins: [
     vue({
       template: {

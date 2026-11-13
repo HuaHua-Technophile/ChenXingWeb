@@ -210,14 +210,14 @@
                   {{ caseItem.description }}
                 </p>
                 <div class="mt-auto pt-3">
-                  <a href="/cases" class="btn btn-sm btn-outline-primary">查看详情</a>
+                  <RouterLink to="/cases" class="btn btn-sm btn-outline-primary">查看详情</RouterLink>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="text-center mt-5" data-aos="fade-up">
-          <a href="/cases" class="btn btn-primary btn-lg px-5">查看所有案例</a>
+          <RouterLink to="/cases" class="btn btn-primary btn-lg px-5">查看所有案例</RouterLink>
         </div>
       </div>
     </section>
